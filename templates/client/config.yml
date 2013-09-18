@@ -1,10 +1,12 @@
 ---
-zabbix: 
+zabbix:
   host: zabbix.example.com
   port: 10051
   sender: /usr/bin/zabbix_sender
 plugins:
-  - memory
-  - cpu
-  - network_eth0
-  - disk_sda1
+  - name: memory
+  - name: cpu
+  - name: network
+    args: eth0
+  - name: disk
+    args: sda1
