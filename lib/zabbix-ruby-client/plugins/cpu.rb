@@ -9,7 +9,7 @@ module ZabbixRubyClient
         if $?.to_i == 0
           _, _, _, user, nice, sys, wait, irq, soft, steal, guest, idle = cpuinfo.split(/\s+/)
         else
-          puts "Please install systat."
+          puts "Please install sysstat."
           return []
         end
         back = []

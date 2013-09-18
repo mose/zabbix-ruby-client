@@ -55,7 +55,7 @@ module ZabbixRubyClient
     load_plugin plugin
     if plugins[plugin]
       begin
-        data << plugins[plugin].send(:collect, @config['host'], args)
+        @data = data + plugins[plugin].send(:collect, @config['host'], args)
       rescue Exception => e
         puts "Oops"
         puts e.message
