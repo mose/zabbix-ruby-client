@@ -6,7 +6,7 @@ module ZabbixRubyClient
       extend self
 
       def collect(*args)
-        hostname = args[0]
+        host = args[0]
         puts "Apache collecting..."
         ret = {}
 
@@ -38,7 +38,7 @@ module ZabbixRubyClient
         back = []
         back << "#{host} apache[TotalAccesses] #{ret["Total Accesses"]}"
         back << "#{host} apache[TotalKBytes] #{ret["Total kBytes"]}"
-        back <<"#{host} apache[CPULoad] #{ret["CPULoad"].to_f}"
+        back << "#{host} apache[CPULoad] #{ret["CPULoad"].to_f}"
         back << "#{host} apache[Uptime] #{ret["Uptime"]}"
         back << "#{host} apache[ReqPerSec] #{ret["ReqPerSec"].to_f}"
         back << "#{host} apache[BytesPerSec] #{ret["BytesPerSec"]}"

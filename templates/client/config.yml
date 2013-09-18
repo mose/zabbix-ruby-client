@@ -1,4 +1,5 @@
 ---
+host: localhost
 zabbix:
   host: zabbix.example.com
   port: 10051
