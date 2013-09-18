@@ -42,7 +42,7 @@ module ZabbixRubyClient
       desc: "Path to the configuration file to use"
     def upload
       ZabbixRubyClient.loadconfig options[:configfile]
-      ZabbixRubyClient.upload_last
+      ZabbixRubyClient.upload
     end
 
     desc "go", "Collects and sends data to the zabbix server"
@@ -54,7 +54,7 @@ module ZabbixRubyClient
     def go
       ZabbixRubyClient.loadconfig options[:configfile]
       ZabbixRubyClient.collect
-      ZabbixRubyClient.upload_last
+      ZabbixRubyClient.upload
     end
 
   end
