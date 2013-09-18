@@ -22,7 +22,9 @@ module ZabbixRubyClient
   end
 
   def available_plugins
-    @available_plugins ||= Dir.glob(File.join("lib","zabbix-ruby-client","plugins","*.rb"))
+    @available_plugins ||= Dir.glob(File.expand_path("../zabbix-ruby-client/plugins/*.rb", __FILE__)).reduce(Hash.new) { |a,x|
+      { File.basename(x,".rb") => x }
+    }
   end
 
   def plugins
@@ -38,32 +40,32 @@ module ZabbixRubyClient
   end
 
   def load_plugin(plugin)
-    unless @plugins[plugin]
-      if @available_plugins[plugin]
-        load @available_plugins[plugin]
+    unless plugins[plugin]
+      if available_plugins[plugin]
+        load available_plugins[plugin]
       else
         puts "Plugin #{plugin} not found."
-        abort
       end
     end
   end
 
   def run_plugin(plugin, args = nil)
     load_plugin plugin
-    begin
-      add_data(@plugins[plugin].send(:collect, args))
-    rescue Exception => e
-      puts "Oops"
-      puts e.message
+    if plugins[plugin]
+      begin
+        data << plugins[plugin].send(:collect, args)
+      rescue Exception => e
+        puts "Oops"
+        puts e.message
+      end
     end
   end
 
   def collect
-    back = []
     @config['plugins'].each do |plugin|
-      back.merge load_plugin(plugin['name'], plugin['args'])
+      run_plugin(plugin['name'], plugin['args'])
     end
-    puts @config['zabbix']['host']
+    puts data.flatten.inspect
   end
 
   def upload
