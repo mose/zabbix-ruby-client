@@ -8,14 +8,7 @@ module ZabbixRubyClient
       def collect(*args)
         host = args[0]
         puts "Apache collecting..."
-        ret = {}
-
-        open "http://127.0.0.1:80/server-status?auto" do |f|
-          f.each_line do |l|
-            k, v = l.split ":"
-            ret[k] = v.strip
-          end
-        end
+        ret = get_status
 
         ret['Score'] = {
           "_" => 0,
@@ -58,6 +51,19 @@ module ZabbixRubyClient
         back << "#{host} apache[c_start] #{ret["Score"]["S"]}"
 
         return back
+      end
+
+      private
+
+      def get_status
+        ret = {}
+        open "http://127.0.0.1:80/server-status?auto" do |f|
+          f.each_line do |l|
+            k, v = l.split ":"
+            ret[k] = v.strip
+          end
+        end
+        ret
       end
 
     end
