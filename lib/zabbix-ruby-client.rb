@@ -23,7 +23,9 @@ module ZabbixRubyClient
 
   def available_plugins
     @available_plugins ||= Dir.glob(File.expand_path("../zabbix-ruby-client/plugins/*.rb", __FILE__)).reduce(Hash.new) { |a,x|
-      { File.basename(x,".rb") => x }
+      name = File.basename(x,".rb")
+      a[name] = x
+      a
     }
   end
 
@@ -69,7 +71,7 @@ module ZabbixRubyClient
   end
 
   def store
-    
+
   end
 
   def upload
