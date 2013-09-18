@@ -1,6 +1,8 @@
 Zabbix Ruby Client
 ====================
 
+[![Code Climate](https://codeclimate.com/github/eduvo/zabbix-ruby-client.png)](https://codeclimate.com/github/eduvo/zabbix-ruby-client)
+
 This tool is designed to make easy to install zabbix reporter on monitored servers using zabbix-sender rather than zabbix-agent. It targets on monitoring mainly linux servers and is built on a plugin system so that you can decide what is going to be reported.
 
 The development is still in progress and this code is not yet usable.
