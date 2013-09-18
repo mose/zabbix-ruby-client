@@ -4,12 +4,12 @@ require "yaml"
 module ZabbixRubyClient
   extend self
 
-  def run
+  def run(config_file)
     begin
-      @config = YAML::load_file(CONFIG_FILE)
+      @config = YAML::load_file(config_file)
     rescue Exception => e
       puts "Configuration file cannot be read"
-      puts e.msg
+      puts e.message
       return
     end
     puts "running"

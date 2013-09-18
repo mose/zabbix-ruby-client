@@ -1,6 +1,5 @@
 require "thor"
 require "zabbix-ruby-client"
-require "zabbix-ruby-client/version"
 
 module ZabbixRubyClient
 
@@ -31,7 +30,8 @@ module ZabbixRubyClient
         say "No Gemfile found", :red
         abort
       end
-      ZabbixRubyClient.run
+      puts options[:config]
+      ZabbixRubyClient.run options[:config]
     end
   end
 
