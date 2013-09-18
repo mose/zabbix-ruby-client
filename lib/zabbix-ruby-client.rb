@@ -68,6 +68,10 @@ module ZabbixRubyClient
     puts data.flatten.inspect
   end
 
+  def store
+    
+  end
+
   def upload
     puts "zabbix_sender -z #{@config['zabbix']['host']} "
   end
