@@ -5,12 +5,12 @@ require 'zabbix-ruby-client/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "zabbix-ruby-client"
-  spec.version       = Zabbix::Ruby::Client::VERSION
+  spec.version       = ZabbixRubyClient::VERSION
   spec.authors       = ["mose"]
   spec.email         = ["mose@mose.com"]
-  spec.description   = %q{}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{A zabbix alternative to zabbix-agent using zabbix-sender.}
+  spec.summary       = %q{This tool is intended to use zabbix sender to propagate monitoring data for Zabbix server.}
+  spec.homepage      = "https://github.com/eduvo/zabbix-ruby-client"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
