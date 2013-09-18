@@ -14,4 +14,9 @@ module ZabbixRubyClient
     directory "client", name
   end
 
+  desc "run", "Collect data according to configuration"
+  def run
+  end
+
+  
 end

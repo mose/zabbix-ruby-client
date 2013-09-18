@@ -3,23 +3,25 @@ Zabbix Ruby Client
 
 This tool is designed to make easy to install zabbix reporter on monitored servers using zabbix-sender rather than zabbix-agent. It targets on monitoring mainly linux servers and is built on a plugin system so that you can decide what is going to be reported.
 
+The development is still in progress and this code is not yet usable.
+
 ## Installation
 
-Add this line to your application's Gemfile:
+Install it yourself as:
 
-    gem 'zabbix-ruby-client'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install zabbix-ruby-client
+    gem install zabbix-ruby-client
 
 ## Usage
 
-TODO: Write usage instructions here
+    zrc init [name]
+    # will create a directory [name] (default: zabbix-ruby-client) for
+    # storing configuration and temporary files
+    
+    cd [name]
+    bundle
+    # makes the zabbix-ruby-client [name] ready to run
+
+    # then edit config.yml according to your needs
 
 ## Contributing
 
