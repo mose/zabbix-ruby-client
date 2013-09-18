@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "bundler"
+require "zabbix-ruby-client/cli"
+
+ZabbixRubyClient::Cli.start

@@ -1,0 +1,5 @@
+---
+zabbix: 
+  host: zabbix.example.com
+  port: 10051
+  sender: /usr/bin/zabbix_sender
