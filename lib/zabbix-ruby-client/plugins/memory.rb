@@ -1,4 +1,4 @@
-module ZabbixRubyClient
+class ZabbixRubyClient
   module Plugins
     module Memory
       extend self
@@ -35,4 +35,4 @@ module ZabbixRubyClient
   end
 end
 
-ZabbixRubyClient.register_plugin('memory', ZabbixRubyClient::Plugins::Memory)
+ZabbixRubyClient::Plugins.register('memory', ZabbixRubyClient::Plugins::Memory)

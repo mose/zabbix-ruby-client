@@ -1,4 +1,4 @@
-module ZabbixRubyClient
+class ZabbixRubyClient
   module Plugins
     module Disk
       extend self
@@ -35,4 +35,4 @@ module ZabbixRubyClient
   end
 end
 
-ZabbixRubyClient.register_plugin('disk', ZabbixRubyClient::Plugins::Disk)
+ZabbixRubyClient::Plugins.register('disk', ZabbixRubyClient::Plugins::Disk)

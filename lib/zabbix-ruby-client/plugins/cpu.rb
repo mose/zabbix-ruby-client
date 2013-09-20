@@ -1,4 +1,4 @@
-module ZabbixRubyClient
+class ZabbixRubyClient
   module Plugins
     module Cpu
       extend self
@@ -30,4 +30,4 @@ module ZabbixRubyClient
   end
 end
 
-ZabbixRubyClient.register_plugin('cpu', ZabbixRubyClient::Plugins::Cpu)
+ZabbixRubyClient::Plugins.register('cpu', ZabbixRubyClient::Plugins::Cpu)

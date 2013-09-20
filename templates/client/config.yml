@@ -3,6 +3,8 @@ host: localhost
 logsdir: logs
 loglevel: info
 datadir: data
+plugindirs: 
+  - plugins
 zabbix:
   host: zabbix.example.com
   port: 10051

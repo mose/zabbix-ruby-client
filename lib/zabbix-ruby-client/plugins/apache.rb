@@ -1,6 +1,6 @@
 require "open-uri"
 
-module ZabbixRubyClient
+class ZabbixRubyClient
   module Plugins
     module Apache
       extend self
@@ -70,4 +70,4 @@ module ZabbixRubyClient
   end
 end
 
-ZabbixRubyClient.register_plugin('apache', ZabbixRubyClient::Plugins::Apache)
+ZabbixRubyClient::Plugins.register('apache', ZabbixRubyClient::Plugins::Apache)

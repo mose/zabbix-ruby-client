@@ -1,4 +1,4 @@
-module ZabbixRubyClient
+class ZabbixRubyClient
   module Plugins
     module Network
       extend self
@@ -31,4 +31,4 @@ module ZabbixRubyClient
   end
 end
 
-ZabbixRubyClient.register_plugin('network', ZabbixRubyClient::Plugins::Network)
+ZabbixRubyClient::Plugins.register('network', ZabbixRubyClient::Plugins::Network)

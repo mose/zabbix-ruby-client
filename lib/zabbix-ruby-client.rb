@@ -1,11 +1,11 @@
 require "zabbix-ruby-client/version"
 require "zabbix-ruby-client/logger"
+require "zabbix-ruby-client/plugins"
 require "yaml"
 
-module ZabbixRubyClient
-  extend self
+class ZabbixRubyClient
 
-  def config(config_file)
+  def initialize(config_file)
     begin
       @config ||= YAML::load_file(config_file)
     rescue Exception => e
@@ -15,45 +15,30 @@ module ZabbixRubyClient
     end
     @logsdir = makedir(@config['logsdir'],'logs')
     @datadir = makedir(@config['datadir'],'data')
-    @config
-  end
-
-
-  def available_plugins
-    @available_plugins ||= Dir.glob(File.expand_path("../zabbix-ruby-client/plugins/*.rb", __FILE__)).reduce(Hash.new) { |a,x|
-      name = File.basename(x,".rb")
-      a[name] = x
-      a
-    }
-  end
-
-  def plugins
-    @plugins ||= {}
-  end
-
-  def register_plugin(plugin, klass)
-    plugins[plugin] = klass
+    @plugindirs = [ File.expand_path("../zabbix-ruby-client/plugins", __FILE__) ]
+    if @config["plugindirs"]
+      @plugindirs = @plugindirs + @config["plugindirs"]
+    end
+    Plugins.load_dirs @plugindirs
   end
 
   def data
     @data ||= []
   end
 
-  def load_plugin(plugin)
-    unless plugins[plugin]
-      if available_plugins[plugin]
-        load available_plugins[plugin]
-      else
-        logger.error "Plugin #{plugin} not found."
-      end
+  def datafile
+    @datafile ||= if @config['keepdata'] == "yes"
+      File.join(@datadir,"data_"+Time.now.strftime("%Y%m%d_%h%m%s"))
+    else
+      File.join(@datadir,"data")
     end
   end
 
   def run_plugin(plugin, args = nil)
-    load_plugin plugin
-    if plugins[plugin]
+    Plugins.load(plugin) || logger.error( "Plugin #{plugin} not found.")
+    if Plugins.loaded[plugin]
       begin
-        @data = data + plugins[plugin].send(:collect, @config['host'], args)
+        @data = data + Plugins.loaded[plugin].send(:collect, @config['host'], args)
       rescue Exception => e
         logger.fatal "Oops"
         logger.fatal e.message
@@ -69,7 +54,11 @@ module ZabbixRubyClient
   end
 
   def store
-
+    File.open(datafile, "w") do |f|
+      data.each do |d|
+        f.puts d
+      end
+    end
   end
 
   def upload

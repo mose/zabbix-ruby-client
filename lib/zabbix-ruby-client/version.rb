@@ -1,3 +1,3 @@
-module ZabbixRubyClient
+class ZabbixRubyClient
   VERSION ||= "0.0.3"
 end

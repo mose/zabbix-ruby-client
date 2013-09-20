@@ -1,7 +1,7 @@
 require "thor"
 require "zabbix-ruby-client"
 
-module ZabbixRubyClient
+class ZabbixRubyClient
 
   class Cli < Thor
     include Thor::Actions
@@ -30,8 +30,8 @@ module ZabbixRubyClient
         say "No Gemfile found", :red
         abort
       end
-      ZabbixRubyClient.config options[:configfile]
-      ZabbixRubyClient.collect
+      zrc = ZabbixRubyClient.new(options[:configfile])
+      zrc.collect
     end
 
     desc "upload", "Sends the collected data to the zabbix server"
@@ -41,8 +41,8 @@ module ZabbixRubyClient
       default: File.expand_path("config.yml", Dir.pwd),
       desc: "Path to the configuration file to use"
     def upload
-      ZabbixRubyClient.config options[:configfile]
-      ZabbixRubyClient.upload
+      zrc = ZabbixRubyClient.new(options[:configfile])
+      zrc.upload
     end
 
     desc "go", "Collects and sends data to the zabbix server"
@@ -52,9 +52,9 @@ module ZabbixRubyClient
       default: File.expand_path("config.yml", Dir.pwd),
       desc: "Path to the configuration file to use"
     def go
-      ZabbixRubyClient.config options[:configfile]
-      ZabbixRubyClient.collect
-      ZabbixRubyClient.upload
+      zrc = ZabbixRubyClient.new(options[:configfile])
+      zrc.collect
+      zrc.upload
     end
 
   end
