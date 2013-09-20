@@ -11,19 +11,19 @@ class ZabbixRubyClient
     end
 
     default_task :help
+    class_option :configfile,
+      aliases: "-c",
+      banner: "PATH",
+      default: File.expand_path("config.yml", Dir.pwd),
+      desc: "Path to the configuration file to use"
 
     desc "init", "Initialize a new zabbix ruby client"
     def init(name = "zabbix-ruby-client")
       directory "client", name
     end
 
-    desc "collect", "Collect data according to configuration"
-    option :configfile,
-      aliases: "-c",
-      banner: "PATH",
-      default: File.expand_path("config.yml", Dir.pwd),
-      desc: "Path to the configuration file to use"
-    def collect
+    desc "show", "Displays in console what are the collected data ready to be sent"
+    def show
       begin
         Bundler.require
       rescue Bundler::GemfileNotFound
@@ -32,26 +32,11 @@ class ZabbixRubyClient
       end
       zrc = ZabbixRubyClient.new(options[:configfile])
       zrc.collect
+      zrc.show
     end
 
-    desc "upload", "Sends the collected data to the zabbix server"
-    option :configfile,
-      aliases: "-c",
-      banner: "PATH",
-      default: File.expand_path("config.yml", Dir.pwd),
-      desc: "Path to the configuration file to use"
+    desc "upload", "Collects and sends data to the zabbix server"
     def upload
-      zrc = ZabbixRubyClient.new(options[:configfile])
-      zrc.upload
-    end
-
-    desc "go", "Collects and sends data to the zabbix server"
-    option :configfile,
-      aliases: "-c",
-      banner: "PATH",
-      default: File.expand_path("config.yml", Dir.pwd),
-      desc: "Path to the configuration file to use"
-    def go
       zrc = ZabbixRubyClient.new(options[:configfile])
       zrc.collect
       zrc.upload

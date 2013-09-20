@@ -23,11 +23,10 @@ class ZabbixRubyClient
     end
 
     def load(plugin)
-      puts @available
-      puts @loaded
-      unless @loaded[plugin]
+      if @loaded[plugin]
+        true
+      else
         if @available[plugin]
-          puts @available[plugin].to_s
           ZabbixRubyClient.send :load, @available[plugin]
         else
           nil

@@ -22,8 +22,18 @@ Install it yourself as:
     cd [name]
     bundle
     # makes the zabbix-ruby-client [name] ready to run
-
     # then edit config.yml according to your needs
+
+    zrc 
+    # to list available commands
+
+And when ready just install a cron task according to your environment
+
+    echo '* * * * * /bin/bash -lc "cd /path/to/zrc && bundle exec zrc go"' | crontab
+    # or
+    echo '* * * * * /bin/zsh -c ". $HOME/.rvm/scripts/rvm && cd /path/to/zrc && bundle exec zrc go"' | crontab
+    # or
+    echo '* * * * * /bin/zsh -c "export RBENV_ROOT=/usr/local/var/rbenv && eval \"$(rbenv init - zsh)\" && cd /path/to/zrc && bundle exec zrc go"' | crontab
 
 ## plugins
 
@@ -34,6 +44,8 @@ There are a set of standart plugins included in the package, aimed at linux syst
 * disk (requires iostat, apt-get install sysstat)
 * network (requires netstat, apt-get install netstat)
 * apache (depends on mod_status with status_extended on)
+
+You can add extra plugin directories in the configuration file.
 
 ## Contributing
 

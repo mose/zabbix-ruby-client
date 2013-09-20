@@ -20,6 +20,7 @@ class ZabbixRubyClient
       @plugindirs = @plugindirs + @config["plugindirs"]
     end
     Plugins.load_dirs @plugindirs
+    logger.debug @config.inspect
   end
 
   def data
@@ -27,8 +28,8 @@ class ZabbixRubyClient
   end
 
   def datafile
-    @datafile ||= if @config['keepdata'] == "yes"
-      File.join(@datadir,"data_"+Time.now.strftime("%Y%m%d_%h%m%s"))
+    @datafile ||= if @config['keepdata']
+      File.join(@datadir,"data_"+Time.now.strftime("%Y%m%d_%H%M%S"))
     else
       File.join(@datadir,"data")
     end
@@ -50,7 +51,12 @@ class ZabbixRubyClient
     @config['plugins'].each do |plugin|
       run_plugin(plugin['name'], plugin['args'])
     end
-    logger.info data.flatten.inspect
+  end
+
+  def show
+    data.each do |line|
+      puts line
+    end
   end
 
   def store
@@ -62,7 +68,13 @@ class ZabbixRubyClient
   end
 
   def upload
-    logger.info "zabbix_sender -z #{@config['zabbix']['host']} "
+    store
+    begin
+      res = `zabbix_sender -z #{@config['zabbix']['host']} -i #{datafile}`
+    rescue Exception => e
+      logger.error "Sending failed."
+      logger.error e.message
+    end
   end
 
   private
