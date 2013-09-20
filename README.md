@@ -25,6 +25,16 @@ Install it yourself as:
 
     # then edit config.yml according to your needs
 
+## plugins
+
+There are a set of standart plugins included in the package, aimed at linux systems.
+
+* cpu (requires mpstat, apt-get install sysstat)
+* memory (requires iostat, apt-get install sysstat)
+* disk (requires iostat, apt-get install sysstat)
+* network (requires netstat, apt-get install netstat)
+* apache (depends on mod_status with status_extended on)
+
 ## Contributing
 
 1. Fork it
