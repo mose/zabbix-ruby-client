@@ -10,7 +10,7 @@ module ZabbixRubyClient
         if $?.to_i == 0
           _, rrqm, wrqm, r, w, rkb, wkb, avgrq, avgqu, await, rawait, wawait, svctm, util = diskinfo.split(/\s+/)
         else
-          puts "Please install sysstat."
+          logger.warn "Please install sysstat."
           return []
         end
         back = []

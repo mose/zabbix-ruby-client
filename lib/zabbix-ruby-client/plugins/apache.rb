@@ -7,7 +7,7 @@ module ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        puts "Apache collecting..."
+        logger.info "Apache collecting..."
         ret = get_status
 
         ret['Score'] = {

@@ -13,7 +13,7 @@ module ZabbixRubyClient
             info[label1+label2] = kb
           end
         else
-          puts "Please install sysstat."
+          logger.warn "Please install sysstat."
           return []
         end
         back = []

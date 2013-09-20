@@ -1,6 +1,7 @@
 ---
 host: localhost
 logsdir: logs
+loglevel: info
 datadir: data
 zabbix:
   host: zabbix.example.com

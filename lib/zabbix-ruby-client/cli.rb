@@ -30,7 +30,7 @@ module ZabbixRubyClient
         say "No Gemfile found", :red
         abort
       end
-      ZabbixRubyClient.loadconfig options[:configfile]
+      ZabbixRubyClient.config options[:configfile]
       ZabbixRubyClient.collect
     end
 
@@ -41,7 +41,7 @@ module ZabbixRubyClient
       default: File.expand_path("config.yml", Dir.pwd),
       desc: "Path to the configuration file to use"
     def upload
-      ZabbixRubyClient.loadconfig options[:configfile]
+      ZabbixRubyClient.config options[:configfile]
       ZabbixRubyClient.upload
     end
 
@@ -52,7 +52,7 @@ module ZabbixRubyClient
       default: File.expand_path("config.yml", Dir.pwd),
       desc: "Path to the configuration file to use"
     def go
-      ZabbixRubyClient.loadconfig options[:configfile]
+      ZabbixRubyClient.config options[:configfile]
       ZabbixRubyClient.collect
       ZabbixRubyClient.upload
     end

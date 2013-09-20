@@ -1,10 +1,11 @@
 require "zabbix-ruby-client/version"
+require "zabbix-ruby-client/logger"
 require "yaml"
 
 module ZabbixRubyClient
   extend self
 
-  def loadconfig(config_file)
+  def config(config_file)
     begin
       @config ||= YAML::load_file(config_file)
     rescue Exception => e
@@ -14,7 +15,7 @@ module ZabbixRubyClient
     end
     @logsdir = makedir(@config['logsdir'],'logs')
     @datadir = makedir(@config['datadir'],'data')
-    puts "Config loaded"
+    @config
   end
 
 
@@ -43,7 +44,7 @@ module ZabbixRubyClient
       if available_plugins[plugin]
         load available_plugins[plugin]
       else
-        puts "Plugin #{plugin} not found."
+        logger.error "Plugin #{plugin} not found."
       end
     end
   end
@@ -54,8 +55,8 @@ module ZabbixRubyClient
       begin
         @data = data + plugins[plugin].send(:collect, @config['host'], args)
       rescue Exception => e
-        puts "Oops"
-        puts e.message
+        logger.fatal "Oops"
+        logger.fatal e.message
       end
     end
   end
@@ -64,7 +65,7 @@ module ZabbixRubyClient
     @config['plugins'].each do |plugin|
       run_plugin(plugin['name'], plugin['args'])
     end
-    puts data.flatten.inspect
+    logger.info data.flatten.inspect
   end
 
   def store
@@ -72,15 +73,19 @@ module ZabbixRubyClient
   end
 
   def upload
-    puts "zabbix_sender -z #{@config['zabbix']['host']} "
+    logger.info "zabbix_sender -z #{@config['zabbix']['host']} "
   end
 
   private
 
-  def makedir(config, default)
-    dir = config || default
+  def makedir(configdir, defaultdir)
+    dir = configdir || defaultdir
     FileUtils.mkdir dir unless Dir.exists? dir
     dir
+  end
+
+  def logger
+    @logger ||= Logger.get_logger(@logsdir, @config["loglevel"])
   end
 
 end

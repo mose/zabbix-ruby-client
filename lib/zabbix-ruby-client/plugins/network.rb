@@ -10,7 +10,7 @@ module ZabbixRubyClient
         if $?.to_i == 0
           _, mtu, rx_ok, rx_err, rx_drop, rx_over, tx_ok, tx_err, tx_drop, tx_over, flags  = netinfo.split(/\s+/)
         else
-          puts "Please install netstat."
+          logger.warn "Please install netstat."
           return []
         end
         back = []
