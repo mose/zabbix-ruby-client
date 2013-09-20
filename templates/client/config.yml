@@ -1,5 +1,7 @@
 ---
 host: localhost
+logsdir: logs
+datadir: data
 zabbix:
   host: zabbix.example.com
   port: 10051

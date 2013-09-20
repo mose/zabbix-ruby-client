@@ -12,14 +12,11 @@ module ZabbixRubyClient
       puts e.message
       return
     end
+    @logsdir = makedir(@config['logsdir'],'logs')
+    @datadir = makedir(@config['datadir'],'data')
     puts "Config loaded"
   end
 
-  def datadir
-    dir = File.expand_path("data", Dir.pwd)
-    FileUtils.mkdir_p(dir) unless File.dir? dir
-    dir
-  end
 
   def available_plugins
     @available_plugins ||= Dir.glob(File.expand_path("../zabbix-ruby-client/plugins/*.rb", __FILE__)).reduce(Hash.new) { |a,x|
@@ -76,6 +73,14 @@ module ZabbixRubyClient
 
   def upload
     puts "zabbix_sender -z #{@config['zabbix']['host']} "
+  end
+
+  private
+
+  def makedir(config, default)
+    dir = config || default
+    FileUtils.mkdir dir unless Dir.exists? dir
+    dir
   end
 
 end
