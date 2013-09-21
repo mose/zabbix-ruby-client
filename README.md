@@ -51,18 +51,18 @@ You can add extra plugin directories in the configuration file.
 
 * write tests
 * add more plugins
-** memcache
-** redis
-** mysql master/slave
-** monit
-** passenger
-** nginx
-** logged users
-** denyhosts
-** postfix
-** sendgrid
-** airbrake
-** disk occupation
+  * memcache
+  * redis
+  * mysql master/slave
+  * monit
+  * passenger
+  * nginx
+  * logged users
+  * denyhosts
+  * postfix
+  * sendgrid
+  * airbrake
+  * disk occupation
 * try to work out a way to create host/graphs/alerts from the client using Zabbix API
 * verify compatibility with ruby 1.9
 
