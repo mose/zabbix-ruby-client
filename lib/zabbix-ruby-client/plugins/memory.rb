@@ -7,11 +7,7 @@ class ZabbixRubyClient
         host = args[0]
         meminfo = `vmstat -s | head -10`
         if $?.to_i == 0
-          info = {}
-          meminfo.split(/\n/).map(&:strip).each do |line|
-            kb, _, label1, label2 = line.split(" ")
-            info[label1+label2] = kb
-          end
+          info = splitinfo(meminfo)
         else
           logger.warn "Please install sysstat."
           return []
@@ -28,7 +24,14 @@ class ZabbixRubyClient
         back << "#{host} memory[swap_used] #{info["usedswap"]}"
         back << "#{host} memory[swap_free] #{info["freeswap"]}"
         return back
+      end
 
+      def splitinfo(info)
+        info.split(/\n/).map(&:strip).reduce({}) do |a,line|
+          kb, _, label1, label2 = line.split(" ")
+          a[label1+label2] = kb
+          a
+        end
       end
 
     end
