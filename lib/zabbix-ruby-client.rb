@@ -28,8 +28,12 @@ class ZabbixRubyClient
   end
 
   def datafile
+    now = Time.now
     @datafile ||= if @config['keepdata']
-      File.join(@datadir,"data_"+Time.now.strftime("%Y%m%d_%H%M%S"))
+      unless Dir.exists? File.join(@datadir,Time.now.strftime("%Y-%m-%d")) 
+        FileUtils.mkdir File.join(@datadir,Time.now.strftime("%Y-%m-%d")) 
+      end
+      File.join(@datadir,Time.now.strftime("%Y-%m-%d"),"data_"+Time.now.strftime("%H%M%S"))
     else
       File.join(@datadir,"data")
     end
