@@ -1,4 +1,4 @@
-Copyright (c) 2013 mose
+Copyright (c) 2013 Faria Systems, mose
 
 MIT License
 
