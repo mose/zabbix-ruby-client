@@ -76,8 +76,8 @@ You can add extra plugin directories in the configuration file.
 
 ## Contributors
 
-* @mose - author
+* [@mose](https://github.com/mose) - author
 
 ## License
 
-Copyright Faria Systems 2013 - MIT license - created by mose at mose.com
+Copyright 2013 [Faria Systems](http://faria.co) - MIT license - created by mose at mose.com
