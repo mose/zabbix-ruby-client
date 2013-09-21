@@ -47,6 +47,25 @@ There are a set of standart plugins included in the package, aimed at linux syst
 
 You can add extra plugin directories in the configuration file.
 
+## Todo
+
+* write tests
+* add more plugins
+** memcache
+** redis
+** mysql master/slave
+** monit
+** passenger
+** nginx
+** logged users
+** denyhosts
+** postfix
+** sendgrid
+** airbrake
+** disk occupation
+* try to work out a way to create host/graphs/alerts from the client using Zabbix API
+
+
 ## Contributing
 
 1. Fork it

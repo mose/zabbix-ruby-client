@@ -74,7 +74,7 @@ class ZabbixRubyClient
   def upload
     store
     begin
-      res = `zabbix_sender -z #{@config['zabbix']['host']} -i #{datafile}`
+      res = `#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -i #{datafile}`
     rescue Exception => e
       logger.error "Sending failed."
       logger.error e.message
