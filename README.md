@@ -5,7 +5,7 @@ Zabbix Ruby Client
 
 This tool is designed to make easy to install zabbix reporter on monitored servers using zabbix-sender rather than zabbix-agent. It targets on monitoring mainly linux servers and is built on a plugin system so that you can decide what is going to be reported.
 
-The development is still in progress and this code is not yet usable.
+The development is still in progress but it produces results and works in my case. Use at your own risk and read the code first. It is developed under ruby 2 but should work on 1.9.3 as well.
 
 ## Installation
 
@@ -64,7 +64,7 @@ You can add extra plugin directories in the configuration file.
 ** airbrake
 ** disk occupation
 * try to work out a way to create host/graphs/alerts from the client using Zabbix API
-
+* verify compatibility with ruby 1.9
 
 ## Contributing
 
@@ -74,6 +74,10 @@ You can add extra plugin directories in the configuration file.
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+## Contributors
+
+* @mose - author
+
 ## License
 
-Copyright Faria Systems 2013 - MIT license
+Copyright Faria Systems 2013 - MIT license - created by mose at mose.com
