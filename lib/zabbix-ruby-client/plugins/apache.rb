@@ -7,25 +7,8 @@ class ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        logger.info "Apache collecting..."
         ret = get_status
-
-        ret['Score'] = {
-          "_" => 0,
-          "S" => 0,
-          "R" => 0,
-          "W" => 0,
-          "K" => 0,
-          "D" => 0,
-          "C" => 0,
-          "L" => 0,
-          "G" => 0,
-          "I" => 0,
-          "." => 0
-        }
-        ret["Scoreboard"].split("").each do |x|
-          ret['Score'][x] += 1
-        end
+        ret['Score'] = get_scores(ret["Scoreboard"])
         ret.delete "Scoreboard"
 
         back = []
@@ -54,6 +37,26 @@ class ZabbixRubyClient
       end
 
       private
+
+      def get_scores(board)
+        back = {
+          "_" => 0,
+          "S" => 0,
+          "R" => 0,
+          "W" => 0,
+          "K" => 0,
+          "D" => 0,
+          "C" => 0,
+          "L" => 0,
+          "G" => 0,
+          "I" => 0,
+          "." => 0
+        }
+        board.split("").each do |x|
+          back[x] += 1
+        end
+        return back
+      end
 
       def get_status
         ret = {}
