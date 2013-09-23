@@ -7,6 +7,8 @@ This tool is designed to make easy to install zabbix reporter on monitored serve
 
 The development is still in progress but it produces results and works in my case. Use at your own risk and read the code first. It is developed under ruby 2 but should work on 1.9.3 as well.
 
+Check the [Changelog](CHANGELOG.md) for recent changes
+
 ## Installation
 
 Install it yourself as:
@@ -65,6 +67,7 @@ You can add extra plugin directories in the configuration file.
   * disk occupation
 * try to work out a way to create host/graphs/alerts from the client using Zabbix API
 * verify compatibility with ruby 1.9
+
 
 ## Contributing
 
