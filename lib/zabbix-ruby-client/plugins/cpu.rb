@@ -10,7 +10,7 @@ class ZabbixRubyClient
         #cpuinfo = `mpstat | grep " all "`
         cpuinfo = `cat /proc/stat | grep "^cpu"`
         if $?.to_i == 0
-          _, user, nice, sys, idle, wait, irq, soft, guest, steal = cpuinfo.split(/\s+/)
+          _, user, nice, sys, idle, wait, irq, soft, guest, steal = cpuinfo.split(/\s+/).map(&:to_i)
         else
           logger.warn "Oh you don't have a /proc ?"
           return []
@@ -25,7 +25,7 @@ class ZabbixRubyClient
         back << "#{host} cpu[steal] #{steal}"
         back << "#{host} cpu[guest] #{guest}"
         back << "#{host} cpu[idle] #{idle}"
-        back << "#{host} cpu[total] #{user.to_i + nice + sys + wait + irq + soft + steal + guest + idle}"
+        back << "#{host} cpu[total] #{user + nice + sys + wait + irq + soft + steal + guest + idle}"
         return back
 
       end
