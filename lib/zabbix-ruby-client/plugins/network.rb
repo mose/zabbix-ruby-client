@@ -8,13 +8,14 @@ class ZabbixRubyClient
         interface = args[1]
         netinfo = `netstat -i | grep "^#{interface} "`
         if $?.to_i == 0
-          _, mtu, rx_ok, rx_err, rx_drop, rx_over, tx_ok, tx_err, tx_drop, tx_over, flags  = netinfo.split(/\s+/)
+          _, mtu, met, rx_ok, rx_err, rx_drop, rx_over, tx_ok, tx_err, tx_drop, tx_over, flags  = netinfo.split(/\s+/)
         else
           logger.warn "Please install netstat."
           return []
         end
         back = []
         back << "#{host} net[#{interface},mtu] #{mtu}"
+        back << "#{host} net[#{interface},met] #{met}"
         back << "#{host} net[#{interface},rx_ok] #{rx_ok}"
         back << "#{host} net[#{interface},rx_err] #{rx_err}"
         back << "#{host} net[#{interface},rx_drop] #{rx_drop}"
