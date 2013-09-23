@@ -14,16 +14,16 @@ class ZabbixRubyClient
           return []
         end
         back = []
-        back << "#{host} net[#{interface},mtu] #{mtu}"
-        back << "#{host} net[#{interface},met] #{met}"
-        back << "#{host} net[#{interface},rx_ok] #{rx_ok}"
-        back << "#{host} net[#{interface},rx_err] #{rx_err}"
-        back << "#{host} net[#{interface},rx_drop] #{rx_drop}"
-        back << "#{host} net[#{interface},rx_over] #{rx_over}"
-        back << "#{host} net[#{interface},tx_ok] #{tx_ok}"
-        back << "#{host} net[#{interface},tx_err] #{tx_err}"
-        back << "#{host} net[#{interface},tx_drop] #{tx_drop}"
-        back << "#{host} net[#{interface},tx_over] #{tx_over}"
+        back << "#{host} net.mtu[#{interface}] #{mtu}"
+        back << "#{host} net.met[#{interface}] #{met}"
+        back << "#{host} net.rx_ok[#{interface}] #{rx_ok}"
+        back << "#{host} net.rx_err[#{interface}] #{rx_err}"
+        back << "#{host} net.rx_drop[#{interface}] #{rx_drop}"
+        back << "#{host} net.rx_over[#{interface}] #{rx_over}"
+        back << "#{host} net.tx_ok[#{interface}] #{tx_ok}"
+        back << "#{host} net.tx_err[#{interface}] #{tx_err}"
+        back << "#{host} net.tx_drop[#{interface}] #{tx_drop}"
+        back << "#{host} net.tx_over[#{interface}] #{tx_over}"
         return back
 
       end
