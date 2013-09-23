@@ -25,6 +25,7 @@ class ZabbixRubyClient
         back << "#{host} cpu[steal] #{steal}"
         back << "#{host} cpu[guest] #{guest}"
         back << "#{host} cpu[idle] #{idle}"
+        back << "#{host} cpu[total] #{user.to_i + nice + sys + wait + irq + soft + steal + guest + idle}"
         return back
 
       end
