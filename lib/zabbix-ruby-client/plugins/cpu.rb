@@ -15,6 +15,8 @@ class ZabbixRubyClient
           logger.warn "Oh you don't have a /proc ?"
           return []
         end
+        used = user + nice + sys + wait + irq + soft + steal + guest
+        total = used + idle
         back = []
         back << "#{host} cpu[user] #{user}"
         back << "#{host} cpu[nice] #{nice}"
@@ -25,7 +27,8 @@ class ZabbixRubyClient
         back << "#{host} cpu[steal] #{steal}"
         back << "#{host} cpu[guest] #{guest}"
         back << "#{host} cpu[idle] #{idle}"
-        back << "#{host} cpu[total] #{user + nice + sys + wait + irq + soft + steal + guest + idle}"
+        back << "#{host} cpu[used] #{used}"
+        back << "#{host} cpu[total] #{total}"
         return back
 
       end
