@@ -1,3 +1,5 @@
+# for more info check http://www.linuxhowtos.org/System/procstat.htm
+
 class ZabbixRubyClient
   module Plugins
     module Cpu
@@ -5,11 +7,12 @@ class ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        cpuinfo = `mpstat | grep " all "`
+        #cpuinfo = `mpstat | grep " all "`
+        cpuinfo = `cat /proc/stat | grep "^cpu"`
         if $?.to_i == 0
-          _, _, _, user, nice, sys, wait, irq, soft, steal, guest, idle = cpuinfo.split(/\s+/)
+          _, user, nice, sys, idle, wait, irq, soft, guest, steal = cpuinfo.split(/\s+/)
         else
-          logger.warn "Please install sysstat."
+          logger.warn "Oh you don't have a /proc ?"
           return []
         end
         back = []
