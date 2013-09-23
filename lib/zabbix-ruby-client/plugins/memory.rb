@@ -29,7 +29,7 @@ class ZabbixRubyClient
       def splitinfo(info)
         info.split(/\n/).map(&:strip).reduce({}) do |a,line|
           kb, _, label1, label2 = line.split(" ")
-          a[label1+label2] = kb * 1000
+          a[label1+label2] = kb.to_i * 1000
           a
         end
       end
