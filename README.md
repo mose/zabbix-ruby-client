@@ -18,22 +18,22 @@ Install it yourself as:
     zrc init [name]
     # will create a directory [name] (default: zabbix-ruby-client) for
     # storing configuration and temporary files
-    
+
     cd [name]
     bundle
     # makes the zabbix-ruby-client [name] ready to run
     # then edit config.yml according to your needs
 
-    zrc 
+    zrc
     # to list available commands
 
 And when ready just install a cron task according to your environment
 
-    echo '* * * * * /bin/bash -lc "cd /path/to/zrc && bundle exec zrc go"' | crontab
+    echo '* * * * * /bin/bash -lc "cd /path/to/zrc && bundle exec zrc upload"' | crontab
     # or
-    echo '* * * * * /bin/zsh -c ". $HOME/.rvm/scripts/rvm && cd /path/to/zrc && bundle exec zrc go"' | crontab
+    echo '* * * * * /bin/zsh -c ". $HOME/.rvm/scripts/rvm && cd /path/to/zrc && bundle exec zrc upload"' | crontab
     # or
-    echo '* * * * * /bin/zsh -c "export RBENV_ROOT=/usr/local/var/rbenv && eval \"$(rbenv init - zsh)\" && cd /path/to/zrc && bundle exec zrc go"' | crontab
+    echo '* * * * * /bin/zsh -c "export RBENV_ROOT=/usr/local/var/rbenv && eval \"$(rbenv init - zsh)\" && cd /path/to/zrc && bundle exec zrc upload"' | crontab
 
 ## plugins
 
