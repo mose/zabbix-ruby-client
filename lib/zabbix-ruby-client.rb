@@ -43,7 +43,7 @@ class ZabbixRubyClient
       begin
         @data = @data + Plugins.loaded[plugin].send(:collect, @config['host'], args)
         if Plugins.loaded[plugin].respond_to?(:discover)
-          key, value = Plugins.loaded[plugin].send(:discover, args)
+          key, value = Plugins.loaded[plugin].send(:discover, *args)
           @discover[key] ||= []
           @discover[key] << [ value ]
         end

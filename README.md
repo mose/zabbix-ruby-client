@@ -41,7 +41,7 @@ And when ready just install a cron task according to your environment
 
 There are a set of standart plugins included in the package, aimed at linux systems.
 
-* cpu (requires mpstat, apt-get install sysstat)
+* cpu (uses /proc/stat)
 * memory (requires iostat, apt-get install sysstat)
 * disk (requires iostat, apt-get install sysstat)
 * network (requires netstat, apt-get install netstat)

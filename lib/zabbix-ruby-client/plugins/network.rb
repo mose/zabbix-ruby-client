@@ -5,7 +5,7 @@ class ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        interface = args[1]
+        interface = args[1][0]
         netinfo = `netstat -i | grep "^#{interface} "`
         if $?.to_i == 0
           _, mtu, met, rx_ok, rx_err, rx_drop, rx_over, tx_ok, tx_err, tx_drop, tx_over, flags  = netinfo.split(/\s+/)

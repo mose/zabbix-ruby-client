@@ -5,7 +5,7 @@ class ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        dev = args[1]
+        dev = args[1][0]
         diskinfo = `iostat -dx #{dev} | grep "^#{dev}"`
         if $?.to_i == 0
           _, rrqm, wrqm, r, w, rkb, wkb, avgrq, avgqu, await, rawait, wawait, svctm, util = diskinfo.split(/\s+/)
@@ -28,7 +28,12 @@ class ZabbixRubyClient
         back << "#{host} disk[#{dev},service_time] #{svctm}"
         back << "#{host} disk[#{dev},percent_util] #{util}"
         return back
+      end
 
+      def discover(*args)
+        device = args[0]
+        mount = args[1]
+        [ "disk.dev.discovery", "{\"{#DISK_DEVICE}\": \"#{device}\", \"{#DISK_MOUNT}\": \"#{mount}\"}" ]
       end
 
     end
