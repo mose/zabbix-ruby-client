@@ -68,7 +68,6 @@ class ZabbixRubyClient
   end
 
   def store
-    merge_discover
     File.open(datafile, "w") do |f|
       @data.each do |d|
         f.puts d
@@ -78,12 +77,13 @@ class ZabbixRubyClient
 
   def merge_discover
     @data = @discover.reduce([]) do |a,(k,v)|
-      a << "#{@config['host']} #{k} \"{ \"data\": [ #{v.join(', ')} ] }\""
+      a << "#{@config['host']} #{k} { \"data\": [ #{v.join(', ')} ] }"
       a
     end + @data
   end
 
   def upload
+    merge_discover
     store
     begin
       res = `#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -i #{datafile}`
