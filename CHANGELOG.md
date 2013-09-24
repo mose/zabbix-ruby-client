@@ -1,8 +1,9 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.0.6 -
+### v0.0.6 - 2013-09-25
 
+* added a discover method in plugin for pushed discoveries on network interfaces
 * change memory reports to Bytes rather than KBytes
 
 ### v0.0.5 - 2013-09-23

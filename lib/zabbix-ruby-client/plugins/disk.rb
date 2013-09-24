@@ -28,7 +28,12 @@ class ZabbixRubyClient
         back << "#{host} disk[#{dev},service_time] #{svctm}"
         back << "#{host} disk[#{dev},percent_util] #{util}"
         return back
+      end
 
+      def discover(*args)
+        device = args[0]
+        mount = args[1]
+        [ "disk.dev.discovery", "{\"{#DISK_DEVICE}\": \"#{device}\", \"{#DISK_MOUNT}\": \"#{mount}\"}" ]
       end
 
     end

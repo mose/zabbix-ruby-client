@@ -19,12 +19,10 @@ class ZabbixRubyClient
     if @config["plugindirs"]
       @plugindirs = @plugindirs + @config["plugindirs"]
     end
+    @discover = {}
+    @data = []
     Plugins.load_dirs @plugindirs
     logger.debug @config.inspect
-  end
-
-  def data
-    @data ||= []
   end
 
   def datafile
@@ -43,7 +41,12 @@ class ZabbixRubyClient
     Plugins.load(plugin) || logger.error( "Plugin #{plugin} not found.")
     if Plugins.loaded[plugin]
       begin
-        @data = data + Plugins.loaded[plugin].send(:collect, @config['host'], args)
+        @data = @data + Plugins.loaded[plugin].send(:collect, @config['host'], *args)
+        if Plugins.loaded[plugin].respond_to?(:discover)
+          key, value = Plugins.loaded[plugin].send(:discover, *args)
+          @discover[key] ||= []
+          @discover[key] << [ value ]
+        end
       rescue Exception => e
         logger.fatal "Oops"
         logger.fatal e.message
@@ -58,20 +61,29 @@ class ZabbixRubyClient
   end
 
   def show
-    data.each do |line|
+    merge_discover
+    @data.each do |line|
       puts line
     end
   end
 
   def store
     File.open(datafile, "w") do |f|
-      data.each do |d|
+      @data.each do |d|
         f.puts d
       end
     end
   end
 
+  def merge_discover
+    @data = @discover.reduce([]) do |a,(k,v)|
+      a << "#{@config['host']} #{k} { \"data\": [ #{v.join(', ')} ] }"
+      a
+    end + @data
+  end
+
   def upload
+    merge_discover
     store
     begin
       res = `#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -i #{datafile}`
