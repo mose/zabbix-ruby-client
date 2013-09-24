@@ -78,7 +78,7 @@ class ZabbixRubyClient
 
   def merge_discover
     @data = @discover.reduce([]) do |a,(k,v)|
-      a << "#{@config['host']} #{k} \"{ \"data\": { #{v.join(', ')} }\""
+      a << "#{@config['host']} #{k} \"{ \"data\": [ #{v.join(', ')} ] }\""
       a
     end + @data
   end
