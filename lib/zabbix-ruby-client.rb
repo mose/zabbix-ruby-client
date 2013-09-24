@@ -41,7 +41,7 @@ class ZabbixRubyClient
     Plugins.load(plugin) || logger.error( "Plugin #{plugin} not found.")
     if Plugins.loaded[plugin]
       begin
-        @data = @data + Plugins.loaded[plugin].send(:collect, @config['host'], args)
+        @data = @data + Plugins.loaded[plugin].send(:collect, @config['host'], *args)
         if Plugins.loaded[plugin].respond_to?(:discover)
           key, value = Plugins.loaded[plugin].send(:discover, *args)
           @discover[key] ||= []

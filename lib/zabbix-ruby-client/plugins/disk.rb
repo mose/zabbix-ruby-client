@@ -5,7 +5,7 @@ class ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        dev = args[1][0]
+        dev = args[1]
         diskinfo = `iostat -dx #{dev} | grep "^#{dev}"`
         if $?.to_i == 0
           _, rrqm, wrqm, r, w, rkb, wkb, avgrq, avgqu, await, rawait, wawait, svctm, util = diskinfo.split(/\s+/)
