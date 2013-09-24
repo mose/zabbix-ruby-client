@@ -18,4 +18,5 @@ plugins:
   - name: disk
     args: sda1
   - name: network
-    args: eth0
+    args: eth1
+    

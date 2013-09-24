@@ -28,6 +28,11 @@ class ZabbixRubyClient
 
       end
 
+      def discover(*args)
+        interface = args[0]
+        [ "net.if_discovery", "{\"{#NET_IF}\": \"#{interface}\"}" ]
+      end
+
     end
   end
 end
