@@ -1,6 +1,9 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.0.7 -
+
+
 ### v0.0.6 - 2013-09-25
 
 * added a discover method in plugin for pushed discoveries on network interfaces
