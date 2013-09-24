@@ -41,11 +41,11 @@ And when ready just install a cron task according to your environment
 
 There are a set of standart plugins included in the package, aimed at linux systems.
 
-* cpu (uses /proc/stat)
-* memory (requires iostat, apt-get install sysstat)
-* disk (requires iostat, apt-get install sysstat)
-* network (requires netstat, apt-get install netstat)
-* apache (depends on mod_status with status_extended on)
+* cpu (uses /proc/stat) [cpu_tpl](master/zabbix-templates/cpu_tpl.xml)
+* memory (requires iostat, apt-get install sysstat) [memory_tpl](master/zabbix-templates/memory_tpl.xml)
+* disk (requires iostat, apt-get install sysstat) (missing tpl)
+* network (requires netstat, apt-get install netstat) [network_tpl](master/zabbix-templates/network_tpl.xml)
+* apache (depends on mod_status with status_extended on) [apache_tpl](master/zabbix-templates/apache_tpl.xml)
 
 You can add extra plugin directories in the configuration file.
 
