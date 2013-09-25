@@ -76,8 +76,9 @@ class ZabbixRubyClient
   end
 
   def merge_discover
+    time = Time.now.to_i
     @data = @discover.reduce([]) do |a,(k,v)|
-      a << "#{@config['host']} #{k} { \"data\": [ #{v.join(', ')} ] }"
+      a << "#{@config['host']} #{k} #{time} { \"data\": [ #{v.join(', ')} ] }"
       a
     end + @data
   end
