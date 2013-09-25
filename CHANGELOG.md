@@ -1,6 +1,9 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.0.8 - wip
+
+
 ### v0.0.7 - 2013-09-25
 
 * fix network plugin
