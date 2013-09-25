@@ -17,18 +17,20 @@ class ZabbixRubyClient
         end
         used = user + nice + sys + wait + irq + soft + steal + guest
         total = used + idle
+
+        time = Time.mow.to_i
         back = []
-        back << "#{host} cpu[user] #{user}"
-        back << "#{host} cpu[nice] #{nice}"
-        back << "#{host} cpu[system] #{sys}"
-        back << "#{host} cpu[iowait] #{wait}"
-        back << "#{host} cpu[irq] #{irq}"
-        back << "#{host} cpu[soft] #{soft}"
-        back << "#{host} cpu[steal] #{steal}"
-        back << "#{host} cpu[guest] #{guest}"
-        back << "#{host} cpu[idle] #{idle}"
-        back << "#{host} cpu[used] #{used}"
-        back << "#{host} cpu[total] #{total}"
+        back << "#{host} cpu[user] #{time} #{user}"
+        back << "#{host} cpu[nice] #{time} #{nice}"
+        back << "#{host} cpu[system] #{time} #{sys}"
+        back << "#{host} cpu[iowait] #{time} #{wait}"
+        back << "#{host} cpu[irq] #{time} #{irq}"
+        back << "#{host} cpu[soft] #{time} #{soft}"
+        back << "#{host} cpu[steal] #{time} #{steal}"
+        back << "#{host} cpu[guest] #{time} #{guest}"
+        back << "#{host} cpu[idle] #{time} #{idle}"
+        back << "#{host} cpu[used] #{time} #{used}"
+        back << "#{host} cpu[total] #{time} #{total}"
         return back
 
       end

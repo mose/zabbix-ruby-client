@@ -20,24 +20,26 @@ class ZabbixRubyClient
           logger.error "df is not working... ouchie."
           return []
         end
+
+        time = Time.mow.to_i
         back = []
-        back << "#{host} disk.io[#{dev},read_req_per_sec] #{rrqm}"
-        back << "#{host} disk.io[#{dev},write_req_per_sec] #{wrqm}"
-        back << "#{host} disk.io[#{dev},read_per_sec] #{r}"
-        back << "#{host} disk.io[#{dev},write_per_sec] #{w}"
-        back << "#{host} disk.io[#{dev},read_sector_per_sec] #{rkb}"
-        back << "#{host} disk.io[#{dev},write_sector_per_sec] #{wkb}"
-        back << "#{host} disk.io[#{dev},avg_sector_size] #{avgrq}"
-        back << "#{host} disk.io[#{dev},avg_queue_length] #{avgqu}"
-        back << "#{host} disk.io[#{dev},time_waiting] #{await}"
-        back << "#{host} disk.io[#{dev},time_waiting_read] #{rawait}"
-        back << "#{host} disk.io[#{dev},time_waiting_write] #{wawait}"
-        back << "#{host} disk.io[#{dev},service_time] #{svctm}"
-        back << "#{host} disk.io[#{dev},percent_util] #{util}"
-        back << "#{host} disk.space[#{dev},size] #{size.to_i * 1000}"
-        back << "#{host} disk.space[#{dev},used] #{used.to_i * 1000}"
-        back << "#{host} disk.space[#{dev},available] #{available.to_i * 1000}"
-        back << "#{host} disk.space[#{dev},percent_used] #{percent_used.gsub(/%/,'')}"
+        back << "#{host} disk.io[#{dev},read_req_per_sec] #{time} #{rrqm}"
+        back << "#{host} disk.io[#{dev},write_req_per_sec] #{time} #{wrqm}"
+        back << "#{host} disk.io[#{dev},read_per_sec] #{time} #{r}"
+        back << "#{host} disk.io[#{dev},write_per_sec] #{time} #{w}"
+        back << "#{host} disk.io[#{dev},read_sector_per_sec] #{time} #{rkb}"
+        back << "#{host} disk.io[#{dev},write_sector_per_sec] #{time} #{wkb}"
+        back << "#{host} disk.io[#{dev},avg_sector_size] #{time} #{avgrq}"
+        back << "#{host} disk.io[#{dev},avg_queue_length] #{time} #{avgqu}"
+        back << "#{host} disk.io[#{dev},time_waiting] #{time} #{await}"
+        back << "#{host} disk.io[#{dev},time_waiting_read] #{time} #{rawait}"
+        back << "#{host} disk.io[#{dev},time_waiting_write] #{time} #{wawait}"
+        back << "#{host} disk.io[#{dev},service_time] #{time} #{svctm}"
+        back << "#{host} disk.io[#{dev},percent_util] #{time} #{util}"
+        back << "#{host} disk.space[#{dev},size] #{time} #{size.to_i * 1000}"
+        back << "#{host} disk.space[#{dev},used] #{time} #{used.to_i * 1000}"
+        back << "#{host} disk.space[#{dev},available] #{time} #{available.to_i * 1000}"
+        back << "#{host} disk.space[#{dev},percent_used] #{time} #{percent_used.gsub(/%/,'')}"
         return back
       end
 

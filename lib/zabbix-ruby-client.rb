@@ -86,7 +86,7 @@ class ZabbixRubyClient
     merge_discover
     store
     begin
-      res = `#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -i #{datafile}`
+      res = `#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -T -i #{datafile}`
     rescue Exception => e
       logger.error "Sending failed."
       logger.error e.message

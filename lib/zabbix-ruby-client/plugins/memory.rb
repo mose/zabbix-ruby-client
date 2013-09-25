@@ -12,17 +12,19 @@ class ZabbixRubyClient
           logger.warn "Please install sysstat."
           return []
         end
+
+        time = Time.mow.to_i
         back = []
-        back << "#{host} memory[total] #{info["totalmemory"]}"
-        back << "#{host} memory[used] #{info["usedmemory"]}"
-        back << "#{host} memory[active] #{info["activememory"]}"
-        back << "#{host} memory[inactive] #{info["inactivememory"]}"
-        back << "#{host} memory[free] #{info["freememory"]}"
-        back << "#{host} memory[buffer] #{info["buffermemory"]}"
-        back << "#{host} memory[swap_cache] #{info["swapcache"]}"
-        back << "#{host} memory[swap_total] #{info["totalswap"]}"
-        back << "#{host} memory[swap_used] #{info["usedswap"]}"
-        back << "#{host} memory[swap_free] #{info["freeswap"]}"
+        back << "#{host} memory[total] #{time} #{info["totalmemory"]}"
+        back << "#{host} memory[used] #{time} #{info["usedmemory"]}"
+        back << "#{host} memory[active] #{time} #{info["activememory"]}"
+        back << "#{host} memory[inactive] #{time} #{info["inactivememory"]}"
+        back << "#{host} memory[free] #{time} #{info["freememory"]}"
+        back << "#{host} memory[buffer] #{time} #{info["buffermemory"]}"
+        back << "#{host} memory[swap_cache] #{time} #{info["swapcache"]}"
+        back << "#{host} memory[swap_total] #{time} #{info["totalswap"]}"
+        back << "#{host} memory[swap_used] #{time} #{info["usedswap"]}"
+        back << "#{host} memory[swap_free] #{time} #{info["freeswap"]}"
         return back
       end
 
