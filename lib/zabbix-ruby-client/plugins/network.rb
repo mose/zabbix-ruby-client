@@ -8,7 +8,7 @@ class ZabbixRubyClient
         interface = args[1]
         netinfo = `grep "#{interface}: " /proc/net/dev`
         if $?.to_i == 0
-          _, rx_ok, rx_packets, rx_err, rx_drop, _, _, _, _, tx_ok, tx_packets, tx_err, tx_drop, _, _, _, _  = netinfo.split(/\s+/)
+          _, _, rx_ok, rx_packets, rx_err, rx_drop, _, _, _, _, tx_ok, tx_packets, tx_err, tx_drop, _, _, _, _  = netinfo.split(/\s+/)
         else
           logger.warn "Please install netstat."
           return []
