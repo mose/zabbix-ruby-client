@@ -44,7 +44,7 @@ There are a set of standart plugins included in the package, aimed at linux syst
 * cpu (uses /proc/stat) [cpu_tpl](master/zabbix-templates/cpu_tpl.xml)
 * memory (requires iostat, apt-get install sysstat) [memory_tpl](master/zabbix-templates/memory_tpl.xml)
 * disk (requires iostat, apt-get install sysstat) (missing tpl)
-* network (requires netstat, apt-get install netstat) [network_tpl](master/zabbix-templates/network_tpl.xml)
+* network (uses /proc/net/dev) [network_tpl](master/zabbix-templates/network_tpl.xml)
 * apache (depends on mod_status with status_extended on) [apache_tpl](master/zabbix-templates/apache_tpl.xml)
 
 You can add extra plugin directories in the configuration file.
