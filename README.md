@@ -7,7 +7,7 @@ This tool is designed to make easy to install zabbix reporter on monitored serve
 
 The development is still in progress but it produces results and works in my case. Use at your own risk and read the code first. It is developed under ruby 2 but should work on 1.9.3 as well.
 
-Check the [Changelog](CHANGELOG.md) for recent changes
+Check the [Changelog](CHANGELOG.md) for recent changes, code is still under huge development and is likely to move a lot until version 0.1.
 
 ## Installation
 
@@ -43,7 +43,7 @@ There are a set of standart plugins included in the package, aimed at linux syst
 
 * cpu (uses /proc/stat) [cpu_tpl](master/zabbix-templates/cpu_tpl.xml)
 * memory (requires iostat, apt-get install sysstat) [memory_tpl](master/zabbix-templates/memory_tpl.xml)
-* disk (requires iostat, apt-get install sysstat) (missing tpl)
+* disk (requires iostat, apt-get install sysstat) [disk_tpl](master/zabbix-templates/disk_tpl.xml)
 * network (uses /proc/net/dev) [network_tpl](master/zabbix-templates/network_tpl.xml)
 * apache (depends on mod_status with status_extended on) [apache_tpl](master/zabbix-templates/apache_tpl.xml)
 

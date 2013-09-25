@@ -1,8 +1,11 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.0.7 -
+### v0.0.7 - 2013-09-25
 
+* fix network plugin
+* added disk plugin and tepmlate
+* various small templates fixes
 
 ### v0.0.6 - 2013-09-25
 
