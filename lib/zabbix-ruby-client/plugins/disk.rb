@@ -36,7 +36,7 @@ class ZabbixRubyClient
         back << "#{host} disk.io[#{dev},percent_util] #{util}"
         back << "#{host} disk.space[#{dev},used] #{used}"
         back << "#{host} disk.space[#{dev},available] #{available}"
-        back << "#{host} disk.space[#{dev},percent_used] #{percent_used}"
+        back << "#{host} disk.space[#{dev},percent_used] #{percent_used.gsub(/%/,'')}"
         return back
       end
 
