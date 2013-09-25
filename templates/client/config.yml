@@ -15,7 +15,7 @@ plugins:
   - name: cpu
   - name: network
     args: [ eth0 ]
-  - name: diskio
+  - name: disk
     args: [ sda1, / ]
   - name: network
     args: [ eth1 ]
