@@ -14,7 +14,7 @@ class ZabbixRubyClient
           return []
         end
 
-        time = Time.mow.to_i
+        time = Time.now.to_i
         back = []
         back << "#{host} net.mtu[#{interface}] #{time} #{mtu}"
         back << "#{host} net.met[#{interface}] #{time} #{met}"

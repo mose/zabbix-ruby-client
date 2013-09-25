@@ -13,7 +13,7 @@ class ZabbixRubyClient
           return []
         end
 
-        time = Time.mow.to_i
+        time = Time.now.to_i
         back = []
         back << "#{host} memory[total] #{time} #{info["totalmemory"]}"
         back << "#{host} memory[used] #{time} #{info["usedmemory"]}"

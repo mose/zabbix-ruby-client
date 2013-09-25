@@ -21,7 +21,7 @@ class ZabbixRubyClient
           return []
         end
 
-        time = Time.mow.to_i
+        time = Time.now.to_i
         back = []
         back << "#{host} disk.io[#{dev},read_req_per_sec] #{time} #{rrqm}"
         back << "#{host} disk.io[#{dev},write_req_per_sec] #{time} #{wrqm}"

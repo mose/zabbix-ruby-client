@@ -11,7 +11,7 @@ class ZabbixRubyClient
         ret['Score'] = get_scores(ret["Scoreboard"])
         ret.delete "Scoreboard"
 
-        time = Time.mow.to_i
+        time = Time.now.to_i
         back = []
         back << "#{host} apache[TotalAccesses] #{time} #{ret["Total Accesses"]}"
         back << "#{host} apache[TotalKBytes] #{time} #{ret["Total kBytes"]}"

@@ -18,7 +18,7 @@ class ZabbixRubyClient
         used = user + nice + sys + wait + irq + soft + steal + guest
         total = used + idle
 
-        time = Time.mow.to_i
+        time = Time.now.to_i
         back = []
         back << "#{host} cpu[user] #{time} #{user}"
         back << "#{host} cpu[nice] #{time} #{nice}"
