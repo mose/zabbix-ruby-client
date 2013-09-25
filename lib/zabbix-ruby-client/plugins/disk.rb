@@ -1,3 +1,7 @@
+# some doc on
+# http://www.xaprb.com/blog/2010/01/09/how-linux-iostat-computes-its-results/
+# http://www.mjmwired.net/kernel/Documentation/iostats.txt
+
 class ZabbixRubyClient
   module Plugins
     module Disk
@@ -6,9 +10,9 @@ class ZabbixRubyClient
       def collect(*args)
         host = args[0]
         dev = args[1]
-        diskinfo = `iostat -dx #{dev} | grep "^#{dev}"`
+        diskinfo = `cat /proc/diskstats | grep " #{dev} "`
         if $?.to_i == 0
-          _, rrqm, wrqm, r, w, rkb, wkb, avgrq, avgqu, await, rawait, wawait, svctm, util = diskinfo.split(/\s+/)
+          _, _, _, _, read_ok, read_merged, read_sector, read_time, write_ok, write_merged, write_sector, write_time, io_current, io_time, io_weighted = diskinfo.split(/\s+/)
         else
           logger.warn "Please install sysstat."
           return []
@@ -23,19 +27,17 @@ class ZabbixRubyClient
 
         time = Time.now.to_i
         back = []
-        back << "#{host} disk.io[#{dev},read_req_per_sec] #{time} #{rrqm}"
-        back << "#{host} disk.io[#{dev},write_req_per_sec] #{time} #{wrqm}"
-        back << "#{host} disk.io[#{dev},read_per_sec] #{time} #{r}"
-        back << "#{host} disk.io[#{dev},write_per_sec] #{time} #{w}"
-        back << "#{host} disk.io[#{dev},read_sector_per_sec] #{time} #{rkb}"
-        back << "#{host} disk.io[#{dev},write_sector_per_sec] #{time} #{wkb}"
-        back << "#{host} disk.io[#{dev},avg_sector_size] #{time} #{avgrq}"
-        back << "#{host} disk.io[#{dev},avg_queue_length] #{time} #{avgqu}"
-        back << "#{host} disk.io[#{dev},time_waiting] #{time} #{await}"
-        back << "#{host} disk.io[#{dev},time_waiting_read] #{time} #{rawait}"
-        back << "#{host} disk.io[#{dev},time_waiting_write] #{time} #{wawait}"
-        back << "#{host} disk.io[#{dev},service_time] #{time} #{svctm}"
-        back << "#{host} disk.io[#{dev},percent_util] #{time} #{util}"
+        back << "#{host} disk.io[#{dev},read_ok] #{time} #{read_ok}"
+        back << "#{host} disk.io[#{dev},read_merged] #{time} #{read_merged}"
+        back << "#{host} disk.io[#{dev},read_sector] #{time} #{read_sector}"
+        back << "#{host} disk.io[#{dev},read_time] #{time} #{read_time}"
+        back << "#{host} disk.io[#{dev},write_ok] #{time} #{write_ok}"
+        back << "#{host} disk.io[#{dev},write_merged] #{time} #{write_merged}"
+        back << "#{host} disk.io[#{dev},write_sector] #{time} #{write_sector}"
+        back << "#{host} disk.io[#{dev},write_time] #{time} #{write_time}"
+        back << "#{host} disk.io[#{dev},io_current] #{time} #{io_current}"
+        back << "#{host} disk.io[#{dev},io_time] #{time} #{io_time}"
+        back << "#{host} disk.io[#{dev},io_weighted] #{time} #{io_weighted}"
         back << "#{host} disk.space[#{dev},size] #{time} #{size.to_i * 1000}"
         back << "#{host} disk.space[#{dev},used] #{time} #{used.to_i * 1000}"
         back << "#{host} disk.space[#{dev},available] #{time} #{available.to_i * 1000}"
