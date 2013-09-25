@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-09-23T07:29:18Z</date>
+    <date>2013-09-25T10:35:58Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -119,7 +119,7 @@
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts>mb-sandbox</allowed_hosts>
-                    <units>B/s</units>
+                    <units>Bps</units>
                     <delta>0</delta>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
