@@ -40,4 +40,4 @@ class ZabbixRubyClient
   end
 end
 
-ZabbixRubyClient::Plugins.register('disk', ZabbixRubyClient::Plugins::Disk)
+ZabbixRubyClient::Plugins.register('diskio', ZabbixRubyClient::Plugins::Diskio)
