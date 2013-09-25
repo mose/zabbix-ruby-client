@@ -6,7 +6,7 @@ class ZabbixRubyClient
       def collect(*args)
         host = args[0]
         interface = args[1]
-        metinfo = `grep "#{interface}: " /proc/net/dev`
+        netinfo = `grep "#{interface}: " /proc/net/dev`
         if $?.to_i == 0
           _, rx_ok, rx_packets, rx_err, rx_drop, _, _, _, _, tx_ok, tx_packets, tx_err, tx_drop, _, _, _, _  = netinfo.split(/\s+/)
         else
