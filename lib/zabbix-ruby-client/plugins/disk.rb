@@ -15,7 +15,7 @@ class ZabbixRubyClient
         end
         diskspace = `df | grep "#{dev}"`
         if $?.to_i == 0
-          _, _, used, available, percent_used, mount = diskspace.split(/\s+/)
+          _, size, used, available, percent_used, mount = diskspace.split(/\s+/)
         else
           logger.error "df is not working... ouchie."
           return []
@@ -34,6 +34,7 @@ class ZabbixRubyClient
         back << "#{host} disk.io[#{dev},time_waiting_write] #{wawait}"
         back << "#{host} disk.io[#{dev},service_time] #{svctm}"
         back << "#{host} disk.io[#{dev},percent_util] #{util}"
+        back << "#{host} disk.space[#{dev},size] #{size}"
         back << "#{host} disk.space[#{dev},used] #{used}"
         back << "#{host} disk.space[#{dev},available] #{available}"
         back << "#{host} disk.space[#{dev},percent_used] #{percent_used.gsub(/%/,'')}"
