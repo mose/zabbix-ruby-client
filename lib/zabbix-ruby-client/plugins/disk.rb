@@ -35,7 +35,6 @@ class ZabbixRubyClient
         back << "#{host} disk.io[#{dev},write_merged] #{time} #{write_merged}"
         back << "#{host} disk.io[#{dev},write_sector] #{time} #{write_sector}"
         back << "#{host} disk.io[#{dev},write_time] #{time} #{write_time}"
-        back << "#{host} disk.io[#{dev},io_current] #{time} #{io_current}"
         back << "#{host} disk.io[#{dev},io_time] #{time} #{io_time}"
         back << "#{host} disk.io[#{dev},io_weighted] #{time} #{io_weighted}"
         back << "#{host} disk.space[#{dev},size] #{time} #{size.to_i * 1000}"

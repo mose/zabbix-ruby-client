@@ -3,6 +3,7 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.8 - wip
 
+* fix disk plugin to use proc rather than iostat
 
 ### v0.0.7 - 2013-09-25
 
