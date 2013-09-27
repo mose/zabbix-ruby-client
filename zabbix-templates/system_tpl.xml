@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>2.0</version>
+    <date>2013-09-27T21:30:35Z</date>
+    <groups>
+        <group>
+            <name>Linux servers</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Linux System</template>
+            <name>Linux System (zrc)</name>
+            <groups>
+                <group>
+                    <name>Linux servers</name>
+                </group>
+            </groups>
+            <applications/>
+            <items/>
+            <discovery_rules/>
+            <macros/>
+            <templates>
+                <template>
+                    <name>CPU zrc</name>
+                </template>
+                <template>
+                    <name>Disk Stats</name>
+                </template>
+                <template>
+                    <name>Load</name>
+                </template>
+                <template>
+                    <name>Memory ZRC</name>
+                </template>
+                <template>
+                    <name>Network</name>
+                </template>
+            </templates>
+            <screens/>
+        </template>
+    </templates>
+</zabbix_export>

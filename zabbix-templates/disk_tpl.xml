@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-09-25T23:01:14Z</date>
+    <date>2013-09-27T21:30:19Z</date>
     <groups>
         <group>
             <name>Linux servers</name>
@@ -92,7 +92,7 @@
                             <name>$1 percent IO used</name>
                             <type>2</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
+                            <multiplier>1</multiplier>
                             <snmp_oid/>
                             <key>disk.io[{#DISK_DEVICE},io_time]</key>
                             <delay>0</delay>
@@ -107,7 +107,7 @@
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
                             <snmpv3_authpassphrase/>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
+                            <formula>0.001</formula>
                             <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
@@ -149,45 +149,6 @@
                             <formula>1</formula>
                             <delay_flex/>
                             <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Disk</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>$1 r/w %</name>
-                            <type>15</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>disk.io[{#DISK_DEVICE},rw_time]</key>
-                            <delay>60</delay>
-                            <history>90</history>
-                            <trends>365</trends>
-                            <status>0</status>
-                            <value_type>0</value_type>
-                            <allowed_hosts/>
-                            <units>%</units>
-                            <delta>0</delta>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params>disk.io[{#DISK_DEVICE},read_time].last(0) + disk.io[{#DISK_DEVICE},write_time].last(0)</params>
                             <ipmi_sensor/>
                             <data_type>0</data_type>
                             <authtype>0</authtype>
@@ -326,7 +287,7 @@
                             <name>$1 Read time</name>
                             <type>2</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
+                            <multiplier>1</multiplier>
                             <snmp_oid/>
                             <key>disk.io[{#DISK_DEVICE},read_time]</key>
                             <delay>0</delay>
@@ -341,7 +302,7 @@
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
                             <snmpv3_authpassphrase/>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
+                            <formula>0.001</formula>
                             <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
@@ -599,7 +560,7 @@
                             <name>$1 Write time</name>
                             <type>2</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
+                            <multiplier>1</multiplier>
                             <snmp_oid/>
                             <key>disk.io[{#DISK_DEVICE},write_time]</key>
                             <delay>0</delay>
@@ -614,7 +575,7 @@
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
                             <snmpv3_authpassphrase/>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
+                            <formula>0.001</formula>
                             <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
