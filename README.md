@@ -44,7 +44,7 @@ And when ready just install a cron task according to your environment
 
 There are a set of standart plugins included in the package, aimed at linux systems.
 
-* linux system stats ([system_tpl](master/zabbix-templates/system_tpl.xml) includes the floowing)
+* linux system stats ([system_tpl](master/zabbix-templates/system_tpl.xml) includes the following)
   * load (uses /proc/loadavg) [load_tpl](master/zabbix-templates/load_tpl.xml)
   * cpu (uses /proc/stat) [cpu_tpl](master/zabbix-templates/cpu_tpl.xml)
   * memory (requires iostat, apt-get install sysstat) [memory_tpl](master/zabbix-templates/memory_tpl.xml)
