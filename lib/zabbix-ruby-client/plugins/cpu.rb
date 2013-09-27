@@ -1,4 +1,6 @@
-# for more info check http://www.linuxhowtos.org/System/procstat.htm
+# for more info check 
+# http://www.linuxhowtos.org/System/procstat.htm
+# http://juliano.info/en/Blog:Memory_Leak/Understanding_the_Linux_load_average
 
 class ZabbixRubyClient
   module Plugins
@@ -15,7 +17,7 @@ class ZabbixRubyClient
           logger.warn "Oh you don't have a /proc ?"
           return []
         end
-        used = user + nice + sys + wait + irq + soft + steal + guest
+        used = user + nice + sys
         total = used + idle
 
         time = Time.now.to_i
