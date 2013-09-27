@@ -44,11 +44,12 @@ And when ready just install a cron task according to your environment
 
 There are a set of standart plugins included in the package, aimed at linux systems.
 
-* load (uses /proc/loadavg)
-* cpu (uses /proc/stat) [cpu_tpl](master/zabbix-templates/cpu_tpl.xml)
-* memory (requires iostat, apt-get install sysstat) [memory_tpl](master/zabbix-templates/memory_tpl.xml)
-* disk (uses /proc/diskstats) [disk_tpl](master/zabbix-templates/disk_tpl.xml)
-* network (uses /proc/net/dev) [network_tpl](master/zabbix-templates/network_tpl.xml)
+* linux system stats ([system_tpl](master/zabbix-templates/system_tpl.xml) includes the floowing)
+  * load (uses /proc/loadavg) [load_tpl](master/zabbix-templates/load_tpl.xml)
+  * cpu (uses /proc/stat) [cpu_tpl](master/zabbix-templates/cpu_tpl.xml)
+  * memory (requires iostat, apt-get install sysstat) [memory_tpl](master/zabbix-templates/memory_tpl.xml)
+  * disk (uses /proc/diskstats) [disk_tpl](master/zabbix-templates/disk_tpl.xml)
+  * network (uses /proc/net/dev) [network_tpl](master/zabbix-templates/network_tpl.xml)
 * apache (depends on mod_status with status_extended on) [apache_tpl](master/zabbix-templates/apache_tpl.xml)
 
 You can add extra plugin directories in the configuration file.
