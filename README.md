@@ -20,15 +20,15 @@ Install it yourself as:
     zrc init [name]
     # will create a directory [name] (default: zabbix-ruby-client) for
     # storing configuration and temporary files
-    
+
     cd [name]
     bundle
     # makes the zabbix-ruby-client [name] ready to run
     # then edit config.yml according to your needs
-    
+
     bundle exec zrc
     # to list available commands
-    
+
     bundle exec zrc show 
     # to test the data collection
 
@@ -44,6 +44,7 @@ And when ready just install a cron task according to your environment
 
 There are a set of standart plugins included in the package, aimed at linux systems.
 
+* load (uses /proc/loadavg)
 * cpu (uses /proc/stat) [cpu_tpl](master/zabbix-templates/cpu_tpl.xml)
 * memory (requires iostat, apt-get install sysstat) [memory_tpl](master/zabbix-templates/memory_tpl.xml)
 * disk (uses /proc/diskstats) [disk_tpl](master/zabbix-templates/disk_tpl.xml)
