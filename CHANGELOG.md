@@ -1,6 +1,8 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.0.9 = wip
+
 ### v0.0.8 - 2013-09-28
 
 * adding load stats
