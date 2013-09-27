@@ -6,6 +6,7 @@ Zabbbix Ruby Client Changelog
 * adding load stats
 * fix calcuation of percent of cpu used
 * fix disk plugin to use proc rather than iostat
+* various fixes in zabbix templates for disk io
 
 ### v0.0.7 - 2013-09-25
 
