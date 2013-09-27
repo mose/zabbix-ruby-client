@@ -1,7 +1,7 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.0.8 - wip
+### v0.0.8 - 2013-09-28
 
 * adding load stats
 * fix calcuation of percent of cpu used
