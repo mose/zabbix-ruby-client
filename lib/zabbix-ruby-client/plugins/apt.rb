@@ -4,6 +4,7 @@ class ZabbixRubyClient
       extend self
 
       def collect(*args)
+        host = args[0]
         aptcheck = `/usr/lib/update-notifier/apt-check`
         if $?.to_i == 0
           security, pending = aptcheck.split(/;/).map(&:to_i)
