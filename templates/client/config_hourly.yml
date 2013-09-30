@@ -11,12 +11,5 @@ zabbix:
   port: 10051
   sender: /usr/bin/zabbix_sender
 plugins:
-  - name: load
-  - name: memory
-  - name: cpu
-  - name: disk
-    args: [ sda1, / ]
-  - name: network
-    args: [ eth0 ]
-  - name: network
-    args: [ eth1 ]
+  - name: apt
+
