@@ -20,3 +20,5 @@ plugins:
     args: [ eth0 ]
   - name: network
     args: [ eth1 ]
+  - name: mysql
+    args: [ "-uroot -psuperpassword --socket=/var/run/mysqld/mysqld.sock" ]
