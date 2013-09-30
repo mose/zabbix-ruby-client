@@ -21,3 +21,6 @@ class ZabbixRubyClient
     end
   end
 end
+
+ZabbixRubyClient::Plugins.register('apt', ZabbixRubyClient::Plugins::Apt)
+
