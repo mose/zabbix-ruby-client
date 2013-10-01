@@ -10,6 +10,7 @@ class ZabbixRubyClient
       def collect(*args)
         host = args[0]
         dev = args[1]
+        mapped = args[2] || dev
         diskinfo = `cat /proc/diskstats | grep " #{dev} "`
         if $?.to_i == 0
           _, _, _, _, read_ok, read_merged, read_sector, read_time, write_ok, write_merged, write_sector, write_time, io_current, io_time, io_weighted = diskinfo.split(/\s+/)
@@ -17,7 +18,7 @@ class ZabbixRubyClient
           logger.warn "Please install sysstat."
           return []
         end
-        diskspace = `df | grep "#{dev}"`
+        diskspace = `df | grep "#{mapped}"`
         if $?.to_i == 0
           _, size, used, available, percent_used, mount = diskspace.split(/\s+/)
         else
