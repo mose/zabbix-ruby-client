@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-09-27T22:29:30Z</date>
+    <date>2013-10-01T06:30:08Z</date>
     <groups>
         <group>
-            <name>Linux servers</name>
+            <name>3. Service Ubuntu</name>
         </group>
     </groups>
     <templates>
@@ -13,7 +13,7 @@
             <name>Disk (zrc)</name>
             <groups>
                 <group>
-                    <name>Linux servers</name>
+                    <name>3. Service Ubuntu</name>
                 </group>
             </groups>
             <applications>
@@ -50,7 +50,7 @@
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>$1 average queue length</name>
+                            <name>{#DISK_MOUNT} average queue length</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -89,7 +89,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 percent IO used</name>
+                            <name>{#DISK_MOUNT} percent IO used</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>1</multiplier>
@@ -128,7 +128,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 percent usage</name>
+                            <name>{#DISK_MOUNT} percent usage</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -167,7 +167,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 Read Bps</name>
+                            <name>{#DISK_MOUNT} Read Bps</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>1</multiplier>
@@ -206,7 +206,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 Read merged</name>
+                            <name>{#DISK_MOUNT} Read merged</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -245,7 +245,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 Read per second</name>
+                            <name>{#DISK_MOUNT} Read per second</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -284,7 +284,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 Read time</name>
+                            <name>{#DISK_MOUNT} Read time</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>1</multiplier>
@@ -323,7 +323,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 space available</name>
+                            <name>{#DISK_MOUNT} space available</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -362,7 +362,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 space total</name>
+                            <name>{#DISK_MOUNT} space total</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -401,7 +401,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 space used</name>
+                            <name>{#DISK_MOUNT} space used</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -440,7 +440,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 Write Bps</name>
+                            <name>{#DISK_MOUNT} Write Bps</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>1</multiplier>
@@ -479,7 +479,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 Write merged</name>
+                            <name>{#DISK_MOUNT} Write merged</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -518,7 +518,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 Write per second</name>
+                            <name>{#DISK_MOUNT} Write per second</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -557,7 +557,7 @@
                             <valuemap/>
                         </item_prototype>
                         <item_prototype>
-                            <name>$1 Write time</name>
+                            <name>{#DISK_MOUNT} Write time</name>
                             <type>2</type>
                             <snmp_community/>
                             <multiplier>1</multiplier>
@@ -596,163 +596,47 @@
                             <valuemap/>
                         </item_prototype>
                     </item_prototypes>
-                    <trigger_prototypes/>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Disk Stats:disk.space[{#DISK_DEVICE},percent_used].last(0)}&gt;80</expression>
+                            <name>{HOST.NAME} Disk (#DISK_MOUNT} full &gt; $1 %</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>2</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Disk Stats:disk.space[{#DISK_DEVICE},percent_used].last(0)}&gt;95</expression>
+                            <name>{HOST.NAME} Disk (#DISK_MOUNT} full &gt; $1 %</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>4</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Disk Stats:disk.space[{#DISK_DEVICE},percent_used].last(0)}&gt;90</expression>
+                            <name>{HOST.NAME} Disk (#DISK_MOUNT} full &gt; $1 %</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>3</priority>
+                            <description/>
+                            <type>0</type>
+                        </trigger_prototype>
+                    </trigger_prototypes>
                     <graph_prototypes>
                         <graph_prototype>
-                            <name>Disk IO operations ({#DISK_MOUNT} : {#DISK_DEVICE})</name>
+                            <name>s. {#DISK_MOUNT} Filling</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
                             <yaxismax>100.0000</yaxismax>
                             <show_work_period>1</show_work_period>
-                            <show_triggers>1</show_triggers>
-                            <type>0</type>
-                            <show_legend>1</show_legend>
-                            <show_3d>0</show_3d>
-                            <percent_left>0.0000</percent_left>
-                            <percent_right>0.0000</percent_right>
-                            <ymin_type_1>0</ymin_type_1>
-                            <ymax_type_1>0</ymax_type_1>
-                            <ymin_item_1>0</ymin_item_1>
-                            <ymax_item_1>0</ymax_item_1>
-                            <graph_items>
-                                <graph_item>
-                                    <sortorder>0</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>6666FF</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Disk Stats</host>
-                                        <key>disk.io[{#DISK_DEVICE},read_ok]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>1</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>00AA00</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Disk Stats</host>
-                                        <key>disk.io[{#DISK_DEVICE},write_ok]</key>
-                                    </item>
-                                </graph_item>
-                            </graph_items>
-                        </graph_prototype>
-                        <graph_prototype>
-                            <name>Disk IO rate ({#DISK_MOUNT} : {#DISK_DEVICE})</name>
-                            <width>900</width>
-                            <height>200</height>
-                            <yaxismin>0.0000</yaxismin>
-                            <yaxismax>100.0000</yaxismax>
-                            <show_work_period>1</show_work_period>
-                            <show_triggers>1</show_triggers>
-                            <type>0</type>
-                            <show_legend>1</show_legend>
-                            <show_3d>0</show_3d>
-                            <percent_left>0.0000</percent_left>
-                            <percent_right>0.0000</percent_right>
-                            <ymin_type_1>0</ymin_type_1>
-                            <ymax_type_1>0</ymax_type_1>
-                            <ymin_item_1>0</ymin_item_1>
-                            <ymax_item_1>0</ymax_item_1>
-                            <graph_items>
-                                <graph_item>
-                                    <sortorder>0</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>C80000</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Disk Stats</host>
-                                        <key>disk.io[{#DISK_DEVICE},read_sector]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>1</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>00C800</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Disk Stats</host>
-                                        <key>disk.io[{#DISK_DEVICE},write_sector]</key>
-                                    </item>
-                                </graph_item>
-                            </graph_items>
-                        </graph_prototype>
-                        <graph_prototype>
-                            <name>Disk IO time ({#DISK_MOUNT} : {#DISK_DEVICE})</name>
-                            <width>900</width>
-                            <height>200</height>
-                            <yaxismin>0.0000</yaxismin>
-                            <yaxismax>100.0000</yaxismax>
-                            <show_work_period>1</show_work_period>
-                            <show_triggers>1</show_triggers>
-                            <type>0</type>
-                            <show_legend>1</show_legend>
-                            <show_3d>0</show_3d>
-                            <percent_left>0.0000</percent_left>
-                            <percent_right>0.0000</percent_right>
-                            <ymin_type_1>0</ymin_type_1>
-                            <ymax_type_1>0</ymax_type_1>
-                            <ymin_item_1>0</ymin_item_1>
-                            <ymax_item_1>0</ymax_item_1>
-                            <graph_items>
-                                <graph_item>
-                                    <sortorder>0</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>C80000</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Disk Stats</host>
-                                        <key>disk.io[{#DISK_DEVICE},io_time]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>1</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>6666FF</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Disk Stats</host>
-                                        <key>disk.io[{#DISK_DEVICE},read_time]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>2</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>00CC00</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>2</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Disk Stats</host>
-                                        <key>disk.io[{#DISK_DEVICE},write_time]</key>
-                                    </item>
-                                </graph_item>
-                            </graph_items>
-                        </graph_prototype>
-                        <graph_prototype>
-                            <name>Disk pie ({#DISK_MOUNT} : {#DISK_DEVICE})</name>
-                            <width>900</width>
-                            <height>200</height>
-                            <yaxismin>0.0000</yaxismin>
-                            <yaxismax>0.0000</yaxismax>
-                            <show_work_period>0</show_work_period>
                             <show_triggers>0</show_triggers>
-                            <type>2</type>
-                            <show_legend>1</show_legend>
-                            <show_3d>1</show_3d>
+                            <type>1</type>
+                            <show_legend>0</show_legend>
+                            <show_3d>0</show_3d>
                             <percent_left>0.0000</percent_left>
                             <percent_right>0.0000</percent_right>
                             <ymin_type_1>0</ymin_type_1>
@@ -763,7 +647,7 @@
                                 <graph_item>
                                     <sortorder>0</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>FF6666</color>
+                                    <color>4266C8</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
@@ -775,7 +659,7 @@
                                 <graph_item>
                                     <sortorder>1</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>0000C8</color>
+                                    <color>65C842</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
@@ -787,7 +671,51 @@
                             </graph_items>
                         </graph_prototype>
                         <graph_prototype>
-                            <name>Disk usage  ({#DISK_MOUNT} : {#DISK_DEVICE})</name>
+                            <name>s. {#DISK_MOUNT} R/W</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>0</show_triggers>
+                            <type>0</type>
+                            <show_legend>0</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>0</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>65C842</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Disk Stats</host>
+                                        <key>disk.io[{#DISK_DEVICE},read_sector]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>4266C8</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Disk Stats</host>
+                                        <key>disk.io[{#DISK_DEVICE},write_sector]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>{#DISK_MOUNT} Filling</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -807,7 +735,7 @@
                                 <graph_item>
                                     <sortorder>1</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>CCCCFF</color>
+                                    <color>65C842</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
@@ -819,13 +747,201 @@
                                 <graph_item>
                                     <sortorder>0</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>FF6666</color>
+                                    <color>4266C8</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
                                         <host>Disk Stats</host>
                                         <key>disk.space[{#DISK_DEVICE},used]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>{#DISK_MOUNT} Free</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>0.0000</yaxismax>
+                            <show_work_period>0</show_work_period>
+                            <show_triggers>0</show_triggers>
+                            <type>2</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>1</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>0</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>4266C8</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>9</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Disk Stats</host>
+                                        <key>disk.space[{#DISK_DEVICE},used]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>65C842</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>9</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Disk Stats</host>
+                                        <key>disk.space[{#DISK_DEVICE},available]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>{#DISK_MOUNT} IO operations</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>0</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>5</drawtype>
+                                    <color>65C842</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Disk Stats</host>
+                                        <key>disk.io[{#DISK_DEVICE},read_ok]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>5</drawtype>
+                                    <color>4266C8</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Disk Stats</host>
+                                        <key>disk.io[{#DISK_DEVICE},write_ok]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>{#DISK_MOUNT} IO time</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>0</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>C04200</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Disk Stats</host>
+                                        <key>disk.io[{#DISK_DEVICE},io_time]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>65C842</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Disk Stats</host>
+                                        <key>disk.io[{#DISK_DEVICE},read_time]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>4266C8</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Disk Stats</host>
+                                        <key>disk.io[{#DISK_DEVICE},write_time]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>{#DISK_MOUNT} R/W</name>
+                            <width>900</width>
+                            <height>200</height>
+                            <yaxismin>0.0000</yaxismin>
+                            <yaxismax>100.0000</yaxismax>
+                            <show_work_period>1</show_work_period>
+                            <show_triggers>1</show_triggers>
+                            <type>0</type>
+                            <show_legend>1</show_legend>
+                            <show_3d>0</show_3d>
+                            <percent_left>0.0000</percent_left>
+                            <percent_right>0.0000</percent_right>
+                            <ymin_type_1>0</ymin_type_1>
+                            <ymax_type_1>0</ymax_type_1>
+                            <ymin_item_1>0</ymin_item_1>
+                            <ymax_item_1>0</ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>65C842</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Disk Stats</host>
+                                        <key>disk.io[{#DISK_DEVICE},read_sector]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>0</sortorder>
+                                    <drawtype>0</drawtype>
+                                    <color>4266C8</color>
+                                    <yaxisside>0</yaxisside>
+                                    <calc_fnc>2</calc_fnc>
+                                    <type>0</type>
+                                    <item>
+                                        <host>Disk Stats</host>
+                                        <key>disk.io[{#DISK_DEVICE},write_sector]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
