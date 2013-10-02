@@ -4,7 +4,7 @@ class ZabbixRubyClient
       extend self
 
       def collect(*args)
-        host = args[0]
+        host = args.delete
         uname = `uname -a`
         if $?.to_i == 0
           arch, hostname, kernel, kernel_version, machine, proc,
@@ -23,6 +23,9 @@ class ZabbixRubyClient
         back << "#{host} sysinfo[machine] #{time} #{machine}"
         back << "#{host} sysinfo[platform] #{time} #{platform}"
         back << "#{host} sysinfo[os] #{time} #{os}"
+        args.each do |k,v|
+          back << "#{host} sysinfo[#{k}] #{time} #{v}"
+        end
         return back
       end
 
