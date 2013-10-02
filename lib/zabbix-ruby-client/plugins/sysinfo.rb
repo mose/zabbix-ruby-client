@@ -23,7 +23,7 @@ class ZabbixRubyClient
         back << "#{host} sysinfo[machine] #{time} #{machine}"
         back << "#{host} sysinfo[platform] #{time} #{platform}"
         back << "#{host} sysinfo[os] #{time} #{os}"
-        Hash(*args).each do |k,v|
+        Hash[*args].each do |k,v|
           back << "#{host} sysinfo[#{k}] #{time} #{v}"
         end
         return back
