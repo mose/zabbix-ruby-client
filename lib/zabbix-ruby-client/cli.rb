@@ -16,6 +16,11 @@ class ZabbixRubyClient
       banner: "PATH",
       default: File.expand_path("config.yml", Dir.pwd),
       desc: "Path to the configuration file to use"
+    class_option :taskfile,
+      aliases: "-t",
+      banner: "PATH",
+      default: File.expand_path("minutely.yml", Dir.pwd),
+      desc: "Path to the list of plugins to execute"
 
     desc "init", "Initialize a new zabbix ruby client"
     def init(name = "zabbix-ruby-client")
@@ -30,14 +35,14 @@ class ZabbixRubyClient
         say "No Gemfile found", :red
         abort
       end
-      zrc = ZabbixRubyClient.new(options[:configfile])
+      zrc = ZabbixRubyClient.new(options[:configfile],options[:taskfile])
       zrc.collect
       zrc.show
     end
 
     desc "upload", "Collects and sends data to the zabbix server"
     def upload
-      zrc = ZabbixRubyClient.new(options[:configfile])
+      zrc = ZabbixRubyClient.new(options[:configfile],options[:taskfile])
       zrc.collect
       zrc.upload
     end

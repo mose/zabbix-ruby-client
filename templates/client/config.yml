@@ -10,15 +10,3 @@ zabbix:
   host: zabbix.example.com
   port: 10051
   sender: /usr/bin/zabbix_sender
-plugins:
-  - name: load
-  - name: memory
-  - name: cpu
-  - name: disk
-    args: [ sda1, / ]
-  - name: network
-    args: [ eth0 ]
-  - name: network
-    args: [ eth1 ]
-  - name: mysql
-    args: [ "-uroot -psuperpassword --socket=/var/run/mysqld/mysqld.sock" ]

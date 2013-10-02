@@ -5,9 +5,13 @@ require "yaml"
 
 class ZabbixRubyClient
 
-  def initialize(config_file)
+  def initialize(config_file,task_file)
     begin
       @config ||= YAML::load_file(config_file)
+      @tasks ||= YAML::load_file(task_file)
+      if @tasks.count == 0
+        @tasks = @config["plugins"]
+      end
     rescue Exception => e
       puts "Configuration file cannot be read"
       puts e.message
@@ -55,7 +59,7 @@ class ZabbixRubyClient
   end
 
   def collect
-    @config['plugins'].each do |plugin|
+    @tasks.each do |plugin|
       run_plugin(plugin['name'], plugin['args'])
     end
   end

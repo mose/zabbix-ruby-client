@@ -1,0 +1,12 @@
+---
+- name: load
+- name: memory
+- name: cpu
+- name: disk
+  args: [ sda1, / ]
+- name: network
+  args: [ eth0 ]
+- name: network
+  args: [ eth1 ]
+- name: mysql
+  args: [ "-uroot -psuperpassword --socket=/var/run/mysqld/mysqld.sock" ]
