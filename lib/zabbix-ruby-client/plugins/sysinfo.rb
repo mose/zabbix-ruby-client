@@ -4,7 +4,7 @@ class ZabbixRubyClient
       extend self
 
       def collect(*args)
-        host = args.delete
+        host = args.delete(0)
         uname = `uname -a`
         if $?.to_i == 0
           arch, hostname, kernel, kernel_version, machine, proc,
