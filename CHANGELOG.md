@@ -3,7 +3,7 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.9 - wip
 
-* split configuratin to have several upload frequencies
+* split configuration to have several upload frequencies
 * added a -t option for specifying the list of plugins to run, default minutely.yml
 * handled compatibility with previous configuration that includes list of plugins in config.yml
 * added a sysinfo plugin for populating the hosts informations, including arbitrary information declared as plugin arguments

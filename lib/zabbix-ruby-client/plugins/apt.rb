@@ -16,6 +16,7 @@ class ZabbixRubyClient
         back = []
         back << "#{host} apt[security] #{time} #{security}"
         back << "#{host} apt[pending] #{time} #{pending}"
+        back << "#{host} apt[status] #{time} TODO apt #{security}/#{pending}"
         return back
       end
 
