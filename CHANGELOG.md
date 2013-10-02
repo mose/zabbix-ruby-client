@@ -1,7 +1,9 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.0.9 - wip
+### v0.0.10 - wip
+
+### v0.0.9 - 2013-10-02
 
 * split configuration to have several upload frequencies
 * added a -t option for specifying the list of plugins to run, default minutely.yml
