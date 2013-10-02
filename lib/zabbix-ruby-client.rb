@@ -8,8 +8,9 @@ class ZabbixRubyClient
   def initialize(config_file,task_file)
     begin
       @config ||= YAML::load_file(config_file)
-      @tasks ||= YAML::load_file(task_file)
-      if @tasks.count == 0
+      if File.exists? task_file
+        @tasks ||= YAML::load_file(task_file)
+      else
         @tasks = @config["plugins"]
       end
     rescue Exception => e
