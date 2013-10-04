@@ -18,11 +18,7 @@ class ZabbixRubyClient
 
       def get_who
         who = `who`
-        ret = 0
-        who.each_line do |l|
-          ret++
-        end
-        ret
+        who.each_line.count
       end
 
     end
