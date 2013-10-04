@@ -65,6 +65,7 @@ There are a set of standart plugins included in the package, aimed at linux syst
   * apt (uses ubuntu /usr/lib/update-notifier/apt-check) this one will populate the 'tag' field in host info, and is supposed to run every few hours or at least not every minute [apt_tpl](master/zabbix-templates/apt_tpl.xml)
   * sysinfo (uses uname -a) is populating the host info in the inventory, and should be ran at setup and/or monthly [sysinfo_tpl](master/zabbix-templates/sysinfo_tpl.xml)
 * apache (depends on mod_status with status_extended on) [apache_tpl](master/zabbix-templates/apache_tpl.xml)
+* mysql (uses mysqladmin extended-status) [mysql_tpl](master/zabbix-templates/mysql_tpl.xml)
 
 You can add extra plugin directories in the configuration file.
 

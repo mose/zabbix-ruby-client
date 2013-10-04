@@ -3,6 +3,8 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.10 - wip
 
+* added a mysql plugin
+
 ### v0.0.9 - 2013-10-02
 
 * split configuration to have several upload frequencies
