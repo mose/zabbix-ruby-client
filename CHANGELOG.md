@@ -1,6 +1,8 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.0.11 - wip
+
 ### v0.0.10 - 2013-10-04
 
 * added a mysql plugin (basic version, more will come on that one)
