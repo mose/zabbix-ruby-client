@@ -43,7 +43,7 @@ class ZabbixRubyClient
       def get_status(status)
         ret = {}
         status.each_line do |l|
-          _, k, v = l.split "|"
+          _, k, v = l.split "\|"
           ret[k] = v.strip
         end
         ret
