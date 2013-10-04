@@ -3,6 +3,8 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.11 - wip
 
+* added a who plugin, but not happy about it. I need to have a use of the API to reate graphs from the client, to list who is logged in. Sounds like an interesting way to get processes list up there too.
+
 ### v0.0.10 - 2013-10-04
 
 * added a mysql plugin (basic version, more will come on that one)
