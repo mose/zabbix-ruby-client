@@ -10,7 +10,7 @@ class ZabbixRubyClient
         if $?.to_i == 0
           status = get_status(mysqlstatus)
         else
-          logger.warn "The connection failed."
+          self.logger.warn "The connection failed."
           return []
         end
         time = Time.now.to_i
