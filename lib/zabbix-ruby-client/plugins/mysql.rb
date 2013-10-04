@@ -13,6 +13,7 @@ class ZabbixRubyClient
           self.logger.warn "The connection failed."
           return []
         end
+
         time = Time.now.to_i
         back = []
         back << "#{host} mysql[Aborted_clients] #{time} #{status["Aborted_clients"]}"
@@ -43,8 +44,10 @@ class ZabbixRubyClient
       def get_status(status)
         ret = {}
         status.each_line do |l|
-          _, k, v = l.split "\|"
-          ret[k] = v.strip
+          if l[0] == "|"
+            _, k, v = l.split "|"
+            ret[k.strip] = v.strip
+          end
         end
         ret
       end
