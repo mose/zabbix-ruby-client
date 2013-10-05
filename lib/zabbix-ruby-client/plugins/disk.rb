@@ -50,7 +50,8 @@ class ZabbixRubyClient
       def discover(*args)
         device = args[0]
         mount = args[1]
-        [ "disk.dev.discovery", "{\"{#DISK_DEVICE}\": \"#{device}\", \"{#DISK_MOUNT}\": \"#{mount}\"}" ]
+        mapped = args[2] || device
+        [ "disk.dev.discovery", "{\"{#DISK_DEVICE}\": \"#{mapped}\", \"{#DISK_MOUNT}\": \"#{mount}\"}" ]
       end
 
     end
