@@ -61,7 +61,9 @@ There are a set of standart plugins included in the package, aimed at linux syst
   * cpu (uses /proc/stat) [cpu_tpl](master/zabbix-templates/cpu_tpl.xml)
   * memory (requires iostat, apt-get install sysstat) [memory_tpl](master/zabbix-templates/memory_tpl.xml)
   * disk (uses /proc/diskstats) [disk_tpl](master/zabbix-templates/disk_tpl.xml)
+    * args [ "md-0", "/", "vgebs" ] = group identifier, mountpoint, groupname where identifier is what is found in /proc/diskstats, and groupname is something found in df command. The mount point will be used as label.
   * network (uses /proc/net/dev) [network_tpl](master/zabbix-templates/network_tpl.xml)
+    * args [ eth0 ] is just the interface identifier
   * apt (uses ubuntu /usr/lib/update-notifier/apt-check) this one will populate the 'tag' field in host info, and is supposed to run every few hours or at least not every minute [apt_tpl](master/zabbix-templates/apt_tpl.xml)
   * sysinfo (uses uname -a) is populating the host info in the inventory, and should be ran at setup and/or monthly [sysinfo_tpl](master/zabbix-templates/sysinfo_tpl.xml)
 * apache (depends on mod_status with status_extended on) [apache_tpl](master/zabbix-templates/apache_tpl.xml)
