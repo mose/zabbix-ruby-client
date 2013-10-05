@@ -10,7 +10,7 @@ class ZabbixRubyClient
       def collect(*args)
         host = args[0]
         dev = args[1]
-        mapped = args[2] || dev
+        mapped = args[3] || dev
         diskspace = `df | grep "#{mapped}"`
         if $?.to_i == 0
           _, size, used, available, percent_used, mount = diskspace.split(/\s+/)
