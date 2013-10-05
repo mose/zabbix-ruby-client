@@ -11,13 +11,6 @@ class ZabbixRubyClient
         host = args[0]
         dev = args[1]
         mapped = args[2] || dev
-        diskinfo = `cat /proc/diskstats | grep " #{dev} "`
-        if $?.to_i == 0
-          _, _, _, _, read_ok, read_merged, read_sector, read_time, write_ok, write_merged, write_sector, write_time, io_current, io_time, io_weighted = diskinfo.split(/\s+/)
-        else
-          logger.warn "Please install sysstat."
-          return []
-        end
         diskspace = `df | grep "#{mapped}"`
         if $?.to_i == 0
           _, size, used, available, percent_used, mount = diskspace.split(/\s+/)
@@ -25,23 +18,32 @@ class ZabbixRubyClient
           logger.error "df is not working... ouchie."
           return []
         end
-
         time = Time.now.to_i
         back = []
-        back << "#{host} disk.io[#{dev},read_ok] #{time} #{read_ok}"
-        back << "#{host} disk.io[#{dev},read_merged] #{time} #{read_merged}"
-        back << "#{host} disk.io[#{dev},read_sector] #{time} #{read_sector}"
-        back << "#{host} disk.io[#{dev},read_time] #{time} #{read_time}"
-        back << "#{host} disk.io[#{dev},write_ok] #{time} #{write_ok}"
-        back << "#{host} disk.io[#{dev},write_merged] #{time} #{write_merged}"
-        back << "#{host} disk.io[#{dev},write_sector] #{time} #{write_sector}"
-        back << "#{host} disk.io[#{dev},write_time] #{time} #{write_time}"
-        back << "#{host} disk.io[#{dev},io_time] #{time} #{io_time}"
-        back << "#{host} disk.io[#{dev},io_weighted] #{time} #{io_weighted}"
         back << "#{host} disk.space[#{dev},size] #{time} #{size.to_i * 1000}"
         back << "#{host} disk.space[#{dev},used] #{time} #{used.to_i * 1000}"
         back << "#{host} disk.space[#{dev},available] #{time} #{available.to_i * 1000}"
         back << "#{host} disk.space[#{dev},percent_used] #{time} #{percent_used.gsub(/%/,'')}"
+
+        if dev != ""
+          diskinfo = `cat /proc/diskstats | grep " #{dev} "`
+          if $?.to_i == 0
+            _, _, _, _, read_ok, read_merged, read_sector, read_time, write_ok, write_merged, write_sector, write_time, io_current, io_time, io_weighted = diskinfo.split(/\s+/)
+          else
+            logger.warn "Oh there is no such device."
+            return []
+          end
+          back << "#{host} disk.io[#{dev},read_ok] #{time} #{read_ok}"
+          back << "#{host} disk.io[#{dev},read_merged] #{time} #{read_merged}"
+          back << "#{host} disk.io[#{dev},read_sector] #{time} #{read_sector}"
+          back << "#{host} disk.io[#{dev},read_time] #{time} #{read_time}"
+          back << "#{host} disk.io[#{dev},write_ok] #{time} #{write_ok}"
+          back << "#{host} disk.io[#{dev},write_merged] #{time} #{write_merged}"
+          back << "#{host} disk.io[#{dev},write_sector] #{time} #{write_sector}"
+          back << "#{host} disk.io[#{dev},write_time] #{time} #{write_time}"
+          back << "#{host} disk.io[#{dev},io_time] #{time} #{io_time}"
+          back << "#{host} disk.io[#{dev},io_weighted] #{time} #{io_weighted}"
+        end
         return back
       end
 
