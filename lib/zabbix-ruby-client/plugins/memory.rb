@@ -13,12 +13,12 @@ class ZabbixRubyClient
           return []
         end
 
-        mem_total = info["MemTotal"] / 1024
-        mem_free = (info['MemFree'] + info['Buffers'] + info['Cached']) / 1024
+        mem_total = info["MemTotal"] * 1024
+        mem_free = (info['MemFree'] + info['Buffers'] + info['Cached']) * 1024
         mem_used = mem_total - mem_free
         mem_percent = (mem_used / mem_total.to_f * 100).to_i
-        swap_total = info['SwapTotal'] / 1024
-        swap_free = info['SwapFree'] / 1024
+        swap_total = info['SwapTotal'] * 1024
+        swap_free = info['SwapFree'] * 1024
         swap_used = swap_total - swap_free
         swap_percent = 0
         unless swap_total == 0
