@@ -5,7 +5,7 @@ class ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        meminfo = `vmstat -s | head -10`
+        meminfo = `cat /proc/meminfo`
         if $?.to_i == 0
           info = splitinfo(meminfo)
         else
@@ -13,25 +13,35 @@ class ZabbixRubyClient
           return []
         end
 
+        mem_total = info["MemTotal"] / 1024
+        mem_free = (info['MemFree'] + info['Buffers'] + info['Cached']) / 1024
+        mem_used = mem_total - mem_free
+        mem_percent = (mem_used / mem_total.to_f * 100).to_i
+        swap_total = info['SwapTotal'] / 1024
+        swap_free = info['SwapFree'] / 1024
+        swap_used = swap_total - swap_free
+        swap_percent = 0
+        unless swap_total == 0
+          swap_percent = (swap_used / swap_total.to_f * 100).to_i
+        end
+
         time = Time.now.to_i
         back = []
-        back << "#{host} memory[total] #{time} #{info["totalmemory"]}"
-        back << "#{host} memory[used] #{time} #{info["usedmemory"]}"
-        back << "#{host} memory[active] #{time} #{info["activememory"]}"
-        back << "#{host} memory[inactive] #{time} #{info["inactivememory"]}"
-        back << "#{host} memory[free] #{time} #{info["freememory"]}"
-        back << "#{host} memory[buffer] #{time} #{info["buffermemory"]}"
-        back << "#{host} memory[swap_cache] #{time} #{info["swapcache"]}"
-        back << "#{host} memory[swap_total] #{time} #{info["totalswap"]}"
-        back << "#{host} memory[swap_used] #{time} #{info["usedswap"]}"
-        back << "#{host} memory[swap_free] #{time} #{info["freeswap"]}"
+        back << "#{host} memory[total] #{time} #{mem_total}"
+        back << "#{host} memory[used] #{time} #{mem_used}"
+        back << "#{host} memory[free] #{time} #{mem_free}"
+        back << "#{host} memory[percent_used] #{time} #{mem_percent}"
+        back << "#{host} memory[swap_total] #{time} #{swap_total}"
+        back << "#{host} memory[swap_used] #{time} #{swap_used}"
+        back << "#{host} memory[swap_free] #{time} #{swap_free}"
+        back << "#{host} memory[swap_percent_used] #{time} #{swap_percent}"
         return back
       end
 
       def splitinfo(info)
         info.split(/\n/).map(&:strip).reduce({}) do |a,line|
-          kb, _, label1, label2 = line.split(" ")
-          a[label1+label2] = kb.to_i * 1000
+          _, key, value = *line.match(/^(\w+):\s+(\d+)\s/)
+          a[key] = value.to_i
           a
         end
       end
