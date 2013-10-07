@@ -1,6 +1,8 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.0.13 - wip
+
 ### v0.0.12 - 2013-10-07
 
 * bugfix on memory calculation
