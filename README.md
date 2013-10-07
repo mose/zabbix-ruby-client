@@ -60,7 +60,7 @@ There are a set of standart plugins included in the package, aimed at linux syst
 * ubuntu system stats ([system_tpl](master/zabbix-templates/system_tpl.xml) includes the following)
   * load (uses /proc/loadavg) [load_tpl](master/zabbix-templates/load_tpl.xml)
   * cpu (uses /proc/stat) [cpu_tpl](master/zabbix-templates/cpu_tpl.xml)
-  * memory (requires iostat, apt-get install sysstat) [memory_tpl](master/zabbix-templates/memory_tpl.xml)
+  * memory (uses /proc/meminfo) [memory_tpl](master/zabbix-templates/memory_tpl.xml)
   * disk (uses /proc/diskstats) [disk_tpl](master/zabbix-templates/disk_tpl.xml)
     * args [ "md-0", "/", "vgebs" ] = group identifier, mountpoint, groupname where identifier is what is found in /proc/diskstats, and groupname is something found in df command. The mount point will be used as label.
   * network (uses /proc/net/dev) [network_tpl](master/zabbix-templates/network_tpl.xml)
