@@ -24,14 +24,14 @@ class ZabbixRubyClient
       def get_status
         ret = {}
         open "http://127.0.0.1:8090/nginx_status" do |f|
-          f.each_line do |l|
+          f.each_line do |line|
             ret[:total] = $1 if line =~ /^Active connections:\s+(\d+)/
             if line =~ /^Reading:\s+(\d+).*Writing:\s+(\d+).*Waiting:\s+(\d+)/
               ret[:reading] = $1
               ret[:writing] = $2
               ret[:waiting] = $3
             end
-            ret[:accepted], ret[:handled],  ret[:requests] = [$1, $2, $3] if line =~ /^\s+(\d+)\s+(\d+)\s+(\d+)/
+            ret[:accepted], ret[:handled], ret[:requests] = [$1, $2, $3] if line =~ /^\s+(\d+)\s+(\d+)\s+(\d+)/
           end
         end
         ret
