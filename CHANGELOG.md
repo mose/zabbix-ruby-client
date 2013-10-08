@@ -1,7 +1,9 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.0.13 - wip
+### v0.0.13 - 2013-10-08
+
+* added an nginx plugin
 
 ### v0.0.12 - 2013-10-07
 
