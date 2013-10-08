@@ -11,13 +11,13 @@ class ZabbixRubyClient
 
         time = Time.now.to_i
         back = []
-        back << "#{host} nginx[total] #{time} #{ret[:total]}"
-        back << "#{host} nginx[reading] #{time} #{ret[:reading]}"
-        back << "#{host} nginx[writing] #{time} #{ret[:writing]}"
-        back << "#{host} nginx[waiting] #{time} #{ret[:waiting]}"
-        back << "#{host} nginx[accepted] #{time} #{ret[:accepted]}"
-        back << "#{host} nginx[handled] #{time} #{ret[:handled]}"
-        back << "#{host} nginx[requests] #{time} #{ret[:requests]}"
+        back << "#{host} nginx[total] #{time} #{info[:total]}"
+        back << "#{host} nginx[reading] #{time} #{info[:reading]}"
+        back << "#{host} nginx[writing] #{time} #{info[:writing]}"
+        back << "#{host} nginx[waiting] #{time} #{info[:waiting]}"
+        back << "#{host} nginx[accepted] #{time} #{info[:accepted]}"
+        back << "#{host} nginx[handled] #{time} #{info[:handled]}"
+        back << "#{host} nginx[requests] #{time} #{info[:requests]}"
         return back
       end
 
