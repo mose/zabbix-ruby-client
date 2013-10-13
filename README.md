@@ -72,6 +72,100 @@ There are a set of standart plugins included in the package, aimed at linux syst
 
 You can add extra plugin directories in the configuration file.
 
+## Custom plugins how-to
+
+With the default config there is a plugins/ dir specified where you can put your own custom plugins. Those plugins need at least one `collect(*args)` method and optionaly a `discover(*args)` if this plugins plays the discover role.
+
+Here is a basic plugin skeleton you can reproduce:
+
+```
+class ZabbixRubyClient
+  module Plugins
+    module Myplugin
+      extend self
+
+      def collect(*args)
+        host = args[0]
+        # the rest of args are the params you pass in the args: in your yml config file
+        string = args[1]
+        int = args[2]
+
+        time = Time.now.to_i
+        back = []
+        back << "#{host} myplugin[item] #{time} #{string} #{int}"
+        return back
+      end
+
+    end
+  end
+end
+
+ZabbixRubyClient::Plugins.register('myplugin', ZabbixRubyClient::Plugins::Myplugin)
+```
+
+You can test custom plugins by creating a new `myplugin.yml` file with:
+
+```
+---
+- name: myplugin
+  args: [ "something", 42 ]
+```
+
+and then use the `show` command to try it out and see what will be sent to the server, and use `upload` for testing the template you made for it on the zabbix configuration panel:
+
+```
+$ bundle exec zrc show -t myplugin.yml
+myhost myplugin[item] 1381669455 something 42
+```
+
+## Note about security
+
+As you may already know, Zabbix is not very concerned about securing exchanges between agent and server, or sender and server. A cautious sysadmin will then properly manage his setup using ssh tunneling.
+
+After launching manual tunnels and ensuring their survival with monit I tried `autossh` which is much more reliable. It requires to have keys exchanged from server and client, in my case I prefer doing reverse tunnels from server, because then the server can also use that key on the client to perform automated ssh action depending on actions in zabbix.
+
+I first created on both sides an autossh user with no console and no password:
+
+```
+sudo useradd -m -r -s /bin/false -d /usr/local/zabtunnel zabtunnel
+```
+
+On the zabbix server I created a key that I transfered to the clients in `/usr/local/zabtunnel/,ssh/authorized_keys`
+
+```
+sudo su -s /bin/bash - zabtunnel
+ssh-keygen
+```
+
+Then I copy `id_rsa.pub` over to `/usr/local/zabtunnel/.ssh/authorized_keys` on each client.
+
+Check [autossh doc](http://www.harding.motd.ca/autossh/README), note that ubuntu has a package for it. Here is what my `/usr/local/bin/autossh.sh` looks like:
+
+```bash
+#!/bin/sh
+
+HOSTLIST="host1 host2 host3 etc"
+
+for i in $HOSTLIST; do
+  sudo -u zabtunnel \
+    AUTOSSH_LOGLEVEL=6 \
+    AUTOSSH_LOGFILE=/usr/local/zabtunnel/$i.log \
+    AUTOSSH_PIDFILE=/usr/local/zabtunnel/$i.pid \
+    /usr/bin/autossh -2 -M 0 -f -qN \
+      -o 'ServerAliveInterval 60' \
+      -o 'ServerAliveCountMax 3' \
+      -R 10051:localhost:10051 $i"
+done
+
+exit 0
+```
+
+Then ensure it's launched at boot:
+
+```
+update-rc.d /usr/local/bin/autossh.sh defaults
+```
+
 ## Todo
 
 * read /proc rather than rely on installed tools
