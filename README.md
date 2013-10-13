@@ -161,12 +161,6 @@ done
 exit 0
 ```
 
-Then ensure it's launched at boot:
-
-```
-update-rc.d /usr/local/bin/autossh.sh defaults
-```
-
 ## Todo
 
 * read /proc rather than rely on installed tools
