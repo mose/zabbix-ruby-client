@@ -163,7 +163,7 @@ exit 0
 
 ## Todo
 
-* read /proc rather than rely on installed tools
+* read /proc rather than rely on installed tools (done)
 * write tests
 * add more plugins
   * memcache
