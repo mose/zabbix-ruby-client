@@ -155,7 +155,7 @@ for i in $HOSTLIST; do
     /usr/bin/autossh -2 -M 0 -f -qN \
       -o 'ServerAliveInterval 60' \
       -o 'ServerAliveCountMax 3' \
-      -R 10051:localhost:10051 $i"
+      -R 10051:localhost:10051 $i
 done
 
 exit 0
