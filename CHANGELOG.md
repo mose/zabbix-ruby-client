@@ -1,8 +1,20 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.0.11 - wip
+### v0.0.14 - wip
 
+
+### v0.0.13 - 2013-10-08
+
+* added an nginx plugin
+
+### v0.0.12 - 2013-10-07
+
+* bugfix on memory calculation
+
+### v0.0.11 - 2013-10-07
+
+* fix on the memory statistiics collection
 * added a who plugin, but not happy about it. I need to have a use of the API to reate graphs from the client, to list who is logged in. Sounds like an interesting way to get processes list up there too.
 * added an option in disk plugin in case it's a loop device, then using args [ "", /tmp, "loop0" ] in config
 

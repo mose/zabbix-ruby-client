@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-10-07T10:52:56Z</date>
+    <date>2013-10-08T11:40:24Z</date>
     <groups>
         <group>
-            <name>3. Service Ubuntu</name>
+            <name>3. Service Nginx</name>
         </group>
     </groups>
     <templates>
         <template>
-            <template>Memory ZRC</template>
-            <name>Memory (zrc)</name>
+            <template>Nginx</template>
+            <name>Nginx (zrc)</name>
             <groups>
                 <group>
-                    <name>3. Service Ubuntu</name>
+                    <name>3. Service Nginx</name>
                 </group>
             </groups>
             <applications>
                 <application>
-                    <name>Memory</name>
+                    <name>Nginx</name>
                 </application>
             </applications>
             <items>
                 <item>
-                    <name>Memory Free</name>
+                    <name>Connections per second</name>
                     <type>2</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>memory[free]</key>
+                    <key>nginx[accpeted]</key>
                     <delay>0</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>B</units>
-                    <delta>0</delta>
+                    <units>qps</units>
+                    <delta>1</delta>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
                     <snmpv3_authpassphrase/>
@@ -52,29 +52,29 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Free memory</description>
+                    <description/>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
-                            <name>Memory</name>
+                            <name>Nginx</name>
                         </application>
                     </applications>
                     <valuemap/>
                 </item>
                 <item>
-                    <name>Memory percent used</name>
+                    <name>Connections reading</name>
                     <type>2</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>memory[percent_used]</key>
+                    <key>nginx[reading]</key>
                     <delay>0</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>%</units>
+                    <units/>
                     <delta>0</delta>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -95,64 +95,25 @@
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
-                            <name>Memory</name>
+                            <name>Nginx</name>
                         </application>
                     </applications>
                     <valuemap/>
                 </item>
                 <item>
-                    <name>Memory Total</name>
+                    <name>Connections total</name>
                     <type>2</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>memory[total]</key>
+                    <key>nginx[total]</key>
                     <delay>0</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>B</units>
-                    <delta>0</delta>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description>Total memory</description>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Memory</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
-                    <name>Memory used</name>
-                    <type>2</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>memory[used]</key>
-                    <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units>B</units>
+                    <units/>
                     <delta>0</delta>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -173,25 +134,25 @@
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
-                            <name>Memory</name>
+                            <name>Nginx</name>
                         </application>
                     </applications>
                     <valuemap/>
                 </item>
                 <item>
-                    <name>Swap free</name>
+                    <name>Connections waiting</name>
                     <type>2</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>memory[swap_free]</key>
+                    <key>nginx[waiting]</key>
                     <delay>0</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>B</units>
+                    <units/>
                     <delta>0</delta>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -212,26 +173,65 @@
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
-                            <name>Memory</name>
+                            <name>Nginx</name>
                         </application>
                     </applications>
                     <valuemap/>
                 </item>
                 <item>
-                    <name>Swap percent used</name>
+                    <name>Connections writing</name>
                     <type>2</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>memory[swap_percent_used]</key>
+                    <key>nginx[writing]</key>
+                    <delay>0</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Nginx</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                </item>
+                <item>
+                    <name>Requests per second</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>nginx[requests]</key>
                     <delay>0</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
-                    <units>%</units>
-                    <delta>0</delta>
+                    <units>qps</units>
+                    <delta>1</delta>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
                     <snmpv3_authpassphrase/>
@@ -251,85 +251,7 @@
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
-                            <name>Memory</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
-                    <name>Swap total</name>
-                    <type>2</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>memory[swap_total]</key>
-                    <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units>B</units>
-                    <delta>0</delta>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Memory</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                </item>
-                <item>
-                    <name>Swap used</name>
-                    <type>2</type>
-                    <snmp_community/>
-                    <multiplier>0</multiplier>
-                    <snmp_oid/>
-                    <key>memory[swap_used]</key>
-                    <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units>B</units>
-                    <delta>0</delta>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>Memory</name>
+                            <name>Nginx</name>
                         </application>
                     </applications>
                     <valuemap/>
@@ -341,31 +263,9 @@
             <screens/>
         </template>
     </templates>
-    <triggers>
-        <trigger>
-            <expression>{Memory ZRC:memory[percent_used].last(0)}&gt;95</expression>
-            <name>Critical memory</name>
-            <url/>
-            <status>0</status>
-            <priority>4</priority>
-            <description>Memory use more than 95%</description>
-            <type>0</type>
-            <dependencies/>
-        </trigger>
-        <trigger>
-            <expression>{Memory ZRC:memory[percent_used].last(0)}&gt;80</expression>
-            <name>Low memory</name>
-            <url/>
-            <status>0</status>
-            <priority>2</priority>
-            <description>Memory use more than 80%</description>
-            <type>0</type>
-            <dependencies/>
-        </trigger>
-    </triggers>
     <graphs>
         <graph>
-            <name>Memory use</name>
+            <name>Nginx Connections</name>
             <width>900</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
@@ -384,63 +284,83 @@
             <graph_items>
                 <graph_item>
                     <sortorder>0</sortorder>
-                    <drawtype>1</drawtype>
-                    <color>000088</color>
+                    <drawtype>0</drawtype>
+                    <color>66FF66</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Memory ZRC</host>
-                        <key>memory[used]</key>
+                        <host>Nginx</host>
+                        <key>nginx[reading]</key>
                     </item>
                 </graph_item>
                 <graph_item>
                     <sortorder>1</sortorder>
                     <drawtype>0</drawtype>
-                    <color>CCCCFF</color>
+                    <color>6666FF</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Memory ZRC</host>
-                        <key>memory[free]</key>
+                        <host>Nginx</host>
+                        <key>nginx[writing]</key>
                     </item>
                 </graph_item>
                 <graph_item>
                     <sortorder>2</sortorder>
                     <drawtype>0</drawtype>
-                    <color>880000</color>
+                    <color>FFFFCC</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Memory ZRC</host>
-                        <key>memory[swap_used]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>3</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>FFCCCC</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Memory ZRC</host>
-                        <key>memory[swap_free]</key>
+                        <host>Nginx</host>
+                        <key>nginx[waiting]</key>
                     </item>
                 </graph_item>
             </graph_items>
         </graph>
         <graph>
-            <name>s. Memory use</name>
+            <name>Nginx Requests</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>0</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>5</drawtype>
+                    <color>FF6666</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>7</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Nginx</host>
+                        <key>nginx[requests]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>s. Nginx Requests</name>
             <width>900</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
             <yaxismax>100.0000</yaxismax>
             <show_work_period>1</show_work_period>
             <show_triggers>0</show_triggers>
-            <type>1</type>
+            <type>0</type>
             <show_legend>0</show_legend>
             <show_3d>0</show_3d>
             <percent_left>0.0000</percent_left>
@@ -452,50 +372,14 @@
             <graph_items>
                 <graph_item>
                     <sortorder>0</sortorder>
-                    <drawtype>1</drawtype>
-                    <color>000088</color>
+                    <drawtype>5</drawtype>
+                    <color>FF6666</color>
                     <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
+                    <calc_fnc>7</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Memory ZRC</host>
-                        <key>memory[used]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>1</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>CCCCFF</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Memory ZRC</host>
-                        <key>memory[free]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>2</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>880000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Memory ZRC</host>
-                        <key>memory[swap_used]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>3</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>DDAAAA</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Memory ZRC</host>
-                        <key>memory[swap_free]</key>
+                        <host>Nginx</host>
+                        <key>nginx[requests]</key>
                     </item>
                 </graph_item>
             </graph_items>
