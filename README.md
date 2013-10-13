@@ -79,7 +79,7 @@ With the default config there is a plugins/ dir specified where you can put your
 
 Here is a basic plugin skeleton you can reproduce:
 
-```
+```ruby
 class ZabbixRubyClient
   module Plugins
     module Myplugin
@@ -106,7 +106,7 @@ ZabbixRubyClient::Plugins.register('myplugin', ZabbixRubyClient::Plugins::Myplug
 
 You can test custom plugins by creating a new `myplugin.yml` file with:
 
-```
+```yaml
 ---
 - name: myplugin
   args: [ "something", 42 ]
