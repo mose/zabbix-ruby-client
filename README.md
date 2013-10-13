@@ -123,7 +123,7 @@ myhost myplugin[item] 1381669455 something 42
 
 As you may already know, Zabbix is not very concerned about securing exchanges between agent and server, or sender and server. A cautious sysadmin will then properly manage his setup using ssh tunneling.
 
-After launching manual tunnels and ensuring their survival with monit I tried `autossh` which is much more reliable. It requires to have keys exchanged from server and client, in my case I prefer doing reverse tunnels from server, because then the server can also use that key on the client to perform automated ssh action depending on actions in zabbix.
+After launching manual tunnels and ensuring their survival with monit I tried `autossh` which is much more reliable. It requires to have keys exchanged from server and client, in my case I prefer doing reverse tunnels from server, because I have some plan about doing a resend from client in case server didn't open the tunnel (in case of server reboot or network failure). That resend trick is not implemented yet though.
 
 I first created on both sides an autossh user with no console and no password:
 
@@ -179,7 +179,8 @@ exit 0
   * airbrake
   * disk occupation (done)
 * try to work out a way to create host/graphs/alerts from the client using Zabbix API
-* verify compatibility with ruby 1.9
+* verify compatibility with ruby 1.9 (done)
+* create a resend system that will store timed data on client if connection to server fails, and will send pending (missed) data on next batch.
 
 
 ## Contributing
