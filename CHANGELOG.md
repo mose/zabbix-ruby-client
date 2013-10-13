@@ -3,6 +3,8 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.14 - wip
 
+* better explanation about how to make custom plugins
+* note on the readme about security and ssh tunnels
 
 ### v0.0.13 - 2013-10-08
 

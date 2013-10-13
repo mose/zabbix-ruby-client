@@ -177,7 +177,7 @@ update-rc.d /usr/local/bin/autossh.sh defaults
   * mysql master/slave
   * monit
   * passenger
-  * nginx
+  * nginx (done)
   * logged users
   * denyhosts
   * postfix
