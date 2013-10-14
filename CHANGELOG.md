@@ -1,6 +1,8 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.0.15 - wip
+
 ### v0.0.14 - 2013-10-14
 
 * better explanation about how to make custom plugins
