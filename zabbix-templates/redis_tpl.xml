@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-10-14T11:17:54Z</date>
+    <date>2013-10-14T11:20:44Z</date>
     <groups>
         <group>
             <name>3. Service Ubuntu</name>
@@ -140,7 +140,7 @@
                     <valuemap/>
                 </item>
                 <item>
-                    <name>Hits</name>
+                    <name>Hits per second</name>
                     <type>2</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
@@ -179,7 +179,7 @@
                     <valuemap/>
                 </item>
                 <item>
-                    <name>Misses</name>
+                    <name>Misses per second</name>
                     <type>2</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
@@ -257,7 +257,7 @@
                     <valuemap/>
                 </item>
                 <item>
-                    <name>Total</name>
+                    <name>Total per second</name>
                     <type>2</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
@@ -414,7 +414,7 @@
             </graph_items>
         </graph>
         <graph>
-            <name>Redis Keyspace</name>
+            <name>Redis Keyspace per second</name>
             <width>900</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
