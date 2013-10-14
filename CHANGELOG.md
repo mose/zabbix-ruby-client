@@ -5,6 +5,7 @@ Zabbbix Ruby Client Changelog
 
 * better explanation about how to make custom plugins
 * note on the readme about security and ssh tunnels
+* added a redis plugin
 
 ### v0.0.13 - 2013-10-08
 

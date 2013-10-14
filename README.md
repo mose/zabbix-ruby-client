@@ -70,6 +70,7 @@ There are a set of standart plugins included in the package, aimed at linux syst
 * apache (depends on mod_status with status_extended on) [apache_tpl](master/zabbix-templates/apache_tpl.xml)
 * mysql (uses mysqladmin extended-status) [mysql_tpl](master/zabbix-templates/mysql_tpl.xml)
 * nginx (requires httpStubStatus nginx module) [nginx_tpl](master/zabbix-templates/nginx_tpl.xml)
+* nginx (uses redis-cli info) [redis_tpl](master/zabbix-templates/redis_tpl.xml)
 
 You can add extra plugins in a plugins/ dir in the working dir, just by copying one of the existing plugins in the repo and change to your need. All plugins present in plugins/ will be loaded if present in the config file you use. That can be convenient to test by using the -t flag, for example `bundle exec zrc -t testplugin.yml` where testplugin.yml only contains the name and args for yoiur plugin.
 

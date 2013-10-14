@@ -7,8 +7,9 @@ class ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        opts = args[1] || ""
-        redisinfo = `redis-cli #{opts} info`
+        redis = args[1] || 'redis-cli'
+        opts = args[2] || ""
+        redisinfo = `#{redis} #{opts} info`
         if $?.to_i == 0
           info = get_info(redisinfo)
         else
