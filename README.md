@@ -161,6 +161,12 @@ done
 exit 0
 ```
 
+Then you can change zabbix-server config and add a localhost ListenIP (by default it listens to all interfaces)
+
+```
+ListenIP 127.0.0.1
+```
+
 ## Todo
 
 * read /proc rather than rely on installed tools (done)
