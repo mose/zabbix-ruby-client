@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-10-01T06:29:18Z</date>
+    <date>2013-10-17T21:37:42Z</date>
     <groups>
         <group>
             <name>3. Service Apache</name>
@@ -30,7 +30,7 @@
                     <snmp_oid/>
                     <key>apache[BusyWorkers]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -69,7 +69,7 @@
                     <snmp_oid/>
                     <key>apache[BytesPerReq]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
@@ -108,7 +108,7 @@
                     <snmp_oid/>
                     <key>apache[BytesPerSec]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
@@ -147,7 +147,7 @@
                     <snmp_oid/>
                     <key>apache[c_closing]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -186,7 +186,7 @@
                     <snmp_oid/>
                     <key>apache[CPULoad]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
@@ -225,7 +225,7 @@
                     <snmp_oid/>
                     <key>apache[c_dns]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -264,7 +264,7 @@
                     <snmp_oid/>
                     <key>apache[FreeWorkers]</key>
                     <delay>60</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
@@ -303,7 +303,7 @@
                     <snmp_oid/>
                     <key>apache[c_finish]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -335,6 +335,47 @@
                     <valuemap/>
                 </item>
                 <item>
+                    <name>HTTP Check</name>
+                    <type>3</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>net.tcp.service[http]</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>3</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>APACHE</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                </item>
+                <item>
                     <name>Idle</name>
                     <type>2</type>
                     <snmp_community/>
@@ -342,7 +383,7 @@
                     <snmp_oid/>
                     <key>apache[c_idle]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -381,7 +422,7 @@
                     <snmp_oid/>
                     <key>apache[c_cleanup]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -420,7 +461,7 @@
                     <snmp_oid/>
                     <key>apache[IdleWorkers]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -459,7 +500,7 @@
                     <snmp_oid/>
                     <key>apache[c_keep]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -498,7 +539,7 @@
                     <snmp_oid/>
                     <key>apache[c_log]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -537,7 +578,7 @@
                     <snmp_oid/>
                     <key>apache[c_read]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -576,7 +617,7 @@
                     <snmp_oid/>
                     <key>apache[ReqPerSec]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
@@ -615,7 +656,7 @@
                     <snmp_oid/>
                     <key>apache[c_send]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -654,7 +695,7 @@
                     <snmp_oid/>
                     <key>apache[c_start]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -693,7 +734,7 @@
                     <snmp_oid/>
                     <key>apache[TotalAccesses]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -732,7 +773,7 @@
                     <snmp_oid/>
                     <key>apache[TotalKBytes]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
@@ -771,7 +812,7 @@
                     <snmp_oid/>
                     <key>apache[Uptime]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>0</value_type>
@@ -810,7 +851,7 @@
                     <snmp_oid/>
                     <key>apache[c_waiting]</key>
                     <delay>0</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -916,6 +957,18 @@
             </screens>
         </template>
     </templates>
+    <triggers>
+        <trigger>
+            <expression>{Apache Stats:net.tcp.service[http].last(0)}=0</expression>
+            <name>Apache Down</name>
+            <url/>
+            <status>0</status>
+            <priority>5</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+    </triggers>
     <graphs>
         <graph>
             <name>Apache connections</name>
