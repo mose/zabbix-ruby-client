@@ -18,6 +18,7 @@ class ZabbixRubyClient
       puts e.message
       return
     end
+    @config["task"] = File.basename(task_file,'.yml')
     @logsdir = makedir(@config['logsdir'],'logs')
     @datadir = makedir(@config['datadir'],'data')
     @plugindirs = [ File.expand_path("../zabbix-ruby-client/plugins", __FILE__) ]
@@ -33,12 +34,12 @@ class ZabbixRubyClient
   def datafile
     now = Time.now
     @datafile ||= if @config['keepdata']
-      unless Dir.exists? File.join(@datadir,Time.now.strftime("%Y-%m-%d")) 
-        FileUtils.mkdir File.join(@datadir,Time.now.strftime("%Y-%m-%d")) 
+      unless Dir.exists? File.join(@datadir,Time.now.strftime("%Y-%m-%d"))
+        FileUtils.mkdir File.join(@datadir,Time.now.strftime("%Y-%m-%d"))
       end
-      File.join(@datadir,Time.now.strftime("%Y-%m-%d"),"data_"+Time.now.strftime("%H%M%S"))
+      File.join(@datadir,Time.now.strftime("%Y-%m-%d"),"#{@config["task"]}-data_"+Time.now.strftime("%H%M%S"))
     else
-      File.join(@datadir,"data")
+      File.join(@datadir,"#{@config["task"]}-data")
     end
   end
 
@@ -56,7 +57,7 @@ class ZabbixRubyClient
         logger.fatal "Oops"
         logger.fatal e.message
       end
-    end
+    endT
   end
 
   def collect
@@ -93,6 +94,9 @@ class ZabbixRubyClient
     store
     begin
       res = `#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -T -i #{datafile}`
+      if $?.to_i != 0
+        keepdata
+      end
     rescue Exception => e
       logger.error "Sending failed."
       logger.error e.message
@@ -105,6 +109,9 @@ class ZabbixRubyClient
     dir = configdir || defaultdir
     FileUtils.mkdir dir unless Dir.exists? dir
     dir
+  end
+
+  def keepdata
   end
 
   def logger
