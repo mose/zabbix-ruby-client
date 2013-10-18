@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-10-01T06:30:08Z</date>
+    <date>2013-10-18T17:34:55Z</date>
     <groups>
         <group>
             <name>3. Service Ubuntu</name>
@@ -599,7 +599,7 @@
                     <trigger_prototypes>
                         <trigger_prototype>
                             <expression>{Disk Stats:disk.space[{#DISK_DEVICE},percent_used].last(0)}&gt;80</expression>
-                            <name>{HOST.NAME} Disk (#DISK_MOUNT} full &gt; $1 %</name>
+                            <name>{HOST.NAME} Disk {#DISK_MOUNT} full &gt; $1 %</name>
                             <url/>
                             <status>0</status>
                             <priority>2</priority>
@@ -608,7 +608,7 @@
                         </trigger_prototype>
                         <trigger_prototype>
                             <expression>{Disk Stats:disk.space[{#DISK_DEVICE},percent_used].last(0)}&gt;95</expression>
-                            <name>{HOST.NAME} Disk (#DISK_MOUNT} full &gt; $1 %</name>
+                            <name>{HOST.NAME} Disk {#DISK_MOUNT} full &gt; $1 %</name>
                             <url/>
                             <status>0</status>
                             <priority>4</priority>
@@ -617,7 +617,7 @@
                         </trigger_prototype>
                         <trigger_prototype>
                             <expression>{Disk Stats:disk.space[{#DISK_DEVICE},percent_used].last(0)}&gt;90</expression>
-                            <name>{HOST.NAME} Disk (#DISK_MOUNT} full &gt; $1 %</name>
+                            <name>{HOST.NAME} Disk {#DISK_MOUNT} full &gt; $1 %</name>
                             <url/>
                             <status>0</status>
                             <priority>3</priority>
