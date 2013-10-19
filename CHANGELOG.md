@@ -3,6 +3,9 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.15 - wip
 
+* fix disk template alarm subject
+* fix datafile naming for when you get different task files ran at same time
+
 ### v0.0.14 - 2013-10-14
 
 * better explanation about how to make custom plugins
