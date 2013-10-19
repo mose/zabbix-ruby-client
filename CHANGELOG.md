@@ -5,6 +5,7 @@ Zabbbix Ruby Client Changelog
 
 * fix disk template alarm subject
 * fix datafile naming for when you get different task files ran at same time
+* improve cpu and disk triggers with dependencies (but waiting for ZBXNEXT-1229)
 
 ### v0.0.14 - 2013-10-14
 
