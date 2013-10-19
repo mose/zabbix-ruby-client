@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-10-01T06:29:53Z</date>
+    <date>2013-10-19T08:17:55Z</date>
     <groups>
         <group>
             <name>3. Service Ubuntu</name>
@@ -850,7 +850,7 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{CPU zrc:cpu[used_percent].max(120)}&gt;90</expression>
+            <expression>{CPU zrc:cpu[used_percent].min(120)}&gt;90</expression>
             <name>extreme CPU use</name>
             <url/>
             <status>0</status>
@@ -860,14 +860,19 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{CPU zrc:cpu[used_percent].max(120)}&gt;80</expression>
+            <expression>{CPU zrc:cpu[used_percent].min(120)}&gt;80</expression>
             <name>high CPU use</name>
             <url/>
             <status>0</status>
             <priority>2</priority>
             <description/>
             <type>0</type>
-            <dependencies/>
+            <dependencies>
+                <dependency>
+                    <name>extreme CPU use</name>
+                    <expression>{CPU zrc:cpu[used_percent].min(120)}&gt;90</expression>
+                </dependency>
+            </dependencies>
         </trigger>
     </triggers>
     <graphs>
