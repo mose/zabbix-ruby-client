@@ -10,6 +10,21 @@ The development is still in progress but it produces results and works in my cas
 
 Check the [Changelog](CHANGELOG.md) for recent changes, code is still under huge development and is likely to move a lot until version 0.1.
 
+## Why use zabbix-sender rather than zabbix-agent
+
+There are various reasons for that. But the purpose of this tool ultimately is to fulfill the functions of the zabbix-sender, reducing the requirement of installation to only the zabbix ruby client.
+
+There are compromises that make this use of the sender with zabbix ruby client pertinent:
+
+* you prefer to rely on a cronjob rather than on a daemon for data collection
+* you don't mind having a minimum time between data collection of 1 minute (cron don't handle seconds)
+* you want to specify your discovery at client level rather than at server level. When I first used auto discovery for interfaces or file systems, it was discovering such a huge number of things with such a wide inconsistency of naming that it was pretty hard to think about a regexp to limit what was pertinent or not. Sometimes a discovery rule would need to have a regexp per host, which zabbix don't permit, or it gets very complicated. In a very diverse context, declarative discovery is much simpler.
+* you already have ruby installed on all your servers (which is the case if you use chef or puppet)
+
+The objectives for version 0.1 of zabbix ruby client are to be able to handle dropping connection by buffering the data collection and send all what was not sent the next time it's possible. So there should be no real difference on that feature with the agent.
+
+At some point all zabbix ruby client plugins will be usable by the agent as well, actually, so it should not make any difference. But the initial setup I have in my infrastructure led me to chose the sender rather than the agent. But that will be later on when the code will get better abstraction. For now I just want it to work and collect my data. Which it does. The full compatibility for use by the agent would probably be a target for version 0.2.
+
 ## Installation
 
 Install it yourself as:
