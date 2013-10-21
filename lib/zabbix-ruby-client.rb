@@ -98,6 +98,7 @@ class ZabbixRubyClient
         keepdata
       end
     rescue Exception => e
+      keepdata
       logger.error "Sending failed."
       logger.error e.message
     end

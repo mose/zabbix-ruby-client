@@ -14,7 +14,7 @@ Check the [Changelog](CHANGELOG.md) for recent changes, code is still under huge
 
 Yes why use zabbix ruby client with zabbix-sender rather than zabbix-agent ?
 
-There are various reasons for that. But the purpose of this tool ultimately is to fulfill the functions of the zabbix-sender, reducing the requirement of installation to only the zabbix ruby client. 
+There are various reasons for that. But the purpose of this tool ultimately is to fulfill the functions of the zabbix-sender, reducing the requirement of installation to only the zabbix ruby client.
 
 There are compromises that make this use of the sender with zabbix ruby client pertinent:
 
