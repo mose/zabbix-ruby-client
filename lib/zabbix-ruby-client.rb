@@ -19,6 +19,7 @@ class ZabbixRubyClient
       return
     end
     @config["task"] = File.basename(task_file,'.yml')
+    @config["server"] = File.basename(config_file,'.yml')
     @logsdir = makedir(@config['logsdir'],'logs')
     @datadir = makedir(@config['datadir'],'data')
     @plugindirs = [ File.expand_path("../zabbix-ruby-client/plugins", __FILE__) ]
@@ -31,7 +32,7 @@ class ZabbixRubyClient
     logger.debug @config.inspect
   end
 
-  def datafile
+  def datafile(task)
     now = Time.now
     @datafile ||= if @config['keepdata']
       unless Dir.exists? File.join(@datadir,Time.now.strftime("%Y-%m-%d"))
@@ -41,6 +42,10 @@ class ZabbixRubyClient
     else
       File.join(@datadir,"#{@config["task"]}-data")
     end
+  end
+
+  def pendingfile(server)
+    @pendingfile ||= File.join(@datadir, "#{server}-pending")
   end
 
   def run_plugin(plugin, args = nil)
@@ -73,9 +78,9 @@ class ZabbixRubyClient
     end
   end
 
-  def store
-    File.open(datafile, "w") do |f|
-      @data.each do |d|
+  def store(data,task,flag="w")
+    File.open(datafile(task), flag) do |f|
+      data.each do |d|
         f.puts d
       end
     end
@@ -91,11 +96,12 @@ class ZabbixRubyClient
 
   def upload
     merge_discover
-    store
+    store(@data,@config["task"])
+    prepend_pending(@config["task"])
     begin
       res = `#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -T -i #{datafile}`
       if $?.to_i != 0
-        keepdata
+        keepdata(@config["task"])
       end
     rescue Exception => e
       keepdata
@@ -112,7 +118,16 @@ class ZabbixRubyClient
     dir
   end
 
+  def prepend_pending(task)
+
+  end
+
   def keepdata
+    File.open(pendingfile, "a+") do |f|
+      @data.each do |d|
+        f.puts d
+      end
+    end
   end
 
   def logger
