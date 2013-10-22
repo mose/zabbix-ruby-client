@@ -1,7 +1,7 @@
 class ZabbixRubyClient
   class Store
 
-    def initialize(dir, server, task, keepdata)
+    def initialize(dir, server, task, keepdata=false)
       @dir = dir
       @server = server
       @task = task
