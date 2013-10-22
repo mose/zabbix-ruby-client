@@ -5,11 +5,7 @@ require "zabbix-ruby-client"
 
 describe ZabbixRubyClient do
 
-  it "initialize the client object" do
-    z = ZabbixRubyClient.new
-    expect(z).to_be null
-  end
-
+  pending "initialize the client object"
   pending "creates dirs if needed"
   pending "loads list of plugins"
   pending "initialize datafile according to config"
