@@ -29,7 +29,7 @@ class ZabbixRubyClient
       @discover.reduce([]) do |a,(k,v)|
         a << "#{@host} #{k} #{time} { \"data\": [ #{v.join(', ')} ] }"
         a
-      end + @data
+      end + @items
     end
 
   end

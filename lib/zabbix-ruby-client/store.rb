@@ -25,7 +25,7 @@ class ZabbixRubyClient
     end
 
     def keepdata(file)
-      FileUtils.mv(file, @store.pendingfile)
+      FileUtils.mv(file, pendingfile)
     end
 
     def pendingfile

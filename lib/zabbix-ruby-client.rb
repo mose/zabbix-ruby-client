@@ -1,6 +1,8 @@
 require "zabbix-ruby-client/version"
 require "zabbix-ruby-client/logger"
 require "zabbix-ruby-client/plugins"
+require "zabbix-ruby-client/store"
+require "zabbix-ruby-client/data"
 require "yaml"
 
 class ZabbixRubyClient
@@ -20,13 +22,13 @@ class ZabbixRubyClient
     end
 
     @store = Store.new(
-      File.join(@config['datadir'],'data'),
+      @config['datadir'],
       @config['zabbix']['host'],
       File.basename(task_file,'.yml'),
       @config['keepdata']
     )
 
-    @data = Data.new
+    @data = Data.new(@config['host'])
 
     @config["server"] = File.basename(config_file,'.yml')
     @logsdir = makedir(@config['logsdir'],'logs')
@@ -70,13 +72,10 @@ class ZabbixRubyClient
 
   private
 
-
   def makedir(configdir, defaultdir)
     dir = configdir || defaultdir
     FileUtils.mkdir dir unless Dir.exists? dir
     dir
   end
-
-
 
 end
