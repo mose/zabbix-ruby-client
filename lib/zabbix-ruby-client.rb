@@ -5,7 +5,7 @@ require "yaml"
 
 class ZabbixRubyClient
 
-  def initialize(config_file,task_file)
+  def initialize(config_file, task_file)
     begin
       @config ||= YAML::load_file(config_file)
       if File.exists? task_file
@@ -18,99 +18,58 @@ class ZabbixRubyClient
       puts e.message
       return
     end
-    @config["task"] = File.basename(task_file,'.yml')
+
+    @store = Store.new(
+      File.join(@config['datadir'],'data'),
+      @config['zabbix']['host'],
+      File.basename(task_file,'.yml'),
+      @config['keepdata']
+    )
+
+    @data = Data.new
+
     @config["server"] = File.basename(config_file,'.yml')
     @logsdir = makedir(@config['logsdir'],'logs')
-    @datadir = makedir(@config['datadir'],'data')
     @plugindirs = [ File.expand_path("../zabbix-ruby-client/plugins", __FILE__) ]
     if @config["plugindirs"]
       @plugindirs = @plugindirs + @config["plugindirs"]
     end
-    @discover = {}
-    @data = []
     Plugins.load_dirs @plugindirs
     logger.debug @config.inspect
   end
 
-  def datafile(task)
-    now = Time.now
-    @datafile ||= if @config['keepdata']
-      unless Dir.exists? File.join(@datadir,Time.now.strftime("%Y-%m-%d"))
-        FileUtils.mkdir File.join(@datadir,Time.now.strftime("%Y-%m-%d"))
-      end
-      File.join(@datadir,Time.now.strftime("%Y-%m-%d"),"#{@config["task"]}-data_"+Time.now.strftime("%H%M%S"))
-    else
-      File.join(@datadir,"#{@config["task"]}-data")
-    end
-  end
-
-  def pendingfile(server)
-    @pendingfile ||= File.join(@datadir, "#{server}-pending")
-  end
-
-  def run_plugin(plugin, args = nil)
-    Plugins.load(plugin) || logger.error( "Plugin #{plugin} not found.")
-    if Plugins.loaded[plugin]
-      begin
-        @data = @data + Plugins.loaded[plugin].send(:collect, @config['host'], *args)
-        if Plugins.loaded[plugin].respond_to?(:discover)
-          key, value = Plugins.loaded[plugin].send(:discover, *args)
-          @discover[key] ||= []
-          @discover[key] << [ value ]
-        end
-      rescue Exception => e
-        logger.fatal "Oops"
-        logger.fatal e.message
-      end
-    endT
-  end
-
   def collect
     @tasks.each do |plugin|
-      run_plugin(plugin['name'], plugin['args'])
+      @data.run_plugin(plugin['name'], plugin['args'])
     end
   end
 
   def show
-    merge_discover
-    @data.each do |line|
+    @data.merge.each do |line|
       puts line
     end
   end
 
-  def store(data,task,flag="w")
-    File.open(datafile(task), flag) do |f|
-      data.each do |d|
-        f.puts d
-      end
-    end
-  end
-
-  def merge_discover
-    time = Time.now.to_i
-    @data = @discover.reduce([]) do |a,(k,v)|
-      a << "#{@config['host']} #{k} #{time} { \"data\": [ #{v.join(', ')} ] }"
-      a
-    end + @data
-  end
-
   def upload
-    merge_discover
-    store(@data,@config["task"])
-    prepend_pending(@config["task"])
+    file = @store.record(@data.merge)
     begin
-      res = `#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -T -i #{datafile}`
+      res = `#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -p #{@config['zabbix']['port']} -T -i #{file}`
       if $?.to_i != 0
-        keepdata(@config["task"])
+        @store.keepdata(file)
       end
     rescue Exception => e
-      keepdata
+      @store.keepdata(file)
       logger.error "Sending failed."
       logger.error e.message
     end
   end
 
+  def logger
+    @logger ||= Logger.get_logger(@logsdir, @config["loglevel"])
+  end
+
   private
+
 
   def makedir(configdir, defaultdir)
     dir = configdir || defaultdir
@@ -118,20 +77,6 @@ class ZabbixRubyClient
     dir
   end
 
-  def prepend_pending(task)
 
-  end
-
-  def keepdata
-    File.open(pendingfile, "a+") do |f|
-      @data.each do |d|
-        f.puts d
-      end
-    end
-  end
-
-  def logger
-    @logger ||= Logger.get_logger(@logsdir, @config["loglevel"])
-  end
 
 end
