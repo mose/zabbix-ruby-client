@@ -1,11 +1,10 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.0.15 - wip
+### v0.0.15 - 2013-10-23
 
 * prototype of a way to keep data when sending fails and sending it again at next iteration
-* expose logger for it to be usable by the plugins
-* refactoring for better testability and preparing split of the main class
+* refactoring in several classes for better testability and nicer code
 * add port in the zabbix-sender command that was forgotten there
 * fix disk template alarm subject
 * fix datafile naming for when you get different task files ran at same time
