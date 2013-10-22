@@ -2,6 +2,8 @@ Zabbix Ruby Client
 ====================
 
 [![Gem Version](https://badge.fury.io/rb/zabbix-ruby-client.png)](http://rubygems.org/gems/zabbix-ruby-client)
+
+[![Travis Status](https://secure.travis-ci.org/eduvo/zabbix-ruby-client.png?branch=master)](https://travis-ci.org/eduvo/zabbix-ruby-client)
 [![Coverage Status](https://coveralls.io/repos/eduvo/zabbix-ruby-client/badge.png)](https://coveralls.io/r/eduvo/zabbix-ruby-client)
 [![Code Climate](https://codeclimate.com/github/eduvo/zabbix-ruby-client.png)](https://codeclimate.com/github/eduvo/zabbix-ruby-client)
 
