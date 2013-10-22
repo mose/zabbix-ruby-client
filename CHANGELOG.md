@@ -1,6 +1,8 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.0.16 - wip
+
 ### v0.0.15 - 2013-10-23
 
 * prototype of a way to keep data when sending fails and sending it again at next iteration
