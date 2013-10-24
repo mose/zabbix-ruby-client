@@ -7,6 +7,8 @@ Zabbix Ruby Client
 [![Dependency Status](https://gemnasium.com/eduvo/zabbix-ruby-client.png)](https://gemnasium.com/eduvo/zabbix-ruby-client)
 [![Code Climate](https://codeclimate.com/github/eduvo/zabbix-ruby-client.png)](https://codeclimate.com/github/eduvo/zabbix-ruby-client)
 
+----
+
 This tool is designed to make easy to install zabbix reporter on monitored servers using zabbix-sender rather than zabbix-agent. It targets on monitoring mainly linux servers and is built on a plugin system so that you can decide what is going to be reported.
 
 The development is still in progress but it produces results and works in my case. Use at your own risk and read the code first. It is developed under ruby 2 but should work on 1.9.3 as well.
