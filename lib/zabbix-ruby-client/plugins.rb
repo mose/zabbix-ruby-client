@@ -1,10 +1,9 @@
 class ZabbixRubyClient
   module Plugins
-    extend self
+    extend self 
 
-    def load_dirs(dirs)
+    def scan_dirs(dirs)
       @available = {}
-      @loaded = {}
       dirs.each do |d|
         Dir.glob(File.join(d,"*.rb")).reduce(@available) { |a,x|
           name = File.basename(x,".rb")
@@ -14,16 +13,16 @@ class ZabbixRubyClient
       end
     end
 
-    def register(plugin, klass)
-      @loaded[plugin] = klass
-    end
-
     def loaded
       @loaded ||= {}
     end
 
+    def register(plugin, klass)
+      @loaded[plugin] = klass
+    end
+
     def load(plugin)
-      if @loaded[plugin]
+      if loaded[plugin]
         true
       else
         if @available[plugin]
@@ -32,6 +31,11 @@ class ZabbixRubyClient
           nil
         end
       end
+    end
+
+    def reset
+      @loaded = {}
+      @available = {}
     end
 
   end

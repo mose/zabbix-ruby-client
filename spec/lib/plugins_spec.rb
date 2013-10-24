@@ -4,9 +4,33 @@ require 'spec_helper'
 require "zabbix-ruby-client/plugins"
 
 describe ZabbixRubyClient::Plugins do
-  
-  pending "loading dirs works"
-  pending "registering a new plugin loads it"
-  pending "loading a plugin adds plugin in loaded list"
+
+  before :all do
+    @plugindir = File.expand_path("../../files/plugins", __FILE__)
+  end
+
+  before :each do
+    ZabbixRubyClient::Plugins.scan_dirs([@plugindir])
+  end
+
+  after :each do
+    ZabbixRubyClient::Plugins.reset
+  end
+
+  it "loading dirs works" do
+    result = {"sample" => File.join(@plugindir, "sample.rb") }
+    expect(ZabbixRubyClient::Plugins.instance_variable_get(:@available)).to eq result 
+  end
+
+  it "registering a new plugin loads it" do
+    ZabbixRubyClient::Plugins.register("sample",Object)
+    result = { "sample" => Object }
+    expect(ZabbixRubyClient::Plugins.instance_variable_get(:@loaded)).to eq result
+  end
+
+  it "loading a plugin adds plugin in loaded list" do
+    ZabbixRubyClient::Plugins.load("sample")
+    expect(Sample).to be_kind_of Module
+  end
 
 end

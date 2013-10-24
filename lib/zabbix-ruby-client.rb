@@ -1,11 +1,14 @@
 require "zabbix-ruby-client/version"
 require "zabbix-ruby-client/logger"
 require "zabbix-ruby-client/plugins"
+require "zabbix-ruby-client/registry"
 require "zabbix-ruby-client/store"
 require "zabbix-ruby-client/data"
 require "yaml"
 
 class ZabbixRubyClient
+
+  PLUGINDIR = File.expand_path("../zabbix-ruby-client/plugins", __FILE__)
 
   def initialize(config_file, task_file)
     begin
@@ -20,6 +23,7 @@ class ZabbixRubyClient
       puts e.message
       return
     end
+    @config["server"] = File.basename(config_file,'.yml')
 
     @store = Store.new(
       @config['datadir'],
@@ -28,16 +32,14 @@ class ZabbixRubyClient
       @config['keepdata']
     )
 
-    @data = Data.new(@config['host'])
-
-    @config["server"] = File.basename(config_file,'.yml')
+    @data = ZabbixRubyClient::Data.new(@config['host'])
     @logsdir = makedir(@config['logsdir'],'logs')
-    @plugindirs = [ File.expand_path("../zabbix-ruby-client/plugins", __FILE__) ]
-    if @config["plugindirs"]
-      @plugindirs = @plugindirs + @config["plugindirs"]
-    end
-    Plugins.load_dirs @plugindirs
+    Plugins.scan_dirs([ PLUGINDIR ] + @config["plugindirs"])
     logger.debug @config.inspect
+  end
+
+  def load_plugins(dirs)
+    ZabbixRubyClient::Registry.new(dirs)
   end
 
   def collect
