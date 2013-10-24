@@ -4,6 +4,7 @@ class ZabbixRubyClient
 
     def scan_dirs(dirs)
       @available = {}
+      @loaded = {}
       dirs.each do |d|
         Dir.glob(File.join(d,"*.rb")).reduce(@available) { |a,x|
           name = File.basename(x,".rb")
@@ -22,7 +23,7 @@ class ZabbixRubyClient
     end
 
     def load(plugin)
-      if loaded[plugin]
+      if @loaded[plugin]
         true
       else
         if @available[plugin]

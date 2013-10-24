@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 require "zabbix-ruby-client/plugins"
-ZabbixRubyClient::Plugins.load_dirs ["zabbix-ruby-client/plugins"]
+ZabbixRubyClient::Plugins.scan_dirs ["zabbix-ruby-client/plugins"]
 require "zabbix-ruby-client/plugins/memory"
 
 describe ZabbixRubyClient::Plugins::Memory do
