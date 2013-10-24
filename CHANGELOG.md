@@ -3,7 +3,8 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.16 - wip
 
-* adding travis and coverall to stimulate testing
+* refactoring and more tests
+* adding travis and coverall to stimulate testing, also added gemnasium
 
 ### v0.0.15 - 2013-10-23
 
