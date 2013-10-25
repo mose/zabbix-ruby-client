@@ -1,6 +1,6 @@
 class ZabbixRubyClient
   module Plugins
-    extend self 
+    extend self
 
     def scan_dirs(dirs)
       @available = {}

@@ -33,4 +33,11 @@ describe ZabbixRubyClient::Plugins do
     expect(Sample).to be_kind_of Module
   end
 
+  it "do not load a plugin already loaded" do
+    ZabbixRubyClient::Plugins.load("sample")
+    ZabbixRubyClient::Plugins.load("sample")
+    result = { "sample" => Sample }
+    expect(ZabbixRubyClient::Plugins.instance_variable_get(:@loaded)).to eq result
+  end
+
 end
