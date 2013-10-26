@@ -5,7 +5,17 @@ require "zabbix-ruby-client"
 
 describe ZabbixRubyClient do
 
-  pending "initialize the client object"
+  before :all do
+    basedir = File.expand("../files", __FILE__)
+    @config_file = File.join(basedir, "config.yml")
+    @task_file = File.join(basedir, "task.yml")
+  end
+
+  it "initialize the client object" do
+    @zrc = ZabbixRubyClient.new(@config_file, @task_file)
+    puts @zrc.inspect
+  end
+
   pending "creates dirs if needed"
   pending "loads list of plugins"
   pending "initialize datafile according to config"

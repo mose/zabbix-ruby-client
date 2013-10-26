@@ -9,7 +9,6 @@ class ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        #cpuinfo = `mpstat | grep " all "`
         cpuinfo = `cat /proc/stat | grep "^cpu"`
         if $?.to_i == 0
           _, user, nice, sys, idle, wait, irq, soft, guest, steal = cpuinfo.split(/\s+/).map(&:to_i)
