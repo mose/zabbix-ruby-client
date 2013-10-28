@@ -6,8 +6,6 @@ require "zabbix-ruby-client/plugins/cpu"
 
 describe ZabbixRubyClient::Plugins::Cpu do
 
-  it "populate a hash with extracted data" do
-    ZabbixRubyClient::Plugins.run('cpu')
-  end
+  pending "populate a hash with extracted data"
 
 end
