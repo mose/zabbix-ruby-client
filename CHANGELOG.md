@@ -3,6 +3,7 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.16 - wip
 
+* fix the logger
 * refactoring and more tests
 * adding travis and coverall to stimulate testing, also added gemnasium
 
