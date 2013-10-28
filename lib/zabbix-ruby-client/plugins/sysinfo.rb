@@ -1,3 +1,5 @@
+require "zabbix-ruby-client/logger"
+
 class ZabbixRubyClient
   module Plugins
     module Sysinfo
@@ -10,7 +12,7 @@ class ZabbixRubyClient
           arch, hostname, kernel, kernel_version, machine, proc,
           _, _, _, _, _, _, _, platform, os = uname.split(/ /)
         else
-          logger.warn "Are you running on ubuntu ?"
+          Log.warn "Are you running on ubuntu ?"
           return []
         end
         time = Time.now.to_i

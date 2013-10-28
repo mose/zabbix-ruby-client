@@ -1,4 +1,5 @@
 # this is a simple version for standalone redis server
+require "zabbix-ruby-client/logger"
 
 class ZabbixRubyClient
   module Plugins
@@ -13,7 +14,7 @@ class ZabbixRubyClient
         if $?.to_i == 0
           info = get_info(redisinfo)
         else
-          logger.warn "Redis connection failed."
+          Log.warn "Redis connection failed."
           return []
         end
 

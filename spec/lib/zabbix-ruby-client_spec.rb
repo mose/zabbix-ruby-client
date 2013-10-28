@@ -6,14 +6,15 @@ require "zabbix-ruby-client"
 describe ZabbixRubyClient do
 
   before :all do
-    basedir = File.expand("../files", __FILE__)
+    basedir = File.expand_path("../../files", __FILE__)
     @config_file = File.join(basedir, "config.yml")
     @task_file = File.join(basedir, "task.yml")
   end
 
   it "initialize the client object" do
     @zrc = ZabbixRubyClient.new(@config_file, @task_file)
-    puts @zrc.inspect
+    expect(@zrc.instance_variable_get(:@config)['host']).to eq 'localhost'
+    expect(@zrc.instance_variable_get(:@config)['host']).to eq 'localhost'
   end
 
   pending "creates dirs if needed"

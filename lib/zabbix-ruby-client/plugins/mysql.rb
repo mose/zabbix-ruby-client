@@ -1,3 +1,5 @@
+require "zabbix-ruby-client/logger"
+
 class ZabbixRubyClient
   module Plugins
     module Mysql
@@ -10,7 +12,7 @@ class ZabbixRubyClient
         if $?.to_i == 0
           status = get_status(mysqlstatus)
         else
-          self.logger.warn "The connection failed."
+          Log.warn "The connection failed."
           return []
         end
 

@@ -1,3 +1,5 @@
+require "zabbix-ruby-client/logger"
+
 class ZabbixRubyClient
   module Plugins
     module Network
@@ -10,7 +12,7 @@ class ZabbixRubyClient
         if $?.to_i == 0
           _, _, rx_ok, rx_packets, rx_err, rx_drop, _, _, _, _, tx_ok, tx_packets, tx_err, tx_drop, _, _, _, _  = netinfo.split(/\s+/)
         else
-          logger.warn "Please install netstat."
+          Log.warn "proc not found."
           return []
         end
 

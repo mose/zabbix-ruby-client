@@ -1,6 +1,7 @@
 # for more info check 
 # http://www.linuxhowtos.org/System/procstat.htm
 # http://juliano.info/en/Blog:Memory_Leak/Understanding_the_Linux_load_average
+require "zabbix-ruby-client/logger"
 
 class ZabbixRubyClient
   module Plugins
@@ -13,7 +14,7 @@ class ZabbixRubyClient
         if $?.to_i == 0
           _, user, nice, sys, idle, wait, irq, soft, guest, steal = cpuinfo.split(/\s+/).map(&:to_i)
         else
-          logger.warn "Oh you don't have a /proc ?"
+          Log.warn "Oh you don't have a /proc ?"
           return []
         end
         used = user + nice + sys

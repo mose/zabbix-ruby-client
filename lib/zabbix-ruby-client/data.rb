@@ -1,3 +1,5 @@
+require "zabbix-ruby-client/logger"
+
 class ZabbixRubyClient
   class Data
 
@@ -18,8 +20,8 @@ class ZabbixRubyClient
             @discover[key] << [ value ]
           end
         rescue Exception => e
-          logger.fatal "Oops"
-          logger.fatal e.message
+          Log.fatal "Oops"
+          Log.fatal e.message
         end
       end
     end

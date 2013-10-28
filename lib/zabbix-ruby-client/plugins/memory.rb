@@ -1,3 +1,5 @@
+require "zabbix-ruby-client/logger"
+
 class ZabbixRubyClient
   module Plugins
     module Memory
@@ -9,7 +11,7 @@ class ZabbixRubyClient
         if $?.to_i == 0
           info = splitinfo(meminfo)
         else
-          logger.warn "Please install sysstat."
+          Log.warn "Please install sysstat."
           return []
         end
 

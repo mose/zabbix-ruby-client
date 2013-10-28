@@ -1,3 +1,5 @@
+require "zabbix-ruby-client/logger"
+
 class ZabbixRubyClient
   module Plugins
     module Who
@@ -7,7 +9,7 @@ class ZabbixRubyClient
         host = args[0]
         who = get_who
         if $?.to_i != 0
-          logger.warn "Are you running on ubuntu ?"
+          Log.warn "Are you running on ubuntu ?"
           return []
         end
         time = Time.now.to_i

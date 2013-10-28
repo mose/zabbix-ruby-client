@@ -1,6 +1,7 @@
 # some doc on
 # http://www.xaprb.com/blog/2010/01/09/how-linux-iostat-computes-its-results/
 # http://www.mjmwired.net/kernel/Documentation/iostats.txt
+require "zabbix-ruby-client/logger"
 
 class ZabbixRubyClient
   module Plugins
@@ -15,7 +16,7 @@ class ZabbixRubyClient
         if $?.to_i == 0
           _, size, used, available, percent_used, mount = diskspace.split(/\s+/)
         else
-          logger.error "df is not working... ouchie."
+          Log.error "df is not working... ouchie."
           return []
         end
         time = Time.now.to_i

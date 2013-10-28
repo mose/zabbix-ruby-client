@@ -34,7 +34,8 @@ class ZabbixRubyClient
     @data = ZabbixRubyClient::Data.new(@config['host'])
     @logsdir = makedir(@config['logsdir'],'logs')
     Plugins.scan_dirs([ PLUGINDIR ] + @config["plugindirs"])
-    logger.debug @config.inspect
+    Log.set_logger(File.join(@logsdir, 'zrc.log'), 'info')
+    Log.debug @config.inspect
   end
 
   def load_plugins(dirs)
@@ -65,10 +66,6 @@ class ZabbixRubyClient
       logger.error "Sending failed."
       logger.error e.message
     end
-  end
-
-  def logger
-    @logger ||= Logger.get_logger(@logsdir, @config["loglevel"])
   end
 
   private

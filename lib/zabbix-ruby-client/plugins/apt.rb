@@ -1,3 +1,5 @@
+require "zabbix-ruby-client/logger"
+
 class ZabbixRubyClient
   module Plugins
     module Apt
@@ -9,7 +11,7 @@ class ZabbixRubyClient
         if $?.to_i == 0
           security, pending = aptcheck.split(/;/).map(&:to_i)
         else
-          logger.warn "Are you running on ubuntu ?"
+          Log.warn "Are you running on ubuntu ?"
           return []
         end
         time = Time.now.to_i
