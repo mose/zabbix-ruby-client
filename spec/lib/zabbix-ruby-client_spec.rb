@@ -22,7 +22,12 @@ describe ZabbixRubyClient do
     expect(@zrc.instance_variable_get(:@config)['host']).to eq 'localhost'
   end
 
-  pending "creates dirs if needed"
+  it "creates dirs if needed" do
+    FileUtils.mv("logs","logsback")
+    @zrc = ZabbixRubyClient.new(@config_file, @task_file)
+    expect(Dir.exists? "logs").to be_true
+  end
+
   pending "loads list of plugins"
   pending "initialize datafile according to config"
   pending "stores data in datafile"
