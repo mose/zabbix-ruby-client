@@ -1,4 +1,4 @@
-class ZabbixRubyClient
+module ZabbixRubyClient
   class Store
 
     def initialize(dir, server, task, keepdata=false)

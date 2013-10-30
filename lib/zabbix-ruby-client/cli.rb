@@ -1,7 +1,7 @@
 require "thor"
-require "zabbix-ruby-client"
+require "zabbix-ruby-client/runner"
 
-class ZabbixRubyClient
+module ZabbixRubyClient
 
   class Cli < Thor
     include Thor::Actions
@@ -43,7 +43,7 @@ class ZabbixRubyClient
       end
       config['server'] = File.basename(config_file,'.yml')
       config['taskfile'] = File.basename(task_file,'.yml')
-      zrc = ZabbixRubyClient.new(config, tasks)
+      zrc = ZabbixRubyClient::Runner.new(config, tasks)
       zrc.collect
       zrc.show
     end
@@ -58,7 +58,7 @@ class ZabbixRubyClient
       end
       config['server'] = File.basename(config_file,'.yml')
       config['taskfile'] = File.basename(task_file,'.yml')
-      zrc = ZabbixRubyClient.new(config, tasks)
+      zrc = ZabbixRubyClient::Runner.new(config, tasks)
       zrc.collect
       zrc.upload
     end

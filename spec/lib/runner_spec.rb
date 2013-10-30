@@ -3,7 +3,7 @@
 require 'spec_helper'
 require "zabbix-ruby-client"
 
-describe ZabbixRubyClient do
+describe ZabbixRubyClient::Runner do
 
   before :each do
     @basedir = File.expand_path("../../files", __FILE__)
@@ -20,12 +20,12 @@ describe ZabbixRubyClient do
   end
 
   it "initialize the client object" do
-    @zrc = ZabbixRubyClient.new(@config, @tasks)
+    @zrc = ZabbixRubyClient::Runner.new(@config, @tasks)
     expect(@zrc.instance_variable_get(:@config)['host']).to eq 'localhost'
   end
 
   it "creates dirs if needed" do
-    @zrc = ZabbixRubyClient.new(@config, @tasks)
+    @zrc = ZabbixRubyClient::Runner.new(@config, @tasks)
     expect(Dir.exists? "logs").to be_true
   end
 

@@ -1,6 +1,6 @@
 require "zabbix-ruby-client/logger"
 
-class ZabbixRubyClient
+module ZabbixRubyClient
   class Data
 
     def initialize(host)

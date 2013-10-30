@@ -1,4 +1,4 @@
-class ZabbixRubyClient
+module ZabbixRubyClient
   module Plugins
     extend self
 
