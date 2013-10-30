@@ -35,14 +35,30 @@ class ZabbixRubyClient
         say "No Gemfile found", :red
         abort
       end
-      zrc = ZabbixRubyClient.new(options[:configfile],options[:taskfile])
+      config = YAML::load_file(options[:config_file])
+      if File.exists? options[:taskfile]
+        tasks = YAML::load_file(options[:taskfile])
+      else
+        tasks = config['tasks']
+      end
+      config['server'] = File.basename(config_file,'.yml')
+      config['taskfile'] = File.basename(task_file,'.yml')
+      zrc = ZabbixRubyClient.new(config, tasks)
       zrc.collect
       zrc.show
     end
 
     desc "upload", "Collects and sends data to the zabbix server"
     def upload
-      zrc = ZabbixRubyClient.new(options[:configfile],options[:taskfile])
+      config = YAML::load_file(options[:config_file])
+      if File.exists? options[:taskfile]
+        tasks = YAML::load_file(options[:taskfile])
+      else
+        tasks = config['tasks']
+      end
+      config['server'] = File.basename(config_file,'.yml')
+      config['taskfile'] = File.basename(task_file,'.yml')
+      zrc = ZabbixRubyClient.new(config, tasks)
       zrc.collect
       zrc.upload
     end

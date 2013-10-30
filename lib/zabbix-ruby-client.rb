@@ -9,37 +9,22 @@ class ZabbixRubyClient
 
   PLUGINDIR = File.expand_path("../zabbix-ruby-client/plugins", __FILE__)
 
-  def initialize(config_file, task_file)
-    begin
-      @config ||= YAML::load_file(config_file)
-      if File.exists? task_file
-        @tasks ||= YAML::load_file(task_file)
-      else
-        @tasks = @config["plugins"]
-      end
-    rescue Exception => e
-      puts "Configuration file cannot be read"
-      puts e.message
-      return
-    end
-    @config["server"] = File.basename(config_file,'.yml')
+  def initialize(config, tasks)
+    @config = config
+    @tasks = tasks
 
     @store = Store.new(
       @config['datadir'],
       @config['zabbix']['host'],
-      File.basename(task_file,'.yml'),
+      @config['taskfile'],
       @config['keepdata']
     )
 
     @data = ZabbixRubyClient::Data.new(@config['host'])
-    @logsdir = makedir(@config['logsdir'],'logs')
-    Plugins.scan_dirs([ PLUGINDIR ] + @config["plugindirs"])
+    @logsdir = makedir(@config['logsdir'], 'logs')
+    Plugins.scan_dirs([ PLUGINDIR ] + @config['plugindirs'])
     Log.set_logger(File.join(@logsdir, 'zrc.log'), 'info')
     Log.debug @config.inspect
-  end
-
-  def load_plugins(dirs)
-    ZabbixRubyClient::Registry.new(dirs)
   end
 
   def collect
