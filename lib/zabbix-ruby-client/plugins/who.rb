@@ -1,6 +1,6 @@
 require "zabbix-ruby-client/logger"
 
-class ZabbixRubyClient
+module ZabbixRubyClient
   module Plugins
     module Who
       extend self

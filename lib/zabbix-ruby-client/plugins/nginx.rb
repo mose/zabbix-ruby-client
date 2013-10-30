@@ -1,7 +1,7 @@
 # uses http://wiki.nginx.org/HttpStubStatusModule
 require "zabbix-ruby-client/logger"
 
-class ZabbixRubyClient
+module ZabbixRubyClient
   module Plugins
     module Nginx
       extend self

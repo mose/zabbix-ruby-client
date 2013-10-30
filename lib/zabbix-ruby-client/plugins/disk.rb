@@ -3,7 +3,7 @@
 # http://www.mjmwired.net/kernel/Documentation/iostats.txt
 require "zabbix-ruby-client/logger"
 
-class ZabbixRubyClient
+module ZabbixRubyClient
   module Plugins
     module Disk
       extend self

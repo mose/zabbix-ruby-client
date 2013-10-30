@@ -1,6 +1,6 @@
 require "open-uri"
 
-class ZabbixRubyClient
+module ZabbixRubyClient
   module Plugins
     module Apache
       extend self

@@ -2,7 +2,7 @@
 # http://juliano.info/en/Blog:Memory_Leak/Understanding_the_Linux_load_average
 require "zabbix-ruby-client/logger"
 
-class ZabbixRubyClient
+module ZabbixRubyClient
   module Plugins
     module Load
       extend self

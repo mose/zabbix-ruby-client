@@ -15,9 +15,9 @@ module ZabbixRubyClient
 
       @data = ZabbixRubyClient::Data.new(@config['host'])
       @logsdir = makedir(@config['logsdir'], 'logs')
-      Plugins.scan_dirs([ PLUGINDIR ] + @config['plugindirs'])
-      Log.set_logger(File.join(@logsdir, 'zrc.log'), 'info')
-      Log.debug @config.inspect
+      ZabbixRubyClient::Plugins.scan_dirs([ PLUGINDIR ] + @config['plugindirs'])
+      ZabbixRubyClient::Log.set_logger(File.join(@logsdir, 'zrc.log'), 'info')
+      ZabbixRubyClient::Log.debug @config.inspect
     end
 
     def collect

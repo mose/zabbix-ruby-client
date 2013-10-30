@@ -1,7 +1,7 @@
 # this is a simple version for standalone redis server
 require "zabbix-ruby-client/logger"
 
-class ZabbixRubyClient
+module ZabbixRubyClient
   module Plugins
     module Redis
       extend self
