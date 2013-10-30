@@ -1,3 +1,8 @@
+require "zabbix-ruby-client/store"
+require "zabbix-ruby-client/data"
+require "zabbix-ruby-client/plugins"
+require "zabbix-ruby-client/logger"
+
 module ZabbixRubyClient
 
   class Runner
