@@ -1,6 +1,8 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.0.18 - wip
+
 ### v0.0.17 - 2013-10-31
 
 * bugfix on requires
