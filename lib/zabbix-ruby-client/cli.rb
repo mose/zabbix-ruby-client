@@ -35,7 +35,6 @@ module ZabbixRubyClient
         say "No Gemfile found", :red
         abort
       end
-      puts options
       config = YAML::load_file(options[:configfile])
       if File.exists? options[:taskfile]
         tasks = YAML::load_file(options[:taskfile])

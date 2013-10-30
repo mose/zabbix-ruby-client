@@ -3,6 +3,7 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.16 - wip
 
+* _if you have custom plugins_ the class ZabbixRubyClient is now a module just for namespacing, update your code! 
 * fix the logger
 * refactoring and more tests
 * adding travis and coverall to stimulate testing, also added gemnasium
