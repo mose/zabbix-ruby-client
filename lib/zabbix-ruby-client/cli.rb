@@ -1,6 +1,5 @@
 require "thor"
-require "yaml"
-require "zabbix-ruby-client/runner"
+require "zabbix-ruby-client"
 
 module ZabbixRubyClient
 
