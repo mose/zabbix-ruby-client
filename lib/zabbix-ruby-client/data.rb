@@ -10,10 +10,12 @@ module ZabbixRubyClient
     end
 
     def run_plugin(plugin, args = nil)
-      Plugins.load(plugin) || logger.error( "Plugin #{plugin} not found.")
+      Plugins.load(plugin) || ZabbixRubyClient::Log.error( "Plugin #{plugin} not found.")
       if Plugins.loaded[plugin]
         begin
-          @items += Plugins.loaded[plugin].send(:collect, @host, *args)
+          if Plugins.loaded[plugin].respond_to?(:collect)
+            @items += Plugins.loaded[plugin].send(:collect, @host, *args)
+          end
           if Plugins.loaded[plugin].respond_to?(:discover)
             key, value = Plugins.loaded[plugin].send(:discover, *args)
             @discover[key] ||= []
