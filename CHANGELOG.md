@@ -3,6 +3,9 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.18 - wip
 
+* made plugin collection optional, so you can have a plugin for only discovery
+* more tests and coverage
+
 ### v0.0.17 - 2013-10-31
 
 * bugfix on requires
