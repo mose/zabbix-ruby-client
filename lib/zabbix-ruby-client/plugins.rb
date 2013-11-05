@@ -1,3 +1,5 @@
+require "zabbix-ruby-client"
+
 module ZabbixRubyClient
   module Plugins
     extend self

@@ -1,4 +1,5 @@
 require "zabbix-ruby-client/logger"
+require "zabbix-ruby-client/plugins"
 
 module ZabbixRubyClient
   class Data

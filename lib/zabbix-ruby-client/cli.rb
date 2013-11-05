@@ -1,5 +1,5 @@
 require "thor"
-require "zabbix-ruby-client/runner"
+require "zabbix-ruby-client"
 
 module ZabbixRubyClient
 
@@ -35,14 +35,14 @@ module ZabbixRubyClient
         say "No Gemfile found", :red
         abort
       end
-      config = YAML::load_file(options[:config_file])
+      config = YAML::load_file(options[:configfile])
       if File.exists? options[:taskfile]
         tasks = YAML::load_file(options[:taskfile])
       else
-        tasks = config['tasks']
+        tasks = config['plugins']
       end
-      config['server'] = File.basename(config_file,'.yml')
-      config['taskfile'] = File.basename(task_file,'.yml')
+      config['server'] = File.basename(options[:configfile],'.yml')
+      config['taskfile'] = File.basename(options[:taskfile],'.yml')
       zrc = ZabbixRubyClient::Runner.new(config, tasks)
       zrc.collect
       zrc.show
@@ -50,14 +50,14 @@ module ZabbixRubyClient
 
     desc "upload", "Collects and sends data to the zabbix server"
     def upload
-      config = YAML::load_file(options[:config_file])
+      config = YAML::load_file(options[:configfile])
       if File.exists? options[:taskfile]
         tasks = YAML::load_file(options[:taskfile])
       else
-        tasks = config['tasks']
+        tasks = config['plugins']
       end
-      config['server'] = File.basename(config_file,'.yml')
-      config['taskfile'] = File.basename(task_file,'.yml')
+      config['server'] = File.basename(options[:configfile],'.yml')
+      config['taskfile'] = File.basename(options[:taskfile],'.yml')
       zrc = ZabbixRubyClient::Runner.new(config, tasks)
       zrc.collect
       zrc.upload
