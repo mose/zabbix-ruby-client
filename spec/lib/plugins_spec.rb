@@ -19,7 +19,8 @@ describe ZabbixRubyClient::Plugins do
 
   it "loading dirs works" do
     result = { "sample" => File.join(@plugindir, "sample.rb"),
-               "sample_discover" => File.join(@plugindir, "sample_discover.rb")}
+               "sample_discover" => File.join(@plugindir, "sample_discover.rb"),
+               "sample_buggy" => File.join(@plugindir, "sample_buggy.rb")}
     expect(ZabbixRubyClient::Plugins.instance_variable_get(:@available)).to eq result 
   end
 

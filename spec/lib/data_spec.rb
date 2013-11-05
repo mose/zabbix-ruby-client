@@ -12,32 +12,48 @@ describe ZabbixRubyClient::Data do
     ZabbixRubyClient::Plugins.scan_dirs([plugindir])
   end
 
+  before :each do
+    @data = ZabbixRubyClient::Data.new("host")
+  end
+
   it "initializes with host" do
-    data = ZabbixRubyClient::Data.new("host")
-    expect(data.instance_variable_get(:@host)).to eq "host"
+    expect(@data.instance_variable_get(:@host)).to eq "host"
   end
 
   it "runs a plugin" do
-    data = ZabbixRubyClient::Data.new("host")
-    plugin = "sample"
     items = ["localhost sample[foo] 123456789 42"]
-    data.run_plugin(plugin)
-    expect(data.instance_variable_get(:@items)).to eq items
+    @data.run_plugin("sample")
+    expect(@data.instance_variable_get(:@items)).to eq items
   end
 
   it "logs an error when plugin is not found" do
-    data = ZabbixRubyClient::Data.new("host")
-    plugin = "unknown_plugin"
-    expect(ZabbixRubyClient::Log).to receive(:error).with("Plugin #{plugin} not found.")
-    data.run_plugin(plugin)
+    expect(ZabbixRubyClient::Log).to receive(:error).with("Plugin unknown_plugin not found.")
+    @data.run_plugin("unknown_plugin")
   end
 
   it "runs a plugin that only has discovery" do
-    data = ZabbixRubyClient::Data.new("host")
-    plugin = "sample_discover"
     discovery = { "sample.discover" => [["{\"{#SAMPLE}\": \"sample_arg\"}" ]]}
-    data.run_plugin(plugin, 'sample_arg')
-    expect(data.instance_variable_get(:@discover)).to eq discovery
+    @data.run_plugin("sample_discover", 'sample_arg')
+    expect(@data.instance_variable_get(:@discover)).to eq discovery
+  end
+
+  it "ignores buggy plugins" do
+    expect(@data.run_plugin("sample_buggy")).not_to raise_exception
+  end
+
+  it "logs buggy plugins" do
+    expect(ZabbixRubyClient::Log).to receive(:fatal).with("Oops")
+    expect(ZabbixRubyClient::Log).to receive(:fatal).with("Exception")
+    @data.run_plugin("sample_buggy")
+  end
+
+  it "merges collected and discovered data" do
+    Time.stub!(:now).and_return("123456789")
+    @data.run_plugin("sample")
+    @data.run_plugin("sample_discover")
+    result = ["host sample.discover 123456789 { \"data\": [ {\"{#SAMPLE}\": \"\"} ] }",
+              "localhost sample[foo] 123456789 42"]
+    expect(@data.merge).to eq result
   end
 
 end

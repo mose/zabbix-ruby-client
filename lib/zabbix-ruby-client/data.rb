@@ -23,8 +23,8 @@ module ZabbixRubyClient
             @discover[key] << [ value ]
           end
         rescue Exception => e
-          Log.fatal "Oops"
-          Log.fatal e.message
+          ZabbixRubyClient::Log.fatal "Oops"
+          ZabbixRubyClient::Log.fatal e.message
         end
       end
     end
