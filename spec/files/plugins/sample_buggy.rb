@@ -2,7 +2,7 @@ module SampleBuggy
   extend self
 
   def collect(*args)
-    raise Exception.new
+    raise Exception
   end
 
 end
