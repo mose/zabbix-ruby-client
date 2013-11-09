@@ -20,6 +20,8 @@ module ZabbixRubyClient
         end
       end
 
+    private
+
       def get_info
         info = aptinfo
         if info
