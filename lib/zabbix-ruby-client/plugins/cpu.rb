@@ -37,8 +37,8 @@ module ZabbixRubyClient
         info = cpuinfo
         if info
           back = info.split(/\s+/).map(&:to_i)
-          back[] = back[1] + back[2] + back[3]
-          back[] = back[10] + back[9]
+          back << back[1] + back[2] + back[3]
+          back << back[10] + back[9]
           back
         else
           false
