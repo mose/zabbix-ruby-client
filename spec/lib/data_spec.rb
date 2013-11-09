@@ -18,7 +18,7 @@ describe ZabbixRubyClient::Data do
     @data = ZabbixRubyClient::Data.new("host")
   end
 
-  after :all do 
+  after :all do
     FileUtils.rm_rf @logfile if File.exists? @logfile
   end
 

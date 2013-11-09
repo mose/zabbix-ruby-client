@@ -4,13 +4,13 @@ require 'spec_helper'
 require "zabbix-ruby-client/cli"
 
 describe ZabbixRubyClient::Cli do
-  
+
   before :each do
     @cli = ZabbixRubyClient::Cli.new(
-      [], 
-      { 
-        'configfile' => 'config.yml', 
-        'taskfile' => 'minutely.yml' 
+      [],
+      {
+        'configfile' => 'config.yml',
+        'taskfile' => 'minutely.yml'
       }
     )
     @testdir = File.join('spec','files','test-client')
@@ -18,7 +18,7 @@ describe ZabbixRubyClient::Cli do
       @cli.init(@testdir)
     end
     @oldpwd = Dir.pwd
-    Dir.chdir @testdir 
+    Dir.chdir @testdir
   end
 
   after :each do

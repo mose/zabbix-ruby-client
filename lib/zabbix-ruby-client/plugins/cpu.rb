@@ -1,4 +1,4 @@
-# for more info check 
+# for more info check
 # http://www.linuxhowtos.org/System/procstat.htm
 # http://juliano.info/en/Blog:Memory_Leak/Understanding_the_Linux_load_average
 require "zabbix-ruby-client/logger"
@@ -10,31 +10,51 @@ module ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        cpuinfo = `cat /proc/stat | grep "^cpu"`
-        if $?.to_i == 0
-          _, user, nice, sys, idle, wait, irq, soft, guest, steal = cpuinfo.split(/\s+/).map(&:to_i)
+        info = get_info
+        if info
+          time = Time.now.to_i
+          back = []
+          back << "#{host} cpu[user] #{time} #{info[1]}"
+          back << "#{host} cpu[nice] #{time} #{info[2]}"
+          back << "#{host} cpu[system] #{time} #{info[3]}"
+          back << "#{host} cpu[iowait] #{time} #{info[4]}"
+          back << "#{host} cpu[irq] #{time} #{info[5]}"
+          back << "#{host} cpu[soft] #{time} #{info[6]}"
+          back << "#{host} cpu[steal] #{time} #{info[7]}"
+          back << "#{host} cpu[guest] #{time} #{info[8]}"
+          back << "#{host} cpu[idle] #{time} #{info[9]}"
+          back << "#{host} cpu[used] #{time} #{info[10]}"
+          back << "#{host} cpu[total] #{time} #{info[11]}"
+          return back
         else
-          Log.warn "Oh you don't have a /proc ?"
           return []
         end
-        used = user + nice + sys
-        total = used + idle
+      end
 
-        time = Time.now.to_i
-        back = []
-        back << "#{host} cpu[user] #{time} #{user}"
-        back << "#{host} cpu[nice] #{time} #{nice}"
-        back << "#{host} cpu[system] #{time} #{sys}"
-        back << "#{host} cpu[iowait] #{time} #{wait}"
-        back << "#{host} cpu[irq] #{time} #{irq}"
-        back << "#{host} cpu[soft] #{time} #{soft}"
-        back << "#{host} cpu[steal] #{time} #{steal}"
-        back << "#{host} cpu[guest] #{time} #{guest}"
-        back << "#{host} cpu[idle] #{time} #{idle}"
-        back << "#{host} cpu[used] #{time} #{used}"
-        back << "#{host} cpu[total] #{time} #{total}"
-        return back
+    private
 
+      def get_info
+        info = cpuinfo
+        if info
+          back = info.split(/\s+/).map(&:to_i)
+          back[] = back[1] + back[2] + back[3]
+          back[] = back[10] + back[9]
+          back
+        else
+          false
+        end
+      end
+
+      def cpuinfo
+        output = `cat /proc/stat | grep "^cpu"`
+        if $?.to_i == 0
+          Log.debug self
+          Log.debug output
+          output
+        else
+          Log.warn "Oh you don't have a /proc ?"
+          false
+        end
       end
 
     end
