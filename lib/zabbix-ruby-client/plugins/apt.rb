@@ -7,19 +7,39 @@ module ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        aptcheck = `/usr/lib/update-notifier/apt-check 2>&1`
-        if $?.to_i == 0
-          security, pending = aptcheck.split(/;/).map(&:to_i)
+        info = get_info
+        if info
+          time = Time.now.to_i
+          back = []
+          back << "#{host} apt[security] #{time} #{info[0]}"
+          back << "#{host} apt[pending] #{time} #{info[1]}"
+          back << "#{host} apt[status] #{time} TODO apt #{info[0]}/#{info[1]}"
+          return back
         else
-          Log.warn "Are you running on ubuntu ?"
           return []
         end
-        time = Time.now.to_i
-        back = []
-        back << "#{host} apt[security] #{time} #{security}"
-        back << "#{host} apt[pending] #{time} #{pending}"
-        back << "#{host} apt[status] #{time} TODO apt #{security}/#{pending}"
-        return back
+      end
+
+      def get_info
+        info = aptinfo
+        if info
+          back = info.split(/;/).map(&:to_i)
+          back
+        else
+          false
+        end
+      end
+
+      def aptinfo
+        output = `/usr/lib/update-notifier/apt-check 2>&1`
+        if $?.to_i == 0
+          Log.debug self
+          Log.debug output
+          output
+        else
+          Log.warn "Oh you don't have apt ?"
+          false
+        end
       end
 
     end
