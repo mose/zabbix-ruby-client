@@ -7,43 +7,63 @@ module ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        meminfo = `cat /proc/meminfo`
-        if $?.to_i == 0
-          info = splitinfo(meminfo)
+        info = get_info
+        if info
+          time = Time.now.to_i
+          back = []
+          back << "#{host} memory[total] #{time} #{info['MemTotal']}"
+          back << "#{host} memory[free] #{time} #{info['MemFree']}"
+          back << "#{host} memory[used] #{time} #{info['MemUsed']}"
+          back << "#{host} memory[percent_used] #{time} #{info['MemPercent']}"
+          back << "#{host} memory[swap_total] #{time} #{info['SwapTotal']}"
+          back << "#{host} memory[swap_free] #{time} #{info['SwapFree']}"
+          back << "#{host} memory[swap_used] #{time} #{info['SwapUsed']}"
+          back << "#{host} memory[swap_percent_used] #{time} #{info['SwapPercent']}"
+          return back
         else
-          Log.warn "Please install sysstat."
           return []
         end
+      end
 
-        mem_total = info["MemTotal"] * 1024
-        mem_free = (info['MemFree'] + info['Buffers'] + info['Cached']) * 1024
-        mem_used = mem_total - mem_free
-        mem_percent = (mem_used / mem_total.to_f * 100).to_i
-        swap_total = info['SwapTotal'] * 1024
-        swap_free = info['SwapFree'] * 1024
-        swap_used = swap_total - swap_free
-        swap_percent = 0
-        unless swap_total == 0
-          swap_percent = (swap_used / swap_total.to_f * 100).to_i
+    private
+
+      def get_info
+        info = meminfo
+        if info
+          back = splitinfo(info)
+          back["MemTotal"] = back["MemTotal"] * 1024
+          back["MemFree"] = (back['MemFree'] + back['Buffers'] + back['Cached']) * 1024
+          back["MemUsed"] = back["MemTotal"] - back["MemFree"]
+          back["MemPercent"] = (back["MemUsed"] / back["MemTotal"].to_f * 100).to_i
+          back['SwapTotal'] = back['SwapTotal'] * 1024
+          back['SwapFree'] = back['SwapFree'] * 1024
+          back['SwapUsed'] = back['SwapTotal'] - back['SwapFree']
+          back['SwapPercent'] = 0
+          unless back['SwapTotal'] == 0
+            back['SwapPercent'] = (back['SwapUsed'] / back['SwapTotal'].to_f * 100).to_i
+          end
+          back
+        else
+          false
         end
+      end
 
-        time = Time.now.to_i
-        back = []
-        back << "#{host} memory[total] #{time} #{mem_total}"
-        back << "#{host} memory[used] #{time} #{mem_used}"
-        back << "#{host} memory[free] #{time} #{mem_free}"
-        back << "#{host} memory[percent_used] #{time} #{mem_percent}"
-        back << "#{host} memory[swap_total] #{time} #{swap_total}"
-        back << "#{host} memory[swap_used] #{time} #{swap_used}"
-        back << "#{host} memory[swap_free] #{time} #{swap_free}"
-        back << "#{host} memory[swap_percent_used] #{time} #{swap_percent}"
-        return back
+      def meminfo
+        output = `cat /proc/meminfo`
+        if $?.to_i == 0
+          Log.debug self
+          Log.debug output
+          output
+        else
+          Log.warn "Oh there is no such device."
+          false
+        end
       end
 
       def splitinfo(info)
         info.split(/\n/).map(&:strip).reduce({}) do |a,line|
           _, key, value = *line.match(/^(\w+):\s+(\d+)\s/)
-          a[key] = value.to_i
+          a[key] = value.to_i if key
           a
         end
       end
