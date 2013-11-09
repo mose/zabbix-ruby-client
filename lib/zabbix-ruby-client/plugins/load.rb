@@ -9,27 +9,44 @@ module ZabbixRubyClient
 
       def collect(*args)
         host = args[0]
-        #cpuinfo = `mpstat | grep " all "`
-        cpuinfo = `cat /proc/loadavg`
-        if $?.to_i == 0
-          one, five, fifteen, procs_t = cpuinfo.split(/\s+/)
+        info = get_info
+        if info
+          time = Time.now.to_i
+          back = []
+          back << "#{host} load[one] #{time} #{info[0]}"
+          back << "#{host} load[five] #{time} #{info[1]}"
+          back << "#{host} load[fifteen] #{time} #{info[2]}"
+          back << "#{host} load[procs] #{time} #{info[3]}"
+          return back
         else
-          Log.warn "Oh you don't have a /proc ?"
           return []
         end
-
-        procs, _ = procs_t.split(/\//)
-
-        time = Time.now.to_i
-        back = []
-        back << "#{host} load[one] #{time} #{one}"
-        back << "#{host} load[five] #{time} #{five}"
-        back << "#{host} load[fifteen] #{time} #{fifteen}"
-        back << "#{host} load[procs] #{time} #{procs}"
-        return back
-
       end
 
+    private
+
+      def get_info
+        info = loadinfo
+        if info
+          back = info.split(/\s+/)
+          back[3] = back[3].split(/\//)[0]
+          back
+        else
+          false
+        end
+      end
+
+      def loadinfo
+        output = `cat /proc/loadavg`
+        if $?.to_i == 0
+          Log.debug self
+          Log.debug output
+          output
+        else
+          Log.warn "Oh you don't have /proc ?"
+          false
+        end
+      end
     end
   end
 end
