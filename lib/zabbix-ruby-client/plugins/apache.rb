@@ -32,7 +32,7 @@ module ZabbixRubyClient
         back << "#{host} apache[c_log] #{time} #{ret["Score"]["L"]}"
         back << "#{host} apache[c_read] #{time} #{ret["Score"]["R"]}"
         back << "#{host} apache[c_send] #{time} #{ret["Score"]["W"]}"
-        back << "#{host} apache[c_start] #{time}#{ret["Score"]["S"]}"
+        back << "#{host} apache[c_start] #{time} #{ret["Score"]["S"]}"
         return back
       end
 
