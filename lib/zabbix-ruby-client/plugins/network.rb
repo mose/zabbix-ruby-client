@@ -8,26 +8,22 @@ module ZabbixRubyClient
       def collect(*args)
         host = args[0]
         interface = args[1]
-        netinfo = `grep "#{interface}: " /proc/net/dev`
-        if $?.to_i == 0
-          _, _, rx_ok, rx_packets, rx_err, rx_drop, _, _, _, _, tx_ok, tx_packets, tx_err, tx_drop, _, _, _, _  = netinfo.split(/\s+/)
+        info = get_info(interface)
+        if info
+          time = Time.now.to_i
+          back = []
+          back << "#{host} net.rx_ok[#{interface}] #{time} #{info[2]}"
+          back << "#{host} net.rx_packets[#{interface}] #{time} #{info[3]}"
+          back << "#{host} net.rx_err[#{interface}] #{time} #{info[4]}"
+          back << "#{host} net.rx_drop[#{interface}] #{time} #{info[5]}"
+          back << "#{host} net.tx_ok[#{interface}] #{time} #{info[10]}"
+          back << "#{host} net.tx_packets[#{interface}] #{time} #{info[11]}"
+          back << "#{host} net.tx_err[#{interface}] #{time} #{info[12]}"
+          back << "#{host} net.tx_drop[#{interface}] #{time} #{info[13]}"
+          return back
         else
-          Log.warn "proc not found."
           return []
         end
-
-        time = Time.now.to_i
-        back = []
-        back << "#{host} net.rx_ok[#{interface}] #{time} #{rx_ok}"
-        back << "#{host} net.rx_packets[#{interface}] #{time} #{rx_packets}"
-        back << "#{host} net.rx_err[#{interface}] #{time} #{rx_err}"
-        back << "#{host} net.rx_drop[#{interface}] #{time} #{rx_drop}"
-        back << "#{host} net.tx_ok[#{interface}] #{time} #{tx_ok}"
-        back << "#{host} net.tx_packets[#{interface}] #{time} #{tx_packets}"
-        back << "#{host} net.tx_err[#{interface}] #{time} #{tx_err}"
-        back << "#{host} net.tx_drop[#{interface}] #{time} #{tx_drop}"
-        return back
-
       end
 
       def discover(*args)
@@ -35,6 +31,29 @@ module ZabbixRubyClient
         [ "net.if.discovery", "{\"{#NET_IF}\": \"#{interface}\"}" ]
       end
 
+    private
+
+      def get_info(interface)
+        info = netinfo(interface)
+        if info
+          info.split(/\s+/)
+        else
+          false
+        end
+      end
+
+      def netinfo(interface)
+        output = `grep "#{interface}: " /proc/net/dev`
+        if $?.to_i == 0
+          Log.debug self
+          Log.debug output
+          output
+        else
+          Log.warn "Oh you don't have /proc ?"
+          false
+        end
+      end
+      
     end
   end
 end

@@ -47,6 +47,7 @@ module ZabbixRubyClient
           false
         end
       end
+      
     end
   end
 end

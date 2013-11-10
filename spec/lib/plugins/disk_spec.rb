@@ -84,4 +84,10 @@ describe ZabbixRubyClient::Plugins::Disk do
     expect(data).to eq expected
   end
 
+  it "declares discoverable volumes" do
+    expected = [ "disk.dev.discovery", '{"{#DISK_DEVICE}": "sda1", "{#DISK_MOUNT}": "lvm1"}' ]
+    data = ZabbixRubyClient::Plugins::Disk.send(:discover, '', 'lvm1', 'sda1')
+    expect(data).to eq expected
+  end
+
 end
