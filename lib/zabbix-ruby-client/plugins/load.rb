@@ -1,6 +1,5 @@
 # for more info check 
 # http://juliano.info/en/Blog:Memory_Leak/Understanding_the_Linux_load_average
-require "zabbix-ruby-client/logger"
 require "zabbix-ruby-client/plugin_base"
 
 module ZabbixRubyClient

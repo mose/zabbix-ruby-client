@@ -5,8 +5,7 @@ module ZabbixRubyClient
   module Plugins
     module Memory
       extend self
-      
-      include ZabbixRubyClient::PluginBase
+      extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args[0]

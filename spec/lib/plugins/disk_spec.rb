@@ -21,11 +21,6 @@ describe ZabbixRubyClient::Plugins::Disk do
     ZabbixRubyClient::Plugins::Disk.send(:diskinfo, 'xx')
   end
 
-  it "launches a command to get disk io" do
-    expect(ZabbixRubyClient::Plugins::Disk).to receive(:`).with('cat /proc/diskstats | grep " xx "')
-    ZabbixRubyClient::Plugins::Disk.send(:diskio, 'xx')
-  end
-
   it "prepare data to be usable" do
     expected = [
       "/dev/sda2", 
@@ -53,7 +48,7 @@ describe ZabbixRubyClient::Plugins::Disk do
     stubfile_df = File.expand_path('../../../../spec/files/system/df', __FILE__)
     stubfile_io = File.expand_path('../../../../spec/files/system/diskstats', __FILE__)
     ZabbixRubyClient::Plugins::Disk.stub(:diskinfo).and_return(File.read(stubfile_df))
-    ZabbixRubyClient::Plugins::Disk.stub(:diskio).and_return(File.read(stubfile_io))
+    ZabbixRubyClient::Plugins::Disk.stub(:getline).and_return(File.read(stubfile_io))
     data = ZabbixRubyClient::Plugins::Disk.send(:get_info, 0, 0)
     expect(data).to eq expected
   end
@@ -78,7 +73,7 @@ describe ZabbixRubyClient::Plugins::Disk do
     stubfile_df = File.expand_path('../../../../spec/files/system/df', __FILE__)
     stubfile_io = File.expand_path('../../../../spec/files/system/diskstats', __FILE__)
     ZabbixRubyClient::Plugins::Disk.stub(:diskinfo).and_return(File.read(stubfile_df))
-    ZabbixRubyClient::Plugins::Disk.stub(:diskio).and_return(File.read(stubfile_io))
+    ZabbixRubyClient::Plugins::Disk.stub(:getline).and_return(File.read(stubfile_io))
     Time.stub(:now).and_return("123456789")
     data = ZabbixRubyClient::Plugins::Disk.send(:collect, 'local', 'xxx', 'xxx')
     expect(data).to eq expected

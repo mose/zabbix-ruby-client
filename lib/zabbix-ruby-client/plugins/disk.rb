@@ -8,8 +8,7 @@ module ZabbixRubyClient
   module Plugins
     module Disk
       extend self
-
-      include ZabbixRubyClient::PluginBase
+      extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args[0]
@@ -53,7 +52,7 @@ module ZabbixRubyClient
         info = diskinfo(disk)
         if info
           back = info.split(/\s+/)
-          io = diskio(device)
+          io = getline("/proc/diskstats", " #{device} ")
           if io
             back += io.split(/\s+/)
           end
@@ -65,18 +64,6 @@ module ZabbixRubyClient
 
       def diskinfo(disk)
         output = `df | grep "#{disk}"`
-        if $?.to_i == 0
-          Log.debug self
-          Log.debug output
-          output
-        else
-          Log.warn "Oh there is no such device."
-          false
-        end
-      end
-
-      def diskio(device)
-        output = `cat /proc/diskstats | grep " #{device} "`
         if $?.to_i == 0
           Log.debug self
           Log.debug output
