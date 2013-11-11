@@ -2,11 +2,14 @@
 # http://www.xaprb.com/blog/2010/01/09/how-linux-iostat-computes-its-results/
 # http://www.mjmwired.net/kernel/Documentation/iostats.txt
 require "zabbix-ruby-client/logger"
+require "zabbix-ruby-client/plugin_base"
 
 module ZabbixRubyClient
   module Plugins
     module Disk
       extend self
+
+      include ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args[0]

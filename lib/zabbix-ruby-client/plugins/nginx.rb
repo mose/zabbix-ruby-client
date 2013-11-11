@@ -3,7 +3,7 @@ require "zabbix-ruby-client/logger"
 
 module ZabbixRubyClient
   module Plugins
-    module Nginx
+    module Nginx < ZabbixRubyClient::PluginBase
       extend self
 
       def collect(*args)

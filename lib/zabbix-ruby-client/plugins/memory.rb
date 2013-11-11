@@ -1,9 +1,12 @@
 require "zabbix-ruby-client/logger"
+require "zabbix-ruby-client/plugin_base"
 
 module ZabbixRubyClient
   module Plugins
     module Memory
       extend self
+      
+      include ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args[0]

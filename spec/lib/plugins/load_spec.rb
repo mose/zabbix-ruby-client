@@ -16,15 +16,10 @@ describe ZabbixRubyClient::Plugins::Load do
     FileUtils.rm_rf @logfile if File.exists? @logfile
   end
 
-  it "launches a command to get apt stats" do
-    expect(ZabbixRubyClient::Plugins::Load).to receive(:`).with('cat /proc/loadavg')
-    ZabbixRubyClient::Plugins::Load.send(:loadinfo)
-  end
-
   it "prepare data to be usable" do
     expected = ["0.89", "1.29", "1.05", "2", "2768"]
     stubfile = File.expand_path('../../../../spec/files/system/loadavg', __FILE__)
-    ZabbixRubyClient::Plugins::Load.stub(:loadinfo).and_return(File.read(stubfile))
+    ZabbixRubyClient::Plugins::Load.stub(:getline).and_return(File.read(stubfile).strip)
     data = ZabbixRubyClient::Plugins::Load.send(:get_info)
     expect(data).to eq expected
   end
@@ -37,7 +32,7 @@ describe ZabbixRubyClient::Plugins::Load do
       "local load[procs] 123456789 2"
     ]
     stubfile = File.expand_path('../../../../spec/files/system/loadavg', __FILE__)
-    ZabbixRubyClient::Plugins::Load.stub(:loadinfo).and_return(File.read(stubfile))
+    ZabbixRubyClient::Plugins::Load.stub(:getline).and_return(File.read(stubfile))
     Time.stub(:now).and_return("123456789")
     data = ZabbixRubyClient::Plugins::Load.send(:collect, 'local')
     expect(data).to eq expected

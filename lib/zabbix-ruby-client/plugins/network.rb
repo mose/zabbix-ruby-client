@@ -1,9 +1,11 @@
 require "zabbix-ruby-client/logger"
+require "zabbix-ruby-client/plugin_base"
 
 module ZabbixRubyClient
   module Plugins
     module Network
       extend self
+      extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args[0]
@@ -34,22 +36,10 @@ module ZabbixRubyClient
     private
 
       def get_info(interface)
-        info = netinfo(interface)
+        info = getline("/proc/net/dev", "#{interface}: ")
         if info
           info.split(/\s+/)
         else
-          false
-        end
-      end
-
-      def netinfo(interface)
-        output = `grep "#{interface}: " /proc/net/dev`
-        if $?.to_i == 0
-          Log.debug self
-          Log.debug output
-          output
-        else
-          Log.warn "Oh you don't have /proc ?"
           false
         end
       end

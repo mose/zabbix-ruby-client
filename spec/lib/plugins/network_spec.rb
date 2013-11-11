@@ -17,11 +17,6 @@ describe ZabbixRubyClient::Plugins::Network do
     FileUtils.rm_rf @logfile if File.exists? @logfile
   end
 
-  it "launches a command to get netork info" do
-    expect(ZabbixRubyClient::Plugins::Network).to receive(:`).with('grep "eth0: " /proc/net/dev')
-    ZabbixRubyClient::Plugins::Network.send(:netinfo, 'eth0')
-  end
-
   it "prepare data to be usable" do
     expected = [
       "", 
@@ -43,8 +38,8 @@ describe ZabbixRubyClient::Plugins::Network do
       "0", 
       "0"
     ]
-    stubfile_df = File.expand_path('../../../../spec/files/system/net_dev', __FILE__)
-    ZabbixRubyClient::Plugins::Network.stub(:netinfo).and_return(File.read(stubfile_df))
+    stubfile = File.expand_path('../../../../spec/files/system/net_dev', __FILE__)
+    ZabbixRubyClient::Plugins::Network.stub(:getline).and_return(File.read(stubfile))
     data = ZabbixRubyClient::Plugins::Network.send(:get_info, 'eth0')
     expect(data).to eq expected
   end
@@ -60,8 +55,8 @@ describe ZabbixRubyClient::Plugins::Network do
       "local net.tx_err[eth0] 123456789 0", 
       "local net.tx_drop[eth0] 123456789 0"
     ]
-    stubfile_df = File.expand_path('../../../../spec/files/system/net_dev', __FILE__)
-    ZabbixRubyClient::Plugins::Network.stub(:netinfo).and_return(File.read(stubfile_df))
+    stubfile = File.expand_path('../../../../spec/files/system/net_dev', __FILE__)
+    ZabbixRubyClient::Plugins::Network.stub(:getline).and_return(File.read(stubfile))
     Time.stub(:now).and_return("123456789")
     data = ZabbixRubyClient::Plugins::Network.send(:collect, 'local', 'eth0')
     expect(data).to eq expected
