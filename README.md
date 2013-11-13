@@ -198,10 +198,10 @@ ListenIP 127.0.0.1
 ## Todo
 
 * read /proc rather than rely on installed tools (done)
-* write tests
+* write tests (almost done)
 * add more plugins
   * memcache
-  * redis
+  * redis (done)
   * mysql master/slave
   * monit
   * passenger
@@ -214,7 +214,7 @@ ListenIP 127.0.0.1
   * disk occupation (done)
 * try to work out a way to create host/graphs/alerts from the client using Zabbix API
 * verify compatibility with ruby 1.9 (done)
-* create a resend system that will store timed data on client if connection to server fails, and will send pending (missed) data on next batch.
+* create a resend system that will store timed data on client if connection to server fails, and will send pending (missed) data on next batch. (done)
 
 
 ## Contributing
