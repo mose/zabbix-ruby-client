@@ -8,7 +8,7 @@ module ZabbixRubyClient
       def collect(*args)
         host = args[0]
         psqlargs = args[1]
-        dbname = args[1]
+        dbname = args[2]
         # be sure to have this in the config file
         # args: [ "-U username -h localhost", "dbname" ]
         # and setup username in a ~/.pgpass (0600) file for the zrc user
