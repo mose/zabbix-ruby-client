@@ -159,7 +159,7 @@ I first created on both sides an autossh user with no console and no password:
 sudo useradd -m -r -s /bin/false -d /usr/local/zabtunnel zabtunnel
 ```
 
-On the zabbix server I created a key that I transfered to the clients in `/usr/local/zabtunnel/,ssh/authorized_keys`
+On the zabbix server I created a key that I transfered to the clients in `/usr/local/zabtunnel/.ssh/authorized_keys`
 
 ```
 sudo su -s /bin/bash - zabtunnel
