@@ -3,8 +3,9 @@ require "zabbix-ruby-client/logger"
 
 module ZabbixRubyClient
   module Plugins
-    module Nginx < ZabbixRubyClient::PluginBase
+    module Nginx
       extend self
+      extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args[0]
