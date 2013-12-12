@@ -3,6 +3,7 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.18 - wip
 
+* added a postgres plugin (per database)
 * refactoring of plugins
 * fixed typo on count of start processes in apache plugin
 * made plugin collection optional, so you can have a plugin for only discovery

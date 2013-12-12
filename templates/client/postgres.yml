@@ -1,0 +1,3 @@
+---
+- name: postgres
+  args: [ "-U username -h localhost", "dbname" ]
