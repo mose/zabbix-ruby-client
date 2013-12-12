@@ -24,7 +24,7 @@ module ZabbixRubyClient
         time = Time.now.to_i
         back = []
         status.each do |e,v|
-          back << "#{host} mysql.status[#{e}] #{time} #{v}"
+          back << "#{host} postgres[#{dbname},#{e}] #{time} #{v}"
         end
         return back
       end
