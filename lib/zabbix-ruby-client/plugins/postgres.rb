@@ -24,9 +24,14 @@ module ZabbixRubyClient
         time = Time.now.to_i
         back = []
         status.each do |e,v|
-          back << "#{host} postgres[#{dbname},#{e}] #{time} #{v}"
+          back << "#{host} postgres.#{e}[#{dbname}] #{time} #{v}"
         end
         return back
+      end
+
+      def discover(*args)
+        dbname = args[1]
+        [ "postgres.db.discovery", "{\"{#DBNAME}\": \"#{dbname}\"}" ]
       end
 
       def get_status(status)
