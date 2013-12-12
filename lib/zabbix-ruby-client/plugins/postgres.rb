@@ -13,7 +13,7 @@ module ZabbixRubyClient
         # args: [ "-U username -h localhost", "dbname" ]
         # and setup username in a ~/.pgpass (0600) file for the zrc user
         # localhost:5432:dbname:username:password
-        psqlstatus = `psql #{psqlargs} -A -t -c "select * from pg_stat_database where datname='#{dname}'" #{dbname}`
+        psqlstatus = `psql #{psqlargs} -A -t -c "select * from pg_stat_database where datname='#{dbname}'" #{dbname}`
         if $?.to_i == 0
           status = get_status(psqlstatus)
         else
