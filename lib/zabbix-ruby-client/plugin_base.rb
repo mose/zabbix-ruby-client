@@ -13,14 +13,16 @@ module ZabbixRubyClient
     def getline(file, pattern=false)
       if File.readable? file
         File.open(file,'r') do |f|
-          line = f.gets.strip
-          if pattern
-            if Regexp.new(pattern).match line
-              Log.debug "File #{file}: #{line}"
+          f.each do |l|
+            line = l.strip
+            if pattern
+              if Regexp.new(pattern).match line
+                Log.debug "File #{file}: #{line}"
+                return line
+              end
+            else
               return line
             end
-          else
-            return line
           end
         end
         Log.warn "File #{file}: pattern \"#{pattern}\" not found."
