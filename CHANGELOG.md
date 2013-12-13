@@ -1,6 +1,8 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.0.19 - wip
+
 ### v0.0.18 - 2013-12-13
 
 * total fix on CPU usage plugin
