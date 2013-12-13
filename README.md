@@ -91,7 +91,7 @@ There are a set of standart plugins included in the package, aimed at linux syst
   * sysinfo (uses uname -a) is populating the host info in the inventory, and should be ran at setup and/or monthly [sysinfo_tpl](master/zabbix-templates/sysinfo_tpl.xml)
 * apache (depends on mod_status with status_extended on) [apache_tpl](master/zabbix-templates/apache_tpl.xml)
 * mysql (uses mysqladmin extended-status) [mysql_tpl](master/zabbix-templates/mysql_tpl.xml)
-* postgres (uses psql and pg_stat_database)
+* postgres (uses psql and pg_stat_database) [postgres_tpl](master/zabbix-templates/postgres_tpl.xml)
   * best is to use a .pgpass file see http://www.postgresql.org/docs/9.0/interactive/libpq-pgpass.html
 * nginx (requires httpStubStatus nginx module) [nginx_tpl](master/zabbix-templates/nginx_tpl.xml)
 * redis (uses redis-cli info) [redis_tpl](master/zabbix-templates/redis_tpl.xml)
@@ -200,25 +200,19 @@ ListenIP 127.0.0.1
 
 ## Todo
 
-* read /proc rather than rely on installed tools (done)
-* write tests (almost done)
+* improve templates for graphs
 * add more plugins
   * memcache
-  * redis (done)
   * mysql master/slave
+  * postgres replication
   * monit
   * passenger
-  * nginx (done)
   * logged users
   * denyhosts
   * postfix
   * sendgrid
   * airbrake
-  * disk occupation (done)
 * try to work out a way to create host/graphs/alerts from the client using Zabbix API
-* verify compatibility with ruby 1.9 (done)
-* create a resend system that will store timed data on client if connection to server fails, and will send pending (missed) data on next batch. (done)
-
 
 ## Contributing
 
