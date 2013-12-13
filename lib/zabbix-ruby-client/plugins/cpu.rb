@@ -7,52 +7,41 @@ module ZabbixRubyClient
   module Plugins
     module Cpu
       extend self
+      extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args[0]
         info = get_info
+        back = []
         if info
           time = Time.now.to_i
-          back = []
-          back << "#{host} cpu[user] #{time} #{info[1]}"
-          back << "#{host} cpu[nice] #{time} #{info[2]}"
-          back << "#{host} cpu[system] #{time} #{info[3]}"
-          back << "#{host} cpu[iowait] #{time} #{info[4]}"
-          back << "#{host} cpu[irq] #{time} #{info[5]}"
-          back << "#{host} cpu[soft] #{time} #{info[6]}"
-          back << "#{host} cpu[steal] #{time} #{info[7]}"
-          back << "#{host} cpu[guest] #{time} #{info[8]}"
-          back << "#{host} cpu[idle] #{time} #{info[9]}"
-          back << "#{host} cpu[used] #{time} #{info[10]}"
-          back << "#{host} cpu[total] #{time} #{info[11]}"
-          return back
-        else
-          return []
+          info.each do |k,v|
+            back << "#{host} cpu[#{k}] #{time} #{v}"
+          end
         end
+        back
       end
 
     private
 
       def get_info
-        info = cpuinfo
+        ret = {}
+        info = getline("/proc/stat", "^cpu ")
         if info
           back = info.split(/\s+/).map(&:to_i)
-          back << back[1] + back[2] + back[3]
-          back << back[10] + back[9]
-          back
+          ret["user"] = back[1]
+          ret["nice"] = back[2]
+          ret["system"] = back[3]
+          ret["idle"] = back[4]
+          ret["iowait"] = back[5]
+          ret["irq"] = back[6]
+          ret["soft"] = back[7]
+          ret["steal"] = back[8] || 0
+          ret["guest"] = back[9] || 0
+          ret["used"] = back[1...4].reduce(&:+)
+          ret["total"] = back[1...9].reduce(&:+)
+          ret
         else
-          false
-        end
-      end
-
-      def cpuinfo
-        output = `cat /proc/stat | grep "^cpu"`
-        if $?.to_i == 0
-          Log.debug self
-          Log.debug output
-          output
-        else
-          Log.warn "Oh you don't have a /proc ?"
           false
         end
       end

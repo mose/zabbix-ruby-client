@@ -3,6 +3,7 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.18 - wip
 
+* total fix on CPU usage plugin
 * added a postgres plugin (per database)
 * refactoring of plugins
 * fixed typo on count of start processes in apache plugin
