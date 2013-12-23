@@ -46,8 +46,8 @@ module ZabbixRubyClient
         end
       rescue Exception => e
         @store.keepdata(file)
-        logger.error "Sending failed."
-        logger.error e.message
+        ZabbixRubyClient::Log.error "Sending failed."
+        ZabbixRubyClient::Log.error e.message
       end
     end
 
