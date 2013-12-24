@@ -21,7 +21,7 @@ module ZabbixRubyClient
       @data = ZabbixRubyClient::Data.new(@config['host'])
       @logsdir = makedir(@config['logsdir'], 'logs')
       ZabbixRubyClient::Plugins.scan_dirs([ PLUGINDIR ] + @config['plugindirs'])
-      ZabbixRubyClient::Log.set_logger(File.join(@logsdir, 'zrc.log'), 'info')
+      ZabbixRubyClient::Log.set_logger(File.join(@logsdir, 'zrc.log'), @config['loglevel'])
       ZabbixRubyClient::Log.debug @config.inspect
     end
 
@@ -44,6 +44,7 @@ module ZabbixRubyClient
         if $?.to_i != 0
           @store.keepdata(file)
         end
+        ZabbixRubyClient::Log.debug res
       rescue Exception => e
         @store.keepdata(file)
         ZabbixRubyClient::Log.error "Sending failed."
