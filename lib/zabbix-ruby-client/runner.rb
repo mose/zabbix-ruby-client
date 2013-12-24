@@ -40,8 +40,12 @@ module ZabbixRubyClient
     def upload
       file = @store.record(@data.merge)
       begin
-        res = `#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -p #{@config['zabbix']['port']} -T -i #{file}`
+        command = "#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -p #{@config['zabbix']['port']} -T -i #{file}"
+        res = `#{command}`
         if $?.to_i != 0
+          ZabbixRubyClient::Log.debug "Failed ------"
+          ZabbixRubyClient::Log.debug command
+          ZabbixRubyClient::Log.debug "-------------"
           @store.keepdata(file)
         end
         ZabbixRubyClient::Log.debug res
