@@ -1,7 +1,12 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.0.19 - wip
+### v0.0.20 - wip
+
+### v0.0.19 - 2013-12-24
+
+* fix on logger when zabbix-sender command fails
+* fix on the disk plugin handling of third argument
 
 ### v0.0.18 - 2013-12-13
 

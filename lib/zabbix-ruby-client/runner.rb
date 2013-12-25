@@ -21,7 +21,7 @@ module ZabbixRubyClient
       @data = ZabbixRubyClient::Data.new(@config['host'])
       @logsdir = makedir(@config['logsdir'], 'logs')
       ZabbixRubyClient::Plugins.scan_dirs([ PLUGINDIR ] + @config['plugindirs'])
-      ZabbixRubyClient::Log.set_logger(File.join(@logsdir, 'zrc.log'), 'info')
+      ZabbixRubyClient::Log.set_logger(File.join(@logsdir, 'zrc.log'), @config['loglevel'])
       ZabbixRubyClient::Log.debug @config.inspect
     end
 
@@ -39,15 +39,17 @@ module ZabbixRubyClient
 
     def upload
       file = @store.record(@data.merge)
+      command = "#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -p #{@config['zabbix']['port']} -T -i #{file}"
       begin
-        res = `#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -p #{@config['zabbix']['port']} -T -i #{file}`
-        # if $?.to_i != 0
-        #   @store.keepdata(file)
-        # end
+        res = `#{command}`
       rescue Exception => e
         @store.keepdata(file)
-        logger.error "Sending failed."
-        logger.error e.message
+        ZabbixRubyClient::Log.debug "Failed ------"
+        ZabbixRubyClient::Log.debug command
+        ZabbixRubyClient::Log.debug res
+        ZabbixRubyClient::Log.debug "-------------"
+        ZabbixRubyClient::Log.error "Sending failed."
+        ZabbixRubyClient::Log.error e.message
       end
     end
 

@@ -49,10 +49,10 @@ module ZabbixRubyClient
     private
 
       def get_info(disk, device)
-        info = diskinfo(disk)
+        info = diskinfo(device)
         if info
           back = info.split(/\s+/)
-          io = getline("/proc/diskstats", " #{device} ")
+          io = getline("/proc/diskstats", " #{disk} ")
           if io
             back += io.split(/\s+/)
           end
