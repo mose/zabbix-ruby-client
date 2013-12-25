@@ -23,6 +23,8 @@ module ZabbixRubyClient
       ZabbixRubyClient::Plugins.scan_dirs([ PLUGINDIR ] + @config['plugindirs'])
       ZabbixRubyClient::Log.set_logger(File.join(@logsdir, 'zrc.log'), @config['loglevel'])
       ZabbixRubyClient::Log.debug @config.inspect
+      zabbix_sender_version = `zabbix_sender -V | head -1`.split(/\s/)[2]
+      @is_22 = /v2\.2\./.match zabbix_sender_version
     end
 
     def collect
@@ -43,19 +45,29 @@ module ZabbixRubyClient
       ZabbixRubyClient::Log.debug command
       begin
         res = `#{command}`
-        case $?.to_i
-        when 0
-          ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent"
-        when 1
-          @store.keepdata(file)
-          ZabbixRubyClient::Log.error "zabbix-sender: Sending failed"
-          ZabbixRubyClient::Log.error res
-        when 2
-          ZabbixRubyClient::Log.warn "zabbix-sender: Some values failed"
-          ZabbixRubyClient::Log.warn res
+        if @is_22
+          case $?.to_i
+          when 0
+            ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent"
+          when 1
+            @store.keepdata(file)
+            ZabbixRubyClient::Log.error "zabbix-sender: Sending failed"
+            ZabbixRubyClient::Log.error res
+          when 2
+            ZabbixRubyClient::Log.warn "zabbix-sender: Some values failed"
+            ZabbixRubyClient::Log.warn res
+          else
+            ZabbixRubyClient::Log.error "zabbix-sender: Something failed. code #{$?.to_i} was returned"
+            ZabbixRubyClient::Log.error res
+          end
         else
-          ZabbixRubyClient::Log.error "zabbix-sender: Something failed. code #{$?.to_i} was returned"
-          ZabbixRubyClient::Log.error res
+          if $?.to_i != 0
+            @store.keepdata(file)
+            ZabbixRubyClient::Log.error "zabbix-sender: Sending failed"
+            ZabbixRubyClient::Log.error res
+          else
+            ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent"
+          end
         end
       rescue Exception => e
         @store.keepdata(file)
