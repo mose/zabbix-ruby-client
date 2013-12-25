@@ -41,9 +41,9 @@ module ZabbixRubyClient
       file = @store.record(@data.merge)
       begin
         res = `#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -p #{@config['zabbix']['port']} -T -i #{file}`
-        if $?.to_i != 0
-          @store.keepdata(file)
-        end
+        # if $?.to_i != 0
+        #   @store.keepdata(file)
+        # end
       rescue Exception => e
         @store.keepdata(file)
         logger.error "Sending failed."
