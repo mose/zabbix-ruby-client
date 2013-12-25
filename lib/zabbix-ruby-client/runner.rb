@@ -44,13 +44,12 @@ module ZabbixRubyClient
         res = `#{command}`
       rescue Exception => e
         @store.keepdata(file)
-        ZabbixRubyClient::Log.debug "Failed ------"
-        ZabbixRubyClient::Log.debug command
-        ZabbixRubyClient::Log.debug res
-        ZabbixRubyClient::Log.debug "-------------"
         ZabbixRubyClient::Log.error "Sending failed."
         ZabbixRubyClient::Log.error e.message
       end
+      ZabbixRubyClient::Log.debug command
+      ZabbixRubyClient::Log.debug $?
+      ZabbixRubyClient::Log.debug res
     end
 
     private
