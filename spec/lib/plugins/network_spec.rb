@@ -19,7 +19,6 @@ describe ZabbixRubyClient::Plugins::Network do
 
   it "prepare data to be usable" do
     expected = [
-      "", 
       "eth0:", 
       "8523363858", 
       "17554648", 
