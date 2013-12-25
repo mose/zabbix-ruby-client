@@ -1,7 +1,11 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.0.20 - wip
+### v0.0.20 - 2013-12-25
+
+* fix network plugin
+* fix new return code handling from zabbix_sender 2.2.x
+* more debugging info when loglevel: debug
 
 ### v0.0.19 - 2013-12-24
 
