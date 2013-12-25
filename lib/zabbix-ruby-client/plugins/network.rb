@@ -14,14 +14,14 @@ module ZabbixRubyClient
         if info
           time = Time.now.to_i
           back = []
-          back << "#{host} net.rx_ok[#{interface}] #{time} #{info[2]}"
-          back << "#{host} net.rx_packets[#{interface}] #{time} #{info[3]}"
-          back << "#{host} net.rx_err[#{interface}] #{time} #{info[4]}"
-          back << "#{host} net.rx_drop[#{interface}] #{time} #{info[5]}"
-          back << "#{host} net.tx_ok[#{interface}] #{time} #{info[10]}"
-          back << "#{host} net.tx_packets[#{interface}] #{time} #{info[11]}"
-          back << "#{host} net.tx_err[#{interface}] #{time} #{info[12]}"
-          back << "#{host} net.tx_drop[#{interface}] #{time} #{info[13]}"
+          back << "#{host} net.rx_ok[#{interface}] #{time} #{info[1]}"
+          back << "#{host} net.rx_packets[#{interface}] #{time} #{info[2]}"
+          back << "#{host} net.rx_err[#{interface}] #{time} #{info[3]}"
+          back << "#{host} net.rx_drop[#{interface}] #{time} #{info[4]}"
+          back << "#{host} net.tx_ok[#{interface}] #{time} #{info[9]}"
+          back << "#{host} net.tx_packets[#{interface}] #{time} #{info[10]}"
+          back << "#{host} net.tx_err[#{interface}] #{time} #{info[11]}"
+          back << "#{host} net.tx_drop[#{interface}] #{time} #{info[12]}"
           return back
         else
           return []
@@ -43,7 +43,7 @@ module ZabbixRubyClient
           false
         end
       end
-      
+
     end
   end
 end
