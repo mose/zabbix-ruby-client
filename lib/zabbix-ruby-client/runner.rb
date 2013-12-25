@@ -57,7 +57,7 @@ module ZabbixRubyClient
             ZabbixRubyClient::Log.warn "zabbix-sender: Some values failed"
             ZabbixRubyClient::Log.warn res
           else
-            ZabbixRubyClient::Log.error "zabbix-sender: Something failed. code #{$?.to_i} was returned"
+            ZabbixRubyClient::Log.error "zabbix-sender: Something failed. #{$i}. code #{$?.to_i} was returned"
             ZabbixRubyClient::Log.error res
           end
         else
