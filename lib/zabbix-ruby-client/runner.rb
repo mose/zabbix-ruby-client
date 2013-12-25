@@ -40,16 +40,28 @@ module ZabbixRubyClient
     def upload
       file = @store.record(@data.merge)
       command = "#{@config['zabbix']['sender']} -z #{@config['zabbix']['host']} -p #{@config['zabbix']['port']} -T -i #{file}"
+      ZabbixRubyClient::Log.debug command
       begin
         res = `#{command}`
+        case $?.to_i
+        when 0
+          ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent"
+        when 1
+          @store.keepdata(file)
+          ZabbixRubyClient::Log.error "zabbix-sender: Sending failed"
+          ZabbixRubyClient::Log.error res
+        when 2
+          ZabbixRubyClient::Log.warn "zabbix-sender: Some values failed"
+          ZabbixRubyClient::Log.warn res
+        else
+          ZabbixRubyClient::Log.error "zabbix-sender: Something failed. code #{$?.to_i} was returned"
+          ZabbixRubyClient::Log.error res
+        end
       rescue Exception => e
         @store.keepdata(file)
-        ZabbixRubyClient::Log.error "Sending failed."
+        ZabbixRubyClient::Log.error "zabbix-sender: broken."
         ZabbixRubyClient::Log.error e.message
       end
-      ZabbixRubyClient::Log.debug command
-      ZabbixRubyClient::Log.debug $?
-      ZabbixRubyClient::Log.debug res
     end
 
     private
