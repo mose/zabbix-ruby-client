@@ -98,7 +98,7 @@ There are a set of standart plugins included in the package, aimed at linux syst
   * args [ "/path/to/redis-cli", "options to connect" ]
 
 
-You can add extra plugins in a plugins/ dir in the working dir, just by copying one of the existing plugins in the repo and change to your need. All plugins present in plugins/ will be loaded if present in the config file you use. That can be convenient to test by using the -t flag, for example `bundle exec zrc -t testplugin.yml` where testplugin.yml only contains the name and args for yoiur plugin.
+You can add extra plugins in a plugins/ dir in the working dir, just by copying one of the existing plugins in the repo and change to your need. All plugins present in plugins/ will be loaded if present in the config file you use. That can be convenient to test by using the -t flag, for example `bundle exec zrc -t testplugin.yml` where testplugin.yml only contains the name and args for your plugin.
 
 ## Custom plugins how-to
 
