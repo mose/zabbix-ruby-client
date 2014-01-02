@@ -3,6 +3,9 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.21 - wip
 
+* fix zabbix_sender return cde 256
+* update all templates with shorter history
+
 ### v0.0.20 - 2013-12-25
 
 * fix network plugin
