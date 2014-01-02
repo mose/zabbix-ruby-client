@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-10-11T05:38:53Z</date>
+    <date>2014-01-02T03:32:40Z</date>
     <groups>
         <group>
             <name>3. Service db</name>
@@ -42,16 +42,19 @@
                     <snmp_oid/>
                     <key>mysql.status[Com_begin]</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>rps</units>
                     <delta>1</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -81,16 +84,19 @@
                     <snmp_oid/>
                     <key>mysql.status[Bytes_received]</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>Bps</units>
                     <delta>1</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -120,16 +126,19 @@
                     <snmp_oid/>
                     <key>mysql.status[Bytes_sent]</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>Bps</units>
                     <delta>1</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -159,16 +168,19 @@
                     <snmp_oid/>
                     <key>mysql.status[Com_commit]</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>rps</units>
                     <delta>1</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -198,16 +210,19 @@
                     <snmp_oid/>
                     <key>mysql.status[Com_delete]</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>rps</units>
                     <delta>1</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -237,16 +252,19 @@
                     <snmp_oid/>
                     <key>mysql.status[Com_insert]</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>rps</units>
                     <delta>1</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -276,16 +294,19 @@
                     <snmp_oid/>
                     <key>mysql.status[Questions]</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>qps</units>
                     <delta>1</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -315,16 +336,19 @@
                     <snmp_oid/>
                     <key>mysql.status[Com_rollback]</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>rps</units>
                     <delta>1</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -354,16 +378,19 @@
                     <snmp_oid/>
                     <key>mysql.status[Com_select]</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>rps</units>
                     <delta>1</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -393,16 +420,19 @@
                     <snmp_oid/>
                     <key>mysql.status[Slow_queries]</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -432,16 +462,19 @@
                     <snmp_oid/>
                     <key>mysql.ping</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -474,16 +507,19 @@
                     <snmp_oid/>
                     <key>mysql.status[Com_update]</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>qps</units>
                     <delta>1</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -513,16 +549,19 @@
                     <snmp_oid/>
                     <key>mysql.status[Uptime]</key>
                     <delay>0</delay>
-                    <history>30</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>uptime</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -552,16 +591,19 @@
                     <snmp_oid/>
                     <key>mysql.version</key>
                     <delay>0</delay>
-                    <history>30</history>
+                    <history>7</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>1</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>

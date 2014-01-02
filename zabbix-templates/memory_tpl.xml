@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-10-07T10:52:56Z</date>
+    <date>2014-01-02T03:32:28Z</date>
     <groups>
         <group>
             <name>3. Service Ubuntu</name>
@@ -9,7 +9,7 @@
     </groups>
     <templates>
         <template>
-            <template>Memory ZRC</template>
+            <template>Memory zrc</template>
             <name>Memory (zrc)</name>
             <groups>
                 <group>
@@ -30,16 +30,19 @@
                     <snmp_oid/>
                     <key>memory[free]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>B</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -69,16 +72,19 @@
                     <snmp_oid/>
                     <key>memory[percent_used]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -108,16 +114,19 @@
                     <snmp_oid/>
                     <key>memory[total]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>B</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -147,16 +156,19 @@
                     <snmp_oid/>
                     <key>memory[used]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>B</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -186,16 +198,19 @@
                     <snmp_oid/>
                     <key>memory[swap_free]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>B</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -225,16 +240,19 @@
                     <snmp_oid/>
                     <key>memory[swap_percent_used]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -264,16 +282,19 @@
                     <snmp_oid/>
                     <key>memory[swap_total]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>B</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -303,16 +324,19 @@
                     <snmp_oid/>
                     <key>memory[swap_used]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>B</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -343,7 +367,7 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{Memory ZRC:memory[percent_used].last(0)}&gt;95</expression>
+            <expression>{Memory zrc:memory[percent_used].min(240)}&gt;95</expression>
             <name>Critical memory</name>
             <url/>
             <status>0</status>
@@ -353,7 +377,7 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Memory ZRC:memory[percent_used].last(0)}&gt;80</expression>
+            <expression>{Memory zrc:memory[percent_used].min(240)}&gt;80</expression>
             <name>Low memory</name>
             <url/>
             <status>0</status>
@@ -390,7 +414,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Memory ZRC</host>
+                        <host>Memory zrc</host>
                         <key>memory[used]</key>
                     </item>
                 </graph_item>
@@ -402,7 +426,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Memory ZRC</host>
+                        <host>Memory zrc</host>
                         <key>memory[free]</key>
                     </item>
                 </graph_item>
@@ -414,7 +438,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Memory ZRC</host>
+                        <host>Memory zrc</host>
                         <key>memory[swap_used]</key>
                     </item>
                 </graph_item>
@@ -426,7 +450,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Memory ZRC</host>
+                        <host>Memory zrc</host>
                         <key>memory[swap_free]</key>
                     </item>
                 </graph_item>
@@ -458,7 +482,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Memory ZRC</host>
+                        <host>Memory zrc</host>
                         <key>memory[used]</key>
                     </item>
                 </graph_item>
@@ -470,7 +494,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Memory ZRC</host>
+                        <host>Memory zrc</host>
                         <key>memory[free]</key>
                     </item>
                 </graph_item>
@@ -482,7 +506,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Memory ZRC</host>
+                        <host>Memory zrc</host>
                         <key>memory[swap_used]</key>
                     </item>
                 </graph_item>
@@ -494,7 +518,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Memory ZRC</host>
+                        <host>Memory zrc</host>
                         <key>memory[swap_free]</key>
                     </item>
                 </graph_item>

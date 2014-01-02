@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2013-10-19T08:17:55Z</date>
+    <date>2014-01-02T03:31:53Z</date>
     <groups>
         <group>
             <name>3. Service Ubuntu</name>
@@ -30,16 +30,19 @@
                     <snmp_oid/>
                     <key>cpu[guest]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>2</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -69,20 +72,23 @@
                     <snmp_oid/>
                     <key>cpu[guest_percent]</key>
                     <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[guest]&quot;) / last(&quot;cpu[total]&quot;)</params>
+                    <params>100 * last(&quot;cpu[guest]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -108,16 +114,19 @@
                     <snmp_oid/>
                     <key>cpu[idle]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>2</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -147,20 +156,23 @@
                     <snmp_oid/>
                     <key>cpu[idle_percent]</key>
                     <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[idle]&quot;) / last(&quot;cpu[total]&quot;)</params>
+                    <params>100 * last(&quot;cpu[idle]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -186,16 +198,19 @@
                     <snmp_oid/>
                     <key>cpu[iowait]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>2</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -225,20 +240,23 @@
                     <snmp_oid/>
                     <key>cpu[iowait_percent]</key>
                     <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[iowait]&quot;) / last(&quot;cpu[total]&quot;)</params>
+                    <params>100 * last(&quot;cpu[iowait]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -264,16 +282,19 @@
                     <snmp_oid/>
                     <key>cpu[irq]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>2</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -303,20 +324,23 @@
                     <snmp_oid/>
                     <key>cpu[irq_percent]</key>
                     <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[irq]&quot;) / last(&quot;cpu[total]&quot;)</params>
+                    <params>100 * last(&quot;cpu[irq]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -342,16 +366,19 @@
                     <snmp_oid/>
                     <key>cpu[nice]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>2</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -381,20 +408,23 @@
                     <snmp_oid/>
                     <key>cpu[nice_percent]</key>
                     <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[nice]&quot;) / last(&quot;cpu[total]&quot;)</params>
+                    <params>100 * last(&quot;cpu[nice]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -420,16 +450,19 @@
                     <snmp_oid/>
                     <key>cpu[soft]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>2</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -459,20 +492,23 @@
                     <snmp_oid/>
                     <key>cpu[soft_percent]</key>
                     <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[soft]&quot;) / last(&quot;cpu[total]&quot;)</params>
+                    <params>100 * last(&quot;cpu[soft]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -498,16 +534,19 @@
                     <snmp_oid/>
                     <key>cpu[steal]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>2</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -537,20 +576,23 @@
                     <snmp_oid/>
                     <key>cpu[steal_percent]</key>
                     <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[steal]&quot;) / last(&quot;cpu[total]&quot;)</params>
+                    <params>100 * last(&quot;cpu[steal]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -576,16 +618,19 @@
                     <snmp_oid/>
                     <key>cpu[system]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>2</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -615,20 +660,23 @@
                     <snmp_oid/>
                     <key>cpu[system_percent]</key>
                     <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[system]&quot;) / last(&quot;cpu[total]&quot;)</params>
+                    <params>100 * last(&quot;cpu[system]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -654,16 +702,19 @@
                     <snmp_oid/>
                     <key>cpu[total]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>2</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -693,16 +744,19 @@
                     <snmp_oid/>
                     <key>cpu[used]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>2</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -732,20 +786,23 @@
                     <snmp_oid/>
                     <key>cpu[used_percent]</key>
                     <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[used]&quot;) / last(&quot;cpu[total]&quot;)</params>
+                    <params>100 * last(&quot;cpu[used]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -771,16 +828,19 @@
                     <snmp_oid/>
                     <key>cpu[user]</key>
                     <delay>0</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>2</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
@@ -810,20 +870,23 @@
                     <snmp_oid/>
                     <key>cpu[user_percent]</key>
                     <delay>60</delay>
-                    <history>90</history>
-                    <trends>365</trends>
+                    <history>7</history>
+                    <trends>730</trends>
                     <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
+                    <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
                     <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[user]&quot;) / last(&quot;cpu[total]&quot;)</params>
+                    <params>100 * last(&quot;cpu[user]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
