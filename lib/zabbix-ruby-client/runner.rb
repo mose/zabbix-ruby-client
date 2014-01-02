@@ -53,6 +53,10 @@ module ZabbixRubyClient
             @store.keepdata(file)
             ZabbixRubyClient::Log.error "zabbix-sender: Sending failed"
             ZabbixRubyClient::Log.error res
+          when 256
+            @store.keepdata(file)
+            ZabbixRubyClient::Log.warn "zabbix-sender: shit happens (unknown code 256)"
+            ZabbixRubyClient::Log.warn res
           when 512
             ZabbixRubyClient::Log.warn "zabbix-sender: Some values failed"
             ZabbixRubyClient::Log.warn res
