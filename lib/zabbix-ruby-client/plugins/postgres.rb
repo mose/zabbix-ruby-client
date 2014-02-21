@@ -20,11 +20,31 @@ module ZabbixRubyClient
           Log.warn "The connection failed."
           return []
         end
+        psqlactivity = `psql #{psqlargs} -A -t -c "select state, count(*) from pg_stat_activity group by state" #{dbname}`
+        if $?.to_i == 0
+          activity = get_activity(psqlactivity)
+        else
+          Log.warn "The connection failed."
+          return []
+        end
+        psqlwriter = `psql #{psqlargs} -A -t -c "select * from pg_stat_bgwriter" #{dbname}`
+        if $?.to_i == 0
+          writer = get_writer(psqlwriter)
+        else
+          Log.warn "The connection failed."
+          return []
+        end
 
         time = Time.now.to_i
         back = []
         status.each do |e,v|
           back << "#{host} postgres.#{e}[#{dbname}] #{time} #{v}"
+        end
+        activity.each do |e,v|
+          back << "#{host} postgres.connections.#{e} #{time} #{v}"
+        end
+        writer.each do |e,v|
+          back << "#{host} postgres.#{e} #{time} #{v}"
         end
         return back
       end
@@ -53,6 +73,29 @@ module ZabbixRubyClient
         ret["deadlocks"] = els[15]
         ret["blk_read_time"] = els[16]
         ret["blk_write_time"] = els[17]
+        ret
+      end
+
+      def get_activity(status)
+        ar = status.each_line.reduce([]) do |a,l|
+          a + l.split("|").map(&:strip)
+        end
+        Hash[*ar]
+      end
+
+      def get_writer(status)
+        ret = {}
+        els = status.split "|"
+        ret["checkpoints_timed"] = els[1]
+        ret["checkpoints_req"] = els[1]
+        ret["checkpoint_write_time"] = els[2]
+        ret["checkpoint_sync_time"] = els[3]
+        ret["buffers_checkpoint"] = els[4]
+        ret["buffers_clean"] = els[5]
+        ret["maxwritten_clean"] = els[6]
+        ret["buffers_backend"] = els[7]
+        ret["buffers_backend_fsync"] = els[8]
+        ret["buffers_alloc"] = els[9]
         ret
       end
 
