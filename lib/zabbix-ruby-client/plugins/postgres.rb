@@ -77,10 +77,12 @@ module ZabbixRubyClient
       end
 
       def get_activity(status)
-        ar = status.each_line.reduce([]) do |a,l|
-          a + l.split("|").map(&:strip)
+        ar = { "active" => "0", "idle" => "0", "idle in transaction" => "0"}
+        status.each_line.reduce([]) do |a,l|
+          els = l.split("|").map(&:strip)
+          ar[els[0]] = els[1]
         end
-        Hash[*ar]
+        ar
       end
 
       def get_writer(status)
