@@ -23,7 +23,6 @@ module ZabbixRubyClient
       ZabbixRubyClient::Plugins.scan_dirs([ PLUGINDIR ] + @config['plugindirs'])
       ZabbixRubyClient::Log.set_logger(File.join(@logsdir, 'zrc.log'), @config['loglevel'])
       ZabbixRubyClient::Log.debug @config.inspect
-      zabbix_sender_version = `zabbix_sender -V | head -1`.split(/\s/)[2]
       @is_22 = /v2\.2\./.match zabbix_sender_version
     end
 
@@ -86,6 +85,13 @@ module ZabbixRubyClient
       dir = configdir || defaultdir
       FileUtils.mkdir dir unless Dir.exists? dir
       dir
+    end
+
+    def zabbix_sender_version
+      v = `#{@config['zabbix']['sender']} -V &> /dev/null | head -1`
+      v.split(/\s/)[2]
+    rescue
+      false
     end
 
   end

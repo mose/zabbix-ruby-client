@@ -24,20 +24,20 @@ describe ZabbixRubyClient::Plugins::Apt do
   it "prepare data to be usable" do
     expected = [23, 14]
     stubfile = File.expand_path('../../../../spec/files/system/apt-check', __FILE__)
-    ZabbixRubyClient::Plugins::Apt.stub(:aptinfo).and_return(File.read(stubfile))
+    allow(ZabbixRubyClient::Plugins::Apt).to receive(:aptinfo).and_return(File.read(stubfile))
     data = ZabbixRubyClient::Plugins::Apt.send(:get_info)
     expect(data).to eq expected
   end
 
   it "populate a hash with extracted data" do
     expected = [
-      "local apt[security] 123456789 23", 
-      "local apt[pending] 123456789 14", 
+      "local apt[security] 123456789 23",
+      "local apt[pending] 123456789 14",
       "local apt[status] 123456789 TODO apt 23/14"
     ]
     stubfile = File.expand_path('../../../../spec/files/system/apt-check', __FILE__)
-    ZabbixRubyClient::Plugins::Apt.stub(:aptinfo).and_return(File.read(stubfile))
-    Time.stub(:now).and_return("123456789")
+    allow(ZabbixRubyClient::Plugins::Apt).to receive(:aptinfo).and_return(File.read(stubfile))
+    allow(Time).to receive(:now).and_return("123456789")
     data = ZabbixRubyClient::Plugins::Apt.send(:collect, 'local')
     expect(data).to eq expected
   end

@@ -27,22 +27,22 @@ describe ZabbixRubyClient::Cli do
   end
 
   it "init creates a working directory" do
-    expect(File.file? 'Gemfile').to be_true
+    expect(File.file? 'Gemfile').to be_truthy
   end
 
   it "show displays the list of data collected" do
-    ZabbixRubyClient::Runner.stub(:new).and_return(Object)
-    Object.stub(:collect)
-    Object.stub(:show)
+    allow(ZabbixRubyClient::Runner).to receive(:new).and_return(Object)
+    allow(Object).to receive(:collect)
+    allow(Object).to receive(:show)
     @cli.shell.mute do
       @cli.show
     end
   end
 
   it "upload collects and uploads the data from system" do
-    ZabbixRubyClient::Runner.stub(:new).and_return(Object)
-    Object.stub(:collect)
-    Object.stub(:upload)
+    allow(ZabbixRubyClient::Runner).to receive(:new).and_return(Object)
+    allow(Object).to receive(:collect)
+    allow(Object).to receive(:upload)
     @cli.shell.mute do
       @cli.upload
     end

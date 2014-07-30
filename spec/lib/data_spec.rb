@@ -33,7 +33,7 @@ describe ZabbixRubyClient::Data do
   end
 
   it "logs an error when plugin is not found" do
-    ZabbixRubyClient::Log.stub(:error).with("Plugin unknown_plugin not found.")
+    allow(ZabbixRubyClient::Runner).to receive(:error).with("Plugin unknown_plugin not found.")
     @data.run_plugin("unknown_plugin")
   end
 
@@ -44,17 +44,17 @@ describe ZabbixRubyClient::Data do
   end
 
   it "ignores buggy plugins" do
-    expect(@data.run_plugin("sample_buggy")).to be_true
+    expect(@data.run_plugin("sample_buggy")).to be_truthy
   end
 
   it "logs buggy plugins" do
-    ZabbixRubyClient::Log.stub(:fatal).with("Oops")
-    ZabbixRubyClient::Log.stub(:fatal).with("Exception")
+    allow(ZabbixRubyClient::Log).to receive(:fatal).with("Oops")
+    allow(ZabbixRubyClient::Log).to receive(:fatal).with("Exception")
     @data.run_plugin("sample_buggy")
   end
 
   it "merges collected and discovered data" do
-    Time.stub(:now).and_return("123456789")
+    allow(Time).to receive(:now).and_return("123456789")
     @data.run_plugin("sample")
     @data.run_plugin("sample_discover")
     result = ["host sample.discover 123456789 { \"data\": [ {\"{#SAMPLE}\": \"\"} ] }",

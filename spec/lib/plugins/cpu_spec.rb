@@ -32,7 +32,7 @@ describe ZabbixRubyClient::Plugins::Cpu do
       "total" => 193453420
     }
     stubfile = File.expand_path('../../../../spec/files/system/proc_cpu', __FILE__)
-    ZabbixRubyClient::Plugins::Cpu.stub(:getline).and_return(File.read(stubfile))
+    allow(ZabbixRubyClient::Plugins::Cpu).to receive(:getline).and_return(File.read(stubfile))
     data = ZabbixRubyClient::Plugins::Cpu.send(:get_info)
     expect(data).to eq expected
   end
@@ -52,8 +52,8 @@ describe ZabbixRubyClient::Plugins::Cpu do
       "local cpu[total] 123456789 193453420"
     ]
     stubfile = File.expand_path('../../../../spec/files/system/proc_cpu', __FILE__)
-    ZabbixRubyClient::Plugins::Cpu.stub(:getline).and_return(File.read(stubfile))
-    Time.stub(:now).and_return("123456789")
+    allow(ZabbixRubyClient::Plugins::Cpu).to receive(:getline).and_return(File.read(stubfile))
+    allow(Time).to receive(:now).and_return("123456789")
     data = ZabbixRubyClient::Plugins::Cpu.send(:collect, 'local')
     expect(data).to eq expected
   end

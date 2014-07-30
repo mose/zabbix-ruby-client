@@ -5,28 +5,41 @@ require "zabbix-ruby-client"
 
 describe ZabbixRubyClient::Runner do
 
+  let(:config) { {
+    'datadir' => 'data',
+    'logsdir' => 'logs',
+    'plugindirs' => [ 'plugins' ],
+    'keepdata' => false,
+    'host' => 'localhost',
+    'taskfile' => nil,
+    'zabbix' => {
+      'host' => 'localhost',
+      'sender' => '/bin/true'
+    }
+  } }
+  let(:tasks) { {
+    'name' => 'sysinfo'
+  } }
+
   before :each do
     @basedir = File.expand_path("../../files", __FILE__)
     Dir.chdir @basedir
-    config_file = File.join(@basedir, "config.yml")
-    @config = YAML::load_file(config_file)
-    task_file = File.join(@basedir, "task.yml")
-    @tasks = YAML::load_file(task_file)
   end
 
   after :each do
-    logfile = File.join("logs", "zrc.log")
+    logfile = File.join(config['logsdir'], "zrc.log")
     File.unlink(logfile) if File.exists?(logfile)
+    FileUtils.rmdir(config['logsdir']) if Dir.exists?(config['logsdir'])
   end
 
   it "initialize the client object" do
-    @zrc = ZabbixRubyClient::Runner.new(@config, @tasks)
+    @zrc = ZabbixRubyClient::Runner.new(config, tasks)
     expect(@zrc.instance_variable_get(:@config)['host']).to eq 'localhost'
   end
 
   it "creates dirs if needed" do
-    @zrc = ZabbixRubyClient::Runner.new(@config, @tasks)
-    expect(Dir.exists? "logs").to be_true
+    @zrc = ZabbixRubyClient::Runner.new(config, tasks)
+    expect(Dir.exists? "logs").to be_truthy
   end
 
   pending "loads list of plugins"

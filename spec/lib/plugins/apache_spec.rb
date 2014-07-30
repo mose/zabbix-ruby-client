@@ -79,7 +79,7 @@ describe ZabbixRubyClient::Plugins::Apache do
   it "collects data properly" do
     stub_request(:get, '127.0.0.1:80/server-status?auto').
       to_return({ :body => @data })
-    Time.stub(:now).and_return("123456789")
+    allow(Time).to receive(:now).and_return("123456789")
     data = ZabbixRubyClient::Plugins::Apache.send(:collect, 'local')
     expect(data).to eq @expected_data
   end

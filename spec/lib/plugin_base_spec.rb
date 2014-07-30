@@ -27,20 +27,20 @@ describe ZabbixRubyClient::PluginBase do
   end
 
   it "logs a debug entry when it extracts a line from a file" do
-    expect(ZabbixRubyClient::Log).to receive(:debug).with("File #{@stubfile}: #{@expected_line}")   
+    expect(ZabbixRubyClient::Log).to receive(:debug).with("File #{@stubfile}: #{@expected_line}")
     ZabbixRubyClient::PluginBase.getline(@stubfile, "eth0: ")
   end
 
   it "logs a warn entry when a line is not found in a file" do
-    expect(ZabbixRubyClient::Log).to receive(:warn).with("File #{@stubfile}: pattern \" xxx \" not found.")   
+    expect(ZabbixRubyClient::Log).to receive(:warn).with("File #{@stubfile}: pattern \" xxx \" not found.")
     x = ZabbixRubyClient::PluginBase.getline(@stubfile, " xxx ")
-    expect(x).to be_false
+    expect(x).to be_falsey
   end
 
   it "logs an error entry when a file is not found" do
     expect(ZabbixRubyClient::Log).to receive(:error).with("File not found: /tmp/xxxxx")
     x = ZabbixRubyClient::PluginBase.getline("/tmp/xxxxx", " xxx ")
-    expect(x).to be_false
+    expect(x).to be_falsey
   end
 
   it "logs an error entry when a file is not readable" do
@@ -48,7 +48,7 @@ describe ZabbixRubyClient::PluginBase do
     FileUtils.chmod 0300, "/tmp/xxxxx"
     expect(ZabbixRubyClient::Log).to receive(:error).with("File not readable: /tmp/xxxxx")
     x = ZabbixRubyClient::PluginBase.getline("/tmp/xxxxx", " xxx ")
-    expect(x).to be_false
+    expect(x).to be_falsey
   end
 
 end

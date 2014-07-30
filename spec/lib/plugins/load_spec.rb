@@ -19,21 +19,21 @@ describe ZabbixRubyClient::Plugins::Load do
   it "prepare data to be usable" do
     expected = ["0.89", "1.29", "1.05", "2", "2768"]
     stubfile = File.expand_path('../../../../spec/files/system/loadavg', __FILE__)
-    ZabbixRubyClient::Plugins::Load.stub(:getline).and_return(File.read(stubfile).strip)
+    allow(ZabbixRubyClient::Plugins::Load).to receive(:getline).and_return(File.read(stubfile).strip)
     data = ZabbixRubyClient::Plugins::Load.send(:get_info)
     expect(data).to eq expected
   end
 
   it "populate a hash with extracted data" do
     expected = [
-      "local load[one] 123456789 0.89", 
+      "local load[one] 123456789 0.89",
       "local load[five] 123456789 1.29",
-      "local load[fifteen] 123456789 1.05", 
+      "local load[fifteen] 123456789 1.05",
       "local load[procs] 123456789 2"
     ]
     stubfile = File.expand_path('../../../../spec/files/system/loadavg', __FILE__)
-    ZabbixRubyClient::Plugins::Load.stub(:getline).and_return(File.read(stubfile))
-    Time.stub(:now).and_return("123456789")
+    allow(ZabbixRubyClient::Plugins::Load).to receive(:getline).and_return(File.read(stubfile))
+    allow(Time).to receive(:now).and_return("123456789")
     data = ZabbixRubyClient::Plugins::Load.send(:collect, 'local')
     expect(data).to eq expected
   end
