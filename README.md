@@ -96,7 +96,8 @@ There are a set of standart plugins included in the package, aimed at linux syst
 * nginx (requires httpStubStatus nginx module) [nginx_tpl](master/zabbix-templates/nginx_tpl.xml)
 * redis (uses redis-cli info) [redis_tpl](master/zabbix-templates/redis_tpl.xml)
   * args [ "/path/to/redis-cli", "options to connect" ]
-
+* openvpn (uses /etc/openvpn/openvpn-status.log) [openvpn_tpl](master/zabbix-templates/openvpn_tpl.xml)
+  * args [ "/etc/openvpn/openvpn-status.log" ]
 
 You can add extra plugins in a plugins/ dir in the working dir, just by copying one of the existing plugins in the repo and change to your need. All plugins present in plugins/ will be loaded if present in the config file you use. That can be convenient to test by using the -t flag, for example `bundle exec zrc -t testplugin.yml` where testplugin.yml only contains the name and args for your plugin.
 
