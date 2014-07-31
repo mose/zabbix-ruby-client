@@ -7,6 +7,7 @@ Zabbbix Ruby Client Changelog
 * update all templates with shorter history
 * added a simple openvpn plugin + template
 * small fix on network template
+* improved postgres template
 
 ### v0.0.20 - 2013-12-25
 

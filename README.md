@@ -153,6 +153,8 @@ The zabbix ruby client has a pending system, that keeps the data if it was not s
 
 ## Note about security
 
+*note: I switched to usage of OpenVPN for communication between all my servers, which is much better than ssh tunnels, but this setup described below still is useful*
+
 As you may already know, Zabbix is not very concerned about securing exchanges between agent and server, or sender and server. A cautious sysadmin will then properly manage his setup using ssh tunneling.
 
 After launching manual tunnels and ensuring their survival with monit I tried `autossh` which is much more reliable. It requires to have keys exchanged from server and client, in my case I prefer doing reverse tunnels from server, because I have some plan about doing a resend from client in case server didn't open the tunnel (in case of server reboot or network failure). That resend trick is not implemented yet though.
