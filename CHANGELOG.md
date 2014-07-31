@@ -8,6 +8,7 @@ Zabbbix Ruby Client Changelog
 * added a simple openvpn plugin + template
 * small fix on network template
 * improved postgres template
+* add cisco template
 
 ### v0.0.20 - 2013-12-25
 
