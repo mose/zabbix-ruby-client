@@ -1,7 +1,7 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.0.21 - wip
+### v0.0.21 - 2014-08-01
 
 * fix zabbix_sender return code 256
 * update all templates with shorter history
