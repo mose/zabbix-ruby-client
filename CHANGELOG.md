@@ -3,6 +3,8 @@ Zabbbix Ruby Client Changelog
 
 ### v0.0.22 - wip
 
+* added RabbitMQ plugin
+
 ### v0.0.21 - 2014-08-01
 
 * fix zabbix_sender return code 256
