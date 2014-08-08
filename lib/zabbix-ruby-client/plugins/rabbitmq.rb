@@ -25,8 +25,6 @@ module ZabbixRubyClient
           back << "#{host} rabbitmq.message.deliver.rate #{time} #{info['message_stats']['deliver_details']['rate']}"
           back << "#{host} rabbitmq.message.deliver_get #{time} #{info['message_stats']['deliver_get']}"
           back << "#{host} rabbitmq.message.deliver_get.rate #{time} #{info['message_stats']['deliver_get_details']['rate']}"
-          back << "#{host} rabbitmq.message.deliver_get #{time} #{info['message_stats']['deliver_get']}"
-          back << "#{host} rabbitmq.message.deliver_get.rate #{time} #{info['message_stats']['deliver_get_details']['rate']}"
           back << "#{host} rabbitmq.message.publish #{time} #{info['message_stats']['publish']}"
           back << "#{host} rabbitmq.message.publish.rate #{time} #{info['message_stats']['publish_details']['rate']}"
           back << "#{host} rabbitmq.message.redeliver #{time} #{info['message_stats']['redeliver']}"
