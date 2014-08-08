@@ -48,7 +48,9 @@ module ZabbixRubyClient
     private
 
       def get_info(rabbitmqadmin, login, pass)
-        JSON.parse(`#{rabbitmqadmin} -u #{login} -p #{pass} -f raw_json show overview`)
+        command = "#{rabbitmqadmin} -u #{login} -p #{pass} -f raw_json show overview"
+        Log.debug command
+        JSON.parse(`#{command}`)
       end
 
     end
