@@ -1,6 +1,8 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.1.0 - wip
+
 ### v0.0.22 - 2014-08-09
 
 * added RabbitMQ plugin
