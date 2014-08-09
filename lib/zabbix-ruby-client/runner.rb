@@ -47,12 +47,12 @@ module ZabbixRubyClient
         if @is_22
           case $?.to_i
           when 0
-            ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent"
+            ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent (#{$?})"
           when 2
-            ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent"
+            ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent (#{$?})"
           when 1
             #@store.keepdata(file)
-            ZabbixRubyClient::Log.error "zabbix-sender: Sending failed"
+            ZabbixRubyClient::Log.error "zabbix-sender: Sending failed (#{$?})"
             ZabbixRubyClient::Log.error res
           when 256
             @store.keepdata(file)
