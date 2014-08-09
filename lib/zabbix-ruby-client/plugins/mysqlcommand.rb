@@ -6,10 +6,10 @@ module ZabbixRubyClient
       extend self
 
       def collect(*args)
-        host = args.delete
-        app = args.delete
-        mysqldb = args.delete
-        mysqlargs = args.delete
+        host = args.shift
+        app = args.shift
+        mysqldb = args.shift
+        mysqlargs = args.shift
         mysqlcommand = "mysql #{mysqlargs} -s --skip-column-names -e \"%s\" #{mysqldb}"
         back = []
         Hash[*args].each do |name, command|
