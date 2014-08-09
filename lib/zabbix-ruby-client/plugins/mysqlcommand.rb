@@ -21,7 +21,7 @@ module ZabbixRubyClient
                 label, value = line,split("\t")
                 back << "#{host} app.#{app}[#{label}] #{time} #{value}"
               end
-            if name[/,/]
+            elsif name[/,/]
               res = res.split("\t")
               name.split(',').each_with_index do |n, i|
                 back << "#{host} app.#{app}[#{n}] #{time} #{res[i]}"
