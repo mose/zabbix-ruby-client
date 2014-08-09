@@ -10,7 +10,7 @@ module ZabbixRubyClient
         app = args.delete
         mysqldb = args.delete
         mysqlargs = args.delete
-        mysqlcommand = "mysql #{mysqlargs} -s --skip-column-names "%s" #{mysqldb}"
+        mysqlcommand = "mysql #{mysqlargs} -s --skip-column-names \"%s\" #{mysqldb}"
         back = []
         Hash.new(args).each do |name, command|
           time = Time.now.to_i
