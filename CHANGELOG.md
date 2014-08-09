@@ -1,9 +1,10 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.0.22 - wip
+### v0.0.22 - 2014-08-09
 
 * added RabbitMQ plugin
+* added mysqlcommand plugin for graphing arbitrary mysql commands
 
 ### v0.0.21 - 2014-08-01
 

@@ -102,6 +102,24 @@ There are a set of standart plugins included in the package, aimed at linux syst
   * uses a snmp setup
 * RabbitMQ (uses [rabbitmqadmin](http://www.rabbitmq.com/management-cli.html)) [rabbitmq_tpl](master/zabbix-templates/rabbitmq_tpl.xml)
   * args [ "/path/to/rabbitmqadmin", "login", "password" ]
+* mysqlcommand (uses arbitrary mysql commands to create custom items)
+  * args [ "item_name", "dbname", "command_args", "command1_name", "command1_sql", "command2_name", "command2_sql" ]
+  * the 3 first args are common to all commands
+    * item_name will create an item named `app.item_name[command1_name]`
+  * past the 3 first args, the rest are key-values with a name and a sql command.
+    * if the name begins with a `_`, this underscore will be removed and the sql command is expected to be a list of value grouped by labels. For example [ "_usertypes", "select type, count(*) from users" ] will generate something like
+    ````
+    myhost app.item_name[usertypes,APIUser] 1407593152 10
+    myhost app.item_name[usertypes,User] 1407593152 2843
+    ...
+    ````
+    * if the name includes commas (`,`) the sql command is expected to return one row with multple value. For example [ "max_attempts,min_attempts", "select max(attempts), min(attempts) from delayed_jobs"] will generate
+    ````
+    myhost app.item_name[max_attempts] 1407593152 40
+    myhost app.item_name[min_attempts] 1407593152 5
+    ````
+  * in all other case (no starting `_` and no `,`) in the item name, the sql command is expected to return a single columns and a single row, typically for `count(*)` commands.
+
 
 You can add extra plugins in a plugins/ dir in the working dir, just by copying one of the existing plugins in the repo and change to your need. All plugins present in plugins/ will be loaded if present in the config file you use. That can be convenient to test by using the -t flag, for example `bundle exec zrc -t testplugin.yml` where testplugin.yml only contains the name and args for your plugin.
 
