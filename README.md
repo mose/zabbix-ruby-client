@@ -107,7 +107,7 @@ There are a set of standart plugins included in the package, aimed at linux syst
   * the 3 first args are common to all commands
     * item_name will create an item named `app.item_name[command1_name]`
   * past the 3 first args, the rest are key-values with a name and a sql command.
-    * if the name begins with a `_`, this underscore will be removed and the sql command is expected to be a list of value grouped by labels. For example [ "_usertypes", "select type, count(*) from users" ] will generate something like
+    * if the name begins with a `_`, this underscore will be removed and the sql command is expected to be a list of value grouped by labels. For example [ "_usertypes", "select type, count(*) from users group by type" ] will generate something like
     ````
     myhost app.item_name[usertypes,APIUser] 1407593152 10
     myhost app.item_name[usertypes,User] 1407593152 2843
