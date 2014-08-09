@@ -48,8 +48,10 @@ module ZabbixRubyClient
           case $?.to_i
           when 0
             ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent"
+          when 2
+            ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent"
           when 1
-            @store.keepdata(file)
+            #@store.keepdata(file)
             ZabbixRubyClient::Log.error "zabbix-sender: Sending failed"
             ZabbixRubyClient::Log.error res
           when 256
