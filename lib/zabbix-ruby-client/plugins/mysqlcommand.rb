@@ -10,16 +10,17 @@ module ZabbixRubyClient
         app = args.delete
         mysqldb = args.delete
         mysqlargs = args.delete
-        mysqlcommand = "mysql #{mysqlargs} -s --skip-column-names \"%s\" #{mysqldb}"
+        mysqlcommand = "mysql #{mysqlargs} -s --skip-column-names -e \"%s\" #{mysqldb}"
         back = []
-        Hash.new(args).each do |name, command|
+        Hash[*args].each do |name, command|
           time = Time.now.to_i
-          res = `#{sprintf mysqlcommand, command.gsub(/"/,'\"')}`
+          comm = sprintf(mysqlcommand, command.gsub(/"/,'\"'))
+          res = `#{comm}`
           if $?.to_i == 0
-            if name == "_"
+            if name[0] == "_"
               res.each_line do |line|
                 label, value = line,split("\t")
-                back << "#{host} app.#{app}[#{label}] #{time} #{value}"
+                back << "#{host} app.#{app}[#{name[1..-1]},#{label}] #{time} #{value}"
               end
             elsif name[/,/]
               res = res.split("\t")
