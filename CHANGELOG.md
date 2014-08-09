@@ -1,6 +1,8 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.0.24 - wip
+
 ### v0.0.23 - 2014-08-09
 
 * oops, buggy mysqlcommand fixed
