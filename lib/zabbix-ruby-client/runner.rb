@@ -46,7 +46,6 @@ module ZabbixRubyClient
       begin
         res = `#{command}`
         if @is_22
-          ZabbixRubyClient::Log.warn "v2.2"
           case $?.to_i
           when 0
             ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent (#{$?})"
