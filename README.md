@@ -105,7 +105,7 @@ There are a set of standart plugins included in the package, aimed at linux syst
 * **mysqlcommand** (uses arbitrary mysql commands to create custom items)
   * args [ "app_name", "dbname", "command_args", "command1_name", "command1_sql", "command2_name", "command2_sql" ]
   * the 3 first args are common to all commands
-    * item_name will create an item named `app.app_name[command1_name]`
+    * app_name will create an item named `app.app_name[command1_name]`
   * past the 3 first args, the rest are key-values with a name and a sql command.
     * if the name begins with a `_`, this underscore will be removed and the sql command is expected to be a list of value grouped by labels. For example [ "_usertypes", "select type, count(*) from users group by type" ] will generate something like
     ````
