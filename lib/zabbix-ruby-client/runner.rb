@@ -24,6 +24,7 @@ module ZabbixRubyClient
       ZabbixRubyClient::Log.set_logger(File.join(@logsdir, 'zrc.log'), @config['loglevel'])
       ZabbixRubyClient::Log.debug @config.inspect
       @is_22 = /v2\.2\./.match zabbix_sender_version
+      ZabbixRubyClient::Log.debug "zabbix sender version #{zabbix_sender_version}"
     end
 
     def collect
@@ -45,13 +46,12 @@ module ZabbixRubyClient
       begin
         res = `#{command}`
         if @is_22
+          ZabbixRubyClient::Log.warn "v2.2"
           case $?.to_i
           when 0
             ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent (#{$?})"
-          when 2
-            ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent (#{$?})"
           when 1
-            #@store.keepdata(file)
+            @store.keepdata(file)
             ZabbixRubyClient::Log.error "zabbix-sender: Sending failed (#{$?})"
             ZabbixRubyClient::Log.error res
           when 256
@@ -67,6 +67,7 @@ module ZabbixRubyClient
           end
         else
           if $?.to_i != 0
+            ZabbixRubyClient::Log.warn "v2.0"
             @store.keepdata(file)
             ZabbixRubyClient::Log.error "zabbix-sender: Sending failed"
             ZabbixRubyClient::Log.error res
@@ -90,7 +91,7 @@ module ZabbixRubyClient
     end
 
     def zabbix_sender_version
-      v = `#{@config['zabbix']['sender']} -V &> /dev/null | head -1`
+      v = `#{@config['zabbix']['sender']} -V | head -1`
       v.split(/\s/)[2]
     rescue
       false
