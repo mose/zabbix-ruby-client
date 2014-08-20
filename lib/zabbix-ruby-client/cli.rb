@@ -29,12 +29,6 @@ module ZabbixRubyClient
 
     desc "show", "Displays in console what are the collected data ready to be sent"
     def show
-      begin
-        Bundler.require
-      rescue Bundler::GemfileNotFound
-        say "No Gemfile found", :red
-        abort
-      end
       config = YAML::load_file(options[:configfile])
       if File.exists? options[:taskfile]
         tasks = YAML::load_file(options[:taskfile])
