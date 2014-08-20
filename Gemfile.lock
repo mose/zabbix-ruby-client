@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    zabbix-ruby-client (0.0.24)
+    zabbix-ruby-client (0.1.0)
       thor
 
 GEM
