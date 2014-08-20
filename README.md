@@ -1,11 +1,12 @@
 Zabbix Ruby Client
 ====================
 
-[![Gem Version](https://badge.fury.io/rb/zabbix-ruby-client.png)](http://rubygems.org/gems/zabbix-ruby-client)
-[![Build Status](https://travis-ci.org/eduvo/zabbix-ruby-client.png?branch=master)](https://travis-ci.org/eduvo/zabbix-ruby-client)
-[![Coverage Status](https://coveralls.io/repos/eduvo/zabbix-ruby-client/badge.png)](https://coveralls.io/r/eduvo/zabbix-ruby-client)
-[![Dependency Status](https://gemnasium.com/eduvo/zabbix-ruby-client.png)](https://gemnasium.com/eduvo/zabbix-ruby-client)
-[![Code Climate](https://codeclimate.com/github/eduvo/zabbix-ruby-client.png)](https://codeclimate.com/github/eduvo/zabbix-ruby-client)
+[![Gem Version](https://img.shields.io/gem/v/zabbix-ruby-client.svg)](http://rubygems.org/gems/zabbix-ruby-client)
+[![Downloads](http://img.shields.io/gem/dt/zabbix-ruby-client.svg)](https://rubygems.org/gems/zabbix-ruby-client)
+[![Build Status](https://img.shields.io/travis/eduvo/zabbix-ruby-client.svg)](https://travis-ci.org/mose/zabbix-ruby-client)
+[![Coverage Status](https://img.shields.io/coveralls/eduvo/zabbix-ruby-client.svg)](https://coveralls.io/r/eduvo/zabbix-ruby-client?branch=master)
+[![Dependency Status](https://img.shields.io/gemnasium/eduvo/zabbix-ruby-client.svg)](https://gemnasium.com/eduvo/zabbix-ruby-client)
+[![Code Climate](https://img.shields.io/codeclimate/github/eduvo/zabbix-ruby-client.svg)](https://codeclimate.com/github/eduvo/zabbix-ruby-client)
 
 ----
 
