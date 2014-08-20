@@ -19,9 +19,9 @@ module ZabbixRubyClient
         if info
           time = Time.now.to_i
           back = []
-          back << "#{host} disk.space[#{mapped},size] #{time} #{info[1].to_i * 1000}"
-          back << "#{host} disk.space[#{mapped},used] #{time} #{info[2].to_i * 1000}"
-          back << "#{host} disk.space[#{mapped},available] #{time} #{info[3].to_i * 1000}"
+          back << "#{host} disk.space[#{mapped},size] #{time} #{to_m(info[1])}"
+          back << "#{host} disk.space[#{mapped},used] #{time} #{to_m(info[2])}"
+          back << "#{host} disk.space[#{mapped},available] #{time} #{to_m(info[3])}"
           back << "#{host} disk.space[#{mapped},percent_used] #{time} #{info[4].gsub(/%/,'')}"
           back << "#{host} disk.io[#{mapped},read_ok] #{time} #{info[9]}"
           back << "#{host} disk.io[#{mapped},read_merged] #{time} #{info[10]}"
@@ -41,12 +41,16 @@ module ZabbixRubyClient
         device = args[0]
         mount = args[1]
         mapped = args[2] || device
-        [ "disk.dev.discovery", 
-          "{\"{#DISK_DEVICE}\": \"#{mapped}\", \"{#DISK_MOUNT}\": \"#{mount}\"}" 
+        [ "disk.dev.discovery",
+          "{\"{#DISK_DEVICE}\": \"#{mapped}\", \"{#DISK_MOUNT}\": \"#{mount}\"}"
         ]
       end
 
     private
+
+      def to_m(s)
+        s.to_i * 1000
+      end
 
       def get_info(disk, device)
         info = diskinfo(device)

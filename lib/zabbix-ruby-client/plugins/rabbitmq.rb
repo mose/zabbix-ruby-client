@@ -18,27 +18,37 @@ module ZabbixRubyClient
         back = []
         if info
           time = Time.now.to_i
-          back << "#{host} rabbitmq.erlang.version #{time} #{info['erlang_version']}"
-          back << "#{host} rabbitmq.message.ack #{time} #{info['message_stats']['ack']}"
-          back << "#{host} rabbitmq.message.ack.rate #{time} #{info['message_stats']['ack_details']['rate'].round}"
-          back << "#{host} rabbitmq.message.deliver #{time} #{info['message_stats']['deliver']}"
-          back << "#{host} rabbitmq.message.deliver.rate #{time} #{info['message_stats']['deliver_details']['rate'].round}"
-          back << "#{host} rabbitmq.message.deliver_get #{time} #{info['message_stats']['deliver_get']}"
-          back << "#{host} rabbitmq.message.deliver_get.rate #{time} #{info['message_stats']['deliver_get_details']['rate'].round}"
-          back << "#{host} rabbitmq.message.publish #{time} #{info['message_stats']['publish']}"
-          back << "#{host} rabbitmq.message.publish.rate #{time} #{info['message_stats']['publish_details']['rate'].round}"
-          back << "#{host} rabbitmq.message.redeliver #{time} #{info['message_stats']['redeliver']}"
-          back << "#{host} rabbitmq.message.redeliver.rate #{time} #{info['message_stats']['redeliver_details']['rate'].round}"
-          back << "#{host} rabbitmq.queue.total.messages #{time} #{info['queue_totals']['messages']}"
-          back << "#{host} rabbitmq.queue.total.messages_ready #{time} #{info['queue_totals']['messages_ready']}"
-          back << "#{host} rabbitmq.queue.total.messages_unacknowledged #{time} #{info['queue_totals']['messages_unacknowledged']}"
-          back << "#{host} rabbitmq.total.channels #{time} #{info['object_totals']['channels']}"
-          back << "#{host} rabbitmq.total.connections #{time} #{info['object_totals']['connections']}"
-          back << "#{host} rabbitmq.total.consumers #{time} #{info['object_totals']['consumers']}"
-          back << "#{host} rabbitmq.total.exchanges #{time} #{info['object_totals']['exchanges']}"
-          back << "#{host} rabbitmq.total.listeners #{time} #{info['listeners'].count}"
-          back << "#{host} rabbitmq.total.queues #{time} #{info['object_totals']['queues']}"
           back << "#{host} rabbitmq.version #{time} #{info['rabbitmq_version']}"
+          back << "#{host} rabbitmq.erlang.version #{time} #{info['erlang_version']}"
+          %w(ack deliver deliver_get publish redeliver).each do |i|
+            back << "#{host} rabbitmq.message.#{i} #{time} #{info['message_stats'][i]}"
+            back << "#{host} rabbitmq.message.#{i}.rate #{time} #{info['message_stats']["#{i}_details"]['rate'].round}"
+          end
+          # back << "#{host} rabbitmq.message.ack #{time} #{info['message_stats']['ack']}"
+          # back << "#{host} rabbitmq.message.ack.rate #{time} #{info['message_stats']['ack_details']['rate'].round}"
+          # back << "#{host} rabbitmq.message.deliver #{time} #{info['message_stats']['deliver']}"
+          # back << "#{host} rabbitmq.message.deliver.rate #{time} #{info['message_stats']['deliver_details']['rate'].round}"
+          # back << "#{host} rabbitmq.message.deliver_get #{time} #{info['message_stats']['deliver_get']}"
+          # back << "#{host} rabbitmq.message.deliver_get.rate #{time} #{info['message_stats']['deliver_get_details']['rate'].round}"
+          # back << "#{host} rabbitmq.message.publish #{time} #{info['message_stats']['publish']}"
+          # back << "#{host} rabbitmq.message.publish.rate #{time} #{info['message_stats']['publish_details']['rate'].round}"
+          # back << "#{host} rabbitmq.message.redeliver #{time} #{info['message_stats']['redeliver']}"
+          # back << "#{host} rabbitmq.message.redeliver.rate #{time} #{info['message_stats']['redeliver_details']['rate'].round}"
+          %w(messages messages_ready messages_unacknowledged).each do |i|
+            back << "#{host} rabbitmq.queue.total.#{i} #{time} #{info['queue_totals'][i]}"
+          end
+          # back << "#{host} rabbitmq.queue.total.messages #{time} #{info['queue_totals']['messages']}"
+          # back << "#{host} rabbitmq.queue.total.messages_ready #{time} #{info['queue_totals']['messages_ready']}"
+          # back << "#{host} rabbitmq.queue.total.messages_unacknowledged #{time} #{info['queue_totals']['messages_unacknowledged']}"
+          %w(channels connections consumers exchanges queues).each do |i|
+            back << "#{host} rabbitmq.total.#{i} #{time} #{info['object_totals'][i]}"
+          end
+          # back << "#{host} rabbitmq.total.channels #{time} #{info['object_totals']['channels']}"
+          # back << "#{host} rabbitmq.total.connections #{time} #{info['object_totals']['connections']}"
+          # back << "#{host} rabbitmq.total.consumers #{time} #{info['object_totals']['consumers']}"
+          # back << "#{host} rabbitmq.total.exchanges #{time} #{info['object_totals']['exchanges']}"
+          # back << "#{host} rabbitmq.total.queues #{time} #{info['object_totals']['queues']}"
+          back << "#{host} rabbitmq.total.listeners #{time} #{info['listeners'].count}"
         end
         back
       end
