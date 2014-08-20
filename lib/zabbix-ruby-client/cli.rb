@@ -29,32 +29,28 @@ module ZabbixRubyClient
 
     desc "show", "Displays in console what are the collected data ready to be sent"
     def show
-      config = YAML::load_file(options[:configfile])
-      if File.exists? options[:taskfile]
-        tasks = YAML::load_file(options[:taskfile])
-      else
-        tasks = config['plugins']
-      end
-      config['server'] = File.basename(options[:configfile],'.yml')
-      config['taskfile'] = File.basename(options[:taskfile],'.yml')
-      zrc = ZabbixRubyClient::Runner.new(config, tasks)
-      zrc.collect
-      zrc.show
+      collect(options).show
     end
 
     desc "upload", "Collects and sends data to the zabbix server"
     def upload
-      config = YAML::load_file(options[:configfile])
-      if File.exists? options[:taskfile]
-        tasks = YAML::load_file(options[:taskfile])
-      else
-        tasks = config['plugins']
+      collect(options).upload
+    end
+
+    no_commands do
+      def collect(options)
+        config = YAML::load_file(options[:configfile])
+        if File.exists? options[:taskfile]
+          tasks = YAML::load_file(options[:taskfile])
+        else
+          tasks = config['plugins']
+        end
+        config['server'] = File.basename(options[:configfile],'.yml')
+        config['taskfile'] = File.basename(options[:taskfile],'.yml')
+        zrc = ZabbixRubyClient::Runner.new(config, tasks)
+        zrc.collect
+        zrc
       end
-      config['server'] = File.basename(options[:configfile],'.yml')
-      config['taskfile'] = File.basename(options[:taskfile],'.yml')
-      zrc = ZabbixRubyClient::Runner.new(config, tasks)
-      zrc.collect
-      zrc.upload
     end
 
   end
