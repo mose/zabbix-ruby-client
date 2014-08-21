@@ -3,6 +3,7 @@ Zabbbix Ruby Client Changelog
 
 ### v0.1.0 - wip
 - remove bundler dependency
+- minor code refactoring
 
 ### v0.0.23 - 2014-08-09
 - oops, buggy mysqlcommand fixed
