@@ -1,12 +1,12 @@
 Zabbix Ruby Client
 ====================
 
-[![Gem Version](https://img.shields.io/gem/v/zabbix-ruby-client.svg)](http://rubygems.org/gems/zabbix-ruby-client)
+[![Gem Version](http://img.shields.io/gem/v/zabbix-ruby-client.svg)](http://rubygems.org/gems/zabbix-ruby-client)
 [![Downloads](http://img.shields.io/gem/dt/zabbix-ruby-client.svg)](https://rubygems.org/gems/zabbix-ruby-client)
-[![Build Status](https://img.shields.io/travis/eduvo/zabbix-ruby-client.svg)](https://travis-ci.org/eduvo/zabbix-ruby-client)
-[![Coverage Status](https://img.shields.io/coveralls/eduvo/zabbix-ruby-client.svg)](https://coveralls.io/r/eduvo/zabbix-ruby-client?branch=master)
+[![Build Status](http://img.shields.io/travis/eduvo/zabbix-ruby-client.svg)](https://travis-ci.org/eduvo/zabbix-ruby-client)
+[![Coverage Status](http://img.shields.io/coveralls/eduvo/zabbix-ruby-client.svg)](https://coveralls.io/r/eduvo/zabbix-ruby-client?branch=master)
 [![Dependency Status](https://gemnasium.com/eduvo/zabbix-ruby-client.png)](https://gemnasium.com/eduvo/zabbix-ruby-client)
-[![Code Climate](https://img.shields.io/codeclimate/github/eduvo/zabbix-ruby-client.svg)](https://codeclimate.com/github/eduvo/zabbix-ruby-client)
+[![Code Climate](http://img.shields.io/codeclimate/github/eduvo/zabbix-ruby-client.svg)](https://codeclimate.com/github/eduvo/zabbix-ruby-client)
 
 ----
 
@@ -17,6 +17,8 @@ The development is still in progress but it produces results and works in produc
 Check the [Changelog](CHANGELOG.md) for recent changes.
 
 There is also a [Chef cookbook](https://github.com/eduvo/zabbix-ruby-client-cookbook) available for system-wide install if you use Chef.
+
+[![Cookbook Version](http://img.shields.io/cookbook/v/zabbix-ruby-client.svg)](https://supermarket.getchef.com/cookbooks/zabbix-ruby-client)
 
 ## Why ?
 
