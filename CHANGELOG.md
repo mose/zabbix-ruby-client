@@ -1,7 +1,7 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.1.0 - wip
+### v0.1.0 - 2014-08-22
 - remove bundler dependency
 - minor code refactoring
 
