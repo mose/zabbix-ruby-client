@@ -12,9 +12,11 @@ Zabbix Ruby Client
 
 This tool is designed to make easy to install zabbix reporter on monitored servers using zabbix-sender rather than zabbix-agent. It targets on monitoring mainly linux servers and is built on a plugin system so that you can decide what is going to be reported.
 
-The development is still in progress but it produces results and works in my case. Use at your own risk and read the code first. It is developed under ruby 2 but should work on 1.9.3 as well.
+The development is still in progress but it produces results and works in production for Faria since fall 2013. Use at your own risk and read the code first. It works with ruby 1.9.3 to 2.1.2.
 
-Check the [Changelog](CHANGELOG.md) for recent changes, code is still under huge development and is likely to move a lot until version 0.1.
+Check the [Changelog](CHANGELOG.md) for recent changes.
+
+There is also a [Chef cookbook](https://github.com/eduvo/zabbix-ruby-client-cookbook) available for system-wide install if you use Chef.
 
 ## Why ?
 
@@ -38,6 +40,8 @@ At some point all zabbix ruby client plugins will be usable by the agent as well
 Install it yourself as:
 
     gem install zabbix-ruby-client
+
+Or us the chef cookbook https://github.com/eduvo/zabbix-ruby-client-cookbook
 
 ## Usage
 
