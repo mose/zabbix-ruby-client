@@ -226,6 +226,7 @@ ListenIP 127.0.0.1
 
 ## Todo
 
+* publish a chef cookbook for system wide installation
 * improve templates for graphs
 * add more plugins
   * memcache
