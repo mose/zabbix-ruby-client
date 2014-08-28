@@ -1,6 +1,9 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.1.1 - wip
+- add link to the chef cookbook
+
 ### v0.1.0 - 2014-08-22
 - remove bundler dependency
 - minor code refactoring

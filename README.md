@@ -1,20 +1,24 @@
 Zabbix Ruby Client
 ====================
 
-[![Gem Version](https://img.shields.io/gem/v/zabbix-ruby-client.svg)](http://rubygems.org/gems/zabbix-ruby-client)
+[![Gem Version](http://img.shields.io/gem/v/zabbix-ruby-client.svg)](http://rubygems.org/gems/zabbix-ruby-client)
 [![Downloads](http://img.shields.io/gem/dt/zabbix-ruby-client.svg)](https://rubygems.org/gems/zabbix-ruby-client)
-[![Build Status](https://img.shields.io/travis/eduvo/zabbix-ruby-client.svg)](https://travis-ci.org/eduvo/zabbix-ruby-client)
-[![Coverage Status](https://img.shields.io/coveralls/eduvo/zabbix-ruby-client.svg)](https://coveralls.io/r/eduvo/zabbix-ruby-client?branch=master)
+[![Build Status](http://img.shields.io/travis/eduvo/zabbix-ruby-client.svg)](https://travis-ci.org/eduvo/zabbix-ruby-client)
+[![Coverage Status](http://img.shields.io/coveralls/eduvo/zabbix-ruby-client.svg)](https://coveralls.io/r/eduvo/zabbix-ruby-client?branch=master)
 [![Dependency Status](https://gemnasium.com/eduvo/zabbix-ruby-client.png)](https://gemnasium.com/eduvo/zabbix-ruby-client)
-[![Code Climate](https://img.shields.io/codeclimate/github/eduvo/zabbix-ruby-client.svg)](https://codeclimate.com/github/eduvo/zabbix-ruby-client)
+[![Code Climate](http://img.shields.io/codeclimate/github/eduvo/zabbix-ruby-client.svg)](https://codeclimate.com/github/eduvo/zabbix-ruby-client)
 
 ----
 
 This tool is designed to make easy to install zabbix reporter on monitored servers using zabbix-sender rather than zabbix-agent. It targets on monitoring mainly linux servers and is built on a plugin system so that you can decide what is going to be reported.
 
-The development is still in progress but it produces results and works in my case. Use at your own risk and read the code first. It is developed under ruby 2 but should work on 1.9.3 as well.
+The development is still in progress but it produces results and works in production for Faria since fall 2013. Use at your own risk and read the code first. It works with ruby 1.9.3 to 2.1.2.
 
-Check the [Changelog](CHANGELOG.md) for recent changes, code is still under huge development and is likely to move a lot until version 0.1.
+Check the [Changelog](CHANGELOG.md) for recent changes.
+
+There is also a [Chef cookbook](https://github.com/eduvo/zabbix-ruby-client-cookbook) available for system-wide install if you use Chef.
+
+[![Cookbook Version](http://img.shields.io/cookbook/v/zabbix-ruby-client.svg)](https://supermarket.getchef.com/cookbooks/zabbix-ruby-client)
 
 ## Why ?
 
@@ -38,6 +42,8 @@ At some point all zabbix ruby client plugins will be usable by the agent as well
 Install it yourself as:
 
     gem install zabbix-ruby-client
+
+Or us the chef cookbook https://github.com/eduvo/zabbix-ruby-client-cookbook
 
 ## Usage
 
@@ -226,6 +232,7 @@ ListenIP 127.0.0.1
 
 ## Todo
 
+* publish a chef cookbook for system wide installation
 * improve templates for graphs
 * add more plugins
   * memcache
