@@ -21,8 +21,10 @@ module ZabbixRubyClient
           back << "#{host} rabbitmq.version #{time} #{info['rabbitmq_version']}"
           back << "#{host} rabbitmq.erlang.version #{time} #{info['erlang_version']}"
           %w(ack deliver deliver_get publish redeliver).each do |i|
-            back << "#{host} rabbitmq.message.#{i} #{time} #{info['message_stats'][i]}"
-            back << "#{host} rabbitmq.message.#{i}.rate #{time} #{info['message_stats']["#{i}_details"]['rate'].round}"
+            if info['message_stats'][i]
+              back << "#{host} rabbitmq.message.#{i} #{time} #{info['message_stats'][i]}"
+              back << "#{host} rabbitmq.message.#{i}.rate #{time} #{info['message_stats']["#{i}_details"]['rate'].round}"
+            end
           end
           %w(messages messages_ready messages_unacknowledged).each do |i|
             back << "#{host} rabbitmq.queue.total.#{i} #{time} #{info['queue_totals'][i]}"
