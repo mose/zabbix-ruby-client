@@ -1,8 +1,10 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
-### v0.1.1 - wip
+### v0.1.1 - 2014-08-28
 - add link to the chef cookbook
+- better backtrace error in case a plugin crashes
+- fix case when rabbit don't have a stat for redeliver
 
 ### v0.1.0 - 2014-08-22
 - remove bundler dependency

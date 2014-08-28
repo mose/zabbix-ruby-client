@@ -25,7 +25,7 @@ module ZabbixRubyClient
         rescue Exception => e
           ZabbixRubyClient::Log.fatal "Oops"
           ZabbixRubyClient::Log.fatal e.message
-          ZabbixRubyClient::Log.fatal e.backtrace
+          ZabbixRubyClient::Log.fatal e.backtrace.join("\n")
         end
       end
     end
