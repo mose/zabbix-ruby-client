@@ -1,6 +1,8 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.1.2 - wip
+
 ### v0.1.1 - 2014-08-28
 - add link to the chef cookbook
 - better backtrace error in case a plugin crashes
