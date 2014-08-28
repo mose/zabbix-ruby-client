@@ -50,6 +50,7 @@ describe ZabbixRubyClient::Data do
   it "logs buggy plugins" do
     allow(ZabbixRubyClient::Log).to receive(:fatal).with("Oops")
     allow(ZabbixRubyClient::Log).to receive(:fatal).with("Exception")
+    allow(ZabbixRubyClient::Log).to receive(:fatal)
     @data.run_plugin("sample_buggy")
   end
 
