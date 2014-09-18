@@ -261,4 +261,4 @@ ListenIP 127.0.0.1
 
 ## License
 
-Copyright 2013 [Faria Systems](http://faria.co) - MIT license - created by mose at mose.com
+Copyright 2013-2014 [Faria Systems](http://faria.co) - MIT license - created by mose at mose.com
