@@ -3,10 +3,10 @@ Zabbix Ruby Client
 
 [![Gem Version](http://img.shields.io/gem/v/zabbix-ruby-client.svg)](http://rubygems.org/gems/zabbix-ruby-client)
 [![Downloads](http://img.shields.io/gem/dt/zabbix-ruby-client.svg)](https://rubygems.org/gems/zabbix-ruby-client)
-[![Build Status](http://img.shields.io/travis/eduvo/zabbix-ruby-client.svg)](https://travis-ci.org/eduvo/zabbix-ruby-client)
-[![Coverage Status](http://img.shields.io/coveralls/eduvo/zabbix-ruby-client.svg)](https://coveralls.io/r/eduvo/zabbix-ruby-client?branch=master)
-[![Dependency Status](https://gemnasium.com/eduvo/zabbix-ruby-client.png)](https://gemnasium.com/eduvo/zabbix-ruby-client)
-[![Code Climate](http://img.shields.io/codeclimate/github/eduvo/zabbix-ruby-client.svg)](https://codeclimate.com/github/eduvo/zabbix-ruby-client)
+[![Build Status](http://img.shields.io/travis/mose/zabbix-ruby-client.svg)](https://travis-ci.org/mose/zabbix-ruby-client)
+[![Coverage Status](http://img.shields.io/coveralls/mose/zabbix-ruby-client.svg)](https://coveralls.io/r/mose/zabbix-ruby-client?branch=master)
+[![Dependency Status](https://gemnasium.com/mose/zabbix-ruby-client.png)](https://gemnasium.com/mose/zabbix-ruby-client)
+[![Code Climate](http://img.shields.io/codeclimate/github/mose/zabbix-ruby-client.svg)](https://codeclimate.com/github/mose/zabbix-ruby-client)
 
 ----
 
