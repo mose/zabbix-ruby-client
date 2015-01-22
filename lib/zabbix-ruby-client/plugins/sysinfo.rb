@@ -9,8 +9,8 @@ module ZabbixRubyClient
         host = args.delete_at(0)
         uname = `uname -a`
         if $?.to_i == 0
-          arch, hostname, kernel, kernel_version, machine, proc,
-          _, _, _, _, _, _, _, platform, os = uname.split(/ /)
+          arch, hostname, kernel, kernel_version, machine, os_debian,
+          _, platform_debian, _, _, _, _, _, platform, os = uname.split(/ /)
         else
           Log.warn "Are you running on ubuntu ?"
           return []
@@ -23,8 +23,8 @@ module ZabbixRubyClient
         back << "#{host} sysinfo[kernel] #{time} #{kernel}"
         back << "#{host} sysinfo[kernel_version] #{time} #{kernel_version}"
         back << "#{host} sysinfo[machine] #{time} #{machine}"
-        back << "#{host} sysinfo[platform] #{time} #{platform}"
-        back << "#{host} sysinfo[os] #{time} #{os}"
+        back << "#{host} sysinfo[platform] #{time} #{platform || platform_debian}"
+        back << "#{host} sysinfo[os] #{time} #{os || os_debian}"
         Hash[*args].each do |k,v|
           back << "#{host} sysinfo[#{k}] #{time} #{v}"
         end

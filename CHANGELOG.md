@@ -2,6 +2,9 @@ Zabbbix Ruby Client Changelog
 -----------------------------
 
 ### v0.1.2 - wip
+- compat with zabbix_sender 2.4 (temporary fix, requires more investigation)
+- fix cpu and apache zabbix templates for zabbix 2.4
+- make sysinfo plugin work on debian wheezy
 
 ### v0.1.1 - 2014-08-28
 - add link to the chef cookbook

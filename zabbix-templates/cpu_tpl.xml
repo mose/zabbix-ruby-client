@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2014-01-02T03:31:53Z</date>
+    <date>2015-01-17T21:06:25Z</date>
     <groups>
         <group>
-            <name>3. Service Ubuntu</name>
+            <name>3. debian</name>
         </group>
     </groups>
     <templates>
         <template>
             <template>CPU zrc</template>
             <name>CPU (zrc)</name>
+            <description/>
             <groups>
                 <group>
-                    <name>3. Service Ubuntu</name>
+                    <name>3. debian</name>
                 </group>
             </groups>
             <applications>
@@ -63,6 +64,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU guest %</name>
@@ -88,7 +90,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[guest]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
+                    <params>100*last(&quot;cpu[guest]&quot;)/last(&quot;cpu[total]&quot;)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -105,6 +107,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU idle</name>
@@ -147,6 +150,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU idle %</name>
@@ -172,7 +176,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[idle]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
+                    <params>100*last(&quot;cpu[idle]&quot;)/last(&quot;cpu[total]&quot;)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -189,6 +193,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU iowait</name>
@@ -231,6 +236,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU iowait %</name>
@@ -256,7 +262,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[iowait]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
+                    <params>100*last(&quot;cpu[iowait]&quot;)/last(&quot;cpu[total]&quot;)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -273,6 +279,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU irq</name>
@@ -315,6 +322,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU irq %</name>
@@ -340,7 +348,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[irq]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
+                    <params>100*last(&quot;cpu[irq]&quot;)/last(&quot;cpu[total]&quot;)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -357,6 +365,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU nice</name>
@@ -399,6 +408,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU nice %</name>
@@ -424,7 +434,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[nice]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
+                    <params>100*last(&quot;cpu[nice]&quot;)/last(&quot;cpu[total]&quot;)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -441,6 +451,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU soft</name>
@@ -483,6 +494,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU soft %</name>
@@ -508,7 +520,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[soft]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
+                    <params>100*last(&quot;cpu[soft]&quot;)/last(&quot;cpu[total]&quot;)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -525,6 +537,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU steal</name>
@@ -567,6 +580,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU steal %</name>
@@ -592,7 +606,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[steal]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
+                    <params>100*last(&quot;cpu[steal]&quot;)/last(&quot;cpu[total]&quot;)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -609,6 +623,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU system</name>
@@ -651,6 +666,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU system %</name>
@@ -676,7 +692,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[system]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
+                    <params>100*last(&quot;cpu[system]&quot;,0)/last(&quot;cpu[total]&quot;,0)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -693,6 +709,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU total</name>
@@ -735,6 +752,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU used</name>
@@ -777,6 +795,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU used %</name>
@@ -802,7 +821,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[used]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
+                    <params>100*last(&quot;cpu[used]&quot;)/last(&quot;cpu[total]&quot;)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -819,6 +838,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU user</name>
@@ -861,6 +881,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU user %</name>
@@ -886,7 +907,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100 * last(&quot;cpu[user]&quot;,0) / last(&quot;cpu[total]&quot;,0)</params>
+                    <params>100*last(&quot;cpu[user]&quot;)/last(&quot;cpu[total]&quot;)</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -903,6 +924,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
             </items>
             <discovery_rules/>
@@ -958,42 +980,6 @@
             <ymax_item_1>0</ymax_item_1>
             <graph_items>
                 <graph_item>
-                    <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>23AA10</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>CPU zrc</host>
-                        <key>cpu[user_percent]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>1</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>1023AA</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>CPU zrc</host>
-                        <key>cpu[system_percent]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>2</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>6699AA</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>CPU zrc</host>
-                        <key>cpu[nice_percent]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
                     <sortorder>3</sortorder>
                     <drawtype>0</drawtype>
                     <color>BC5000</color>
@@ -1003,18 +989,6 @@
                     <item>
                         <host>CPU zrc</host>
                         <key>cpu[steal_percent]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>4</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>D3D300</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>CPU zrc</host>
-                        <key>cpu[guest_percent]</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -1042,6 +1016,42 @@
                     </item>
                 </graph_item>
                 <graph_item>
+                    <sortorder>4</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>D3D300</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>CPU zrc</host>
+                        <key>cpu[guest_percent]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>23AA10</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>CPU zrc</host>
+                        <key>cpu[user_percent]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>6699AA</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>CPU zrc</host>
+                        <key>cpu[nice_percent]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
                     <sortorder>7</sortorder>
                     <drawtype>0</drawtype>
                     <color>53D3A3</color>
@@ -1051,6 +1061,18 @@
                     <item>
                         <host>CPU zrc</host>
                         <key>cpu[soft_percent]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>1023AA</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>CPU zrc</host>
+                        <key>cpu[system_percent]</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -1106,18 +1128,6 @@
             <ymax_item_1>0</ymax_item_1>
             <graph_items>
                 <graph_item>
-                    <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>23AA10</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>CPU zrc</host>
-                        <key>cpu[user_percent]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
                     <sortorder>2</sortorder>
                     <drawtype>0</drawtype>
                     <color>6699AA</color>
@@ -1127,42 +1137,6 @@
                     <item>
                         <host>CPU zrc</host>
                         <key>cpu[nice_percent]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>1</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>1023AA</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>CPU zrc</host>
-                        <key>cpu[system_percent]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>3</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>BC5000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>CPU zrc</host>
-                        <key>cpu[steal_percent]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>4</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>D3D300</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>CPU zrc</host>
-                        <key>cpu[guest_percent]</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -1190,6 +1164,18 @@
                     </item>
                 </graph_item>
                 <graph_item>
+                    <sortorder>4</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>D3D300</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>CPU zrc</host>
+                        <key>cpu[guest_percent]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
                     <sortorder>7</sortorder>
                     <drawtype>0</drawtype>
                     <color>53D3A3</color>
@@ -1199,6 +1185,42 @@
                     <item>
                         <host>CPU zrc</host>
                         <key>cpu[soft_percent]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>BC5000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>CPU zrc</host>
+                        <key>cpu[steal_percent]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>1023AA</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>CPU zrc</host>
+                        <key>cpu[system_percent]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>23AA10</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>CPU zrc</host>
+                        <key>cpu[user_percent]</key>
                     </item>
                 </graph_item>
             </graph_items>

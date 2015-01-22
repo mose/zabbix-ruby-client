@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2014-01-02T03:31:10Z</date>
+    <date>2015-01-17T21:09:42Z</date>
     <groups>
         <group>
-            <name>3. Service Apache</name>
+            <name>3. apache</name>
         </group>
     </groups>
     <templates>
         <template>
             <template>Apache Stats</template>
             <name>Apache (zrc)</name>
+            <description/>
             <groups>
                 <group>
-                    <name>3. Service Apache</name>
+                    <name>3. apache</name>
                 </group>
             </groups>
             <applications>
@@ -63,6 +64,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Bytes / Request</name>
@@ -105,6 +107,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Bytes / Seconds</name>
@@ -147,6 +150,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Closing Connection.</name>
@@ -189,6 +193,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>CPU Load</name>
@@ -231,6 +236,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>DNS Lookup</name>
@@ -273,6 +279,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Free workers</name>
@@ -298,7 +305,7 @@
                     <snmpv3_privpassphrase/>
                     <formula>1</formula>
                     <delay_flex/>
-                    <params>100*last(&quot;apache[IdleWorkers]&quot;)/(last(&quot;apache[BusyWorkers]&quot;) + last(&quot;apache[IdleWorkers]&quot;))</params>
+                    <params>100*last(&quot;apache[IdleWorkers]&quot;)/(last(&quot;apache[BusyWorkers]&quot;)+last(&quot;apache[IdleWorkers]&quot;))</params>
                     <ipmi_sensor/>
                     <data_type>0</data_type>
                     <authtype>0</authtype>
@@ -315,6 +322,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Gracefully Finishing</name>
@@ -357,6 +365,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>HTTP Check</name>
@@ -401,6 +410,7 @@
                     <valuemap>
                         <name>Service state</name>
                     </valuemap>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Idle</name>
@@ -443,6 +453,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Idle cleaning Workers</name>
@@ -485,6 +496,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Idle Workers</name>
@@ -527,6 +539,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Keep Alive</name>
@@ -569,6 +582,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Logging</name>
@@ -611,6 +625,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Reading Request</name>
@@ -653,6 +668,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Requests / Second</name>
@@ -695,6 +711,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Sending Reply</name>
@@ -737,6 +754,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Starting Up</name>
@@ -779,6 +797,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Total Accesses</name>
@@ -821,6 +840,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Total KBytes</name>
@@ -863,6 +883,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Uptime</name>
@@ -905,6 +926,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
                 <item>
                     <name>Waiting</name>
@@ -947,6 +969,7 @@
                         </application>
                     </applications>
                     <valuemap/>
+                    <logtimefmt/>
                 </item>
             </items>
             <discovery_rules/>
@@ -977,6 +1000,7 @@
                                 <name>Apache connections</name>
                                 <host>Apache Stats</host>
                             </resource>
+                            <max_columns>3</max_columns>
                             <application/>
                         </screen_item>
                         <screen_item>
@@ -998,6 +1022,7 @@
                                 <name>Apache workers</name>
                                 <host>Apache Stats</host>
                             </resource>
+                            <max_columns>3</max_columns>
                             <application/>
                         </screen_item>
                         <screen_item>
@@ -1019,6 +1044,7 @@
                                 <key>apache[Uptime]</key>
                                 <host>Apache Stats</host>
                             </resource>
+                            <max_columns>3</max_columns>
                             <application/>
                         </screen_item>
                     </screen_items>
@@ -1058,54 +1084,6 @@
             <ymax_item_1>0</ymax_item_1>
             <graph_items>
                 <graph_item>
-                    <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>C80000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Apache Stats</host>
-                        <key>apache[c_closing]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>1</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>00C800</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Apache Stats</host>
-                        <key>apache[c_dns]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>2</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>0000C8</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Apache Stats</host>
-                        <key>apache[c_finish]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>3</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>C800C8</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Apache Stats</host>
-                        <key>apache[c_cleanup]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
                     <sortorder>4</sortorder>
                     <drawtype>0</drawtype>
                     <color>C8C800</color>
@@ -1118,30 +1096,6 @@
                     </item>
                 </graph_item>
                 <graph_item>
-                    <sortorder>5</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>C8C8C8</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Apache Stats</host>
-                        <key>apache[c_log]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
-                    <sortorder>6</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>960000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Apache Stats</host>
-                        <key>apache[c_read]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
                     <sortorder>7</sortorder>
                     <drawtype>0</drawtype>
                     <color>009600</color>
@@ -1151,6 +1105,30 @@
                     <item>
                         <host>Apache Stats</host>
                         <key>apache[c_send]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Apache Stats</host>
+                        <key>apache[c_closing]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C800C8</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Apache Stats</host>
+                        <key>apache[c_cleanup]</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -1175,6 +1153,54 @@
                     <item>
                         <host>Apache Stats</host>
                         <key>apache[c_waiting]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>0000C8</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Apache Stats</host>
+                        <key>apache[c_finish]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>00C800</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Apache Stats</host>
+                        <key>apache[c_dns]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>5</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C8C8C8</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Apache Stats</host>
+                        <key>apache[c_log]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>6</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>960000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Apache Stats</host>
+                        <key>apache[c_read]</key>
                     </item>
                 </graph_item>
             </graph_items>
@@ -1274,18 +1300,6 @@
             <ymax_item_1>0</ymax_item_1>
             <graph_items>
                 <graph_item>
-                    <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>C80000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>7</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>Apache Stats</host>
-                        <key>apache[BusyWorkers]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
                     <sortorder>1</sortorder>
                     <drawtype>0</drawtype>
                     <color>00C800</color>
@@ -1295,6 +1309,18 @@
                     <item>
                         <host>Apache Stats</host>
                         <key>apache[IdleWorkers]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>7</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Apache Stats</host>
+                        <key>apache[BusyWorkers]</key>
                     </item>
                 </graph_item>
             </graph_items>
