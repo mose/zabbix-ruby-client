@@ -36,7 +36,7 @@ module ZabbixRubyClient
     private
 
       def get_info(interface)
-        info = getline("/proc/net/dev", "#{interface}: ")
+        info = getline("/proc/net/dev", "#{interface}:")
         if info
           info.split(/\s+/)
         else
