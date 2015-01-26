@@ -231,6 +231,15 @@ Then you can change zabbix-server config and add a localhost ListenIP (by defaul
 ListenIP 127.0.0.1
 ```
 
+## Standalone packaging
+
+From the source repository it's possible to build a tarball directly usable on any server, without the need to install ruby on it.
+
+    rake package:linux:x86
+
+Available arch are x86, x86_64 and osx (provided by flying ruby toolkit).
+
+
 ## Todo
 
 * publish a chef cookbook for system wide installation
