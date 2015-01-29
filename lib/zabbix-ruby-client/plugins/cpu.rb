@@ -14,7 +14,6 @@ module ZabbixRubyClient
         info = get_info
         back = []
         if info
-          time = Time.now.to_i
           info.each do |k,v|
             back << "#{host} cpu[#{k}] #{time} #{v}"
           end

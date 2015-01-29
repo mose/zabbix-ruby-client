@@ -5,6 +5,7 @@ module ZabbixRubyClient
   module Plugins
     module Redis
       extend self
+      extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args[0]
@@ -20,7 +21,6 @@ module ZabbixRubyClient
 
         info[:keyspace_total] = info[:keyspace_hits].to_i + info[:keyspace_misses].to_i
 
-        time = Time.now.to_i
         back = []
         back << "#{host} redis[role] #{time} #{info[:role]}"
         back << "#{host} redis[version] #{time} #{info[:redis_version]}"

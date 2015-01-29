@@ -11,7 +11,6 @@ module ZabbixRubyClient
         host = args[0]
         info = get_info
         if info
-          time = Time.now.to_i
           back = []
           back << "#{host} memory[total] #{time} #{info['MemTotal']}"
           back << "#{host} memory[free] #{time} #{info['MemFree']}"

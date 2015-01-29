@@ -14,7 +14,6 @@ module ZabbixRubyClient
         info = get_info(ovpnfile)
         back = []
         if info
-          time = Time.now.to_i
           back << "#{host} ovpn[received] #{time} #{info['received']}"
           back << "#{host} ovpn[sent] #{time} #{info['sent']}"
           back << "#{host} ovpn[count] #{time} #{info['count']}"

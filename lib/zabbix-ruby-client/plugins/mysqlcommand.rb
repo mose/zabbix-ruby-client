@@ -4,6 +4,7 @@ module ZabbixRubyClient
   module Plugins
     module Mysqlcommand
       extend self
+      extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args.shift
@@ -13,7 +14,6 @@ module ZabbixRubyClient
         mysqlcommand = "mysql #{mysqlargs} -s --skip-column-names -e \"%s\" #{mysqldb}"
         back = []
         Hash[*args].each do |name, command|
-          time = Time.now.to_i
           comm = sprintf(mysqlcommand, command.gsub(/"/,'\"'))
           res = `#{comm}`
           if $?.to_i == 0

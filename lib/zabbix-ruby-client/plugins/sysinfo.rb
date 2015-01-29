@@ -4,6 +4,7 @@ module ZabbixRubyClient
   module Plugins
     module Sysinfo
       extend self
+      extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args.delete_at(0)
@@ -15,7 +16,6 @@ module ZabbixRubyClient
           Log.warn "Are you running on ubuntu ?"
           return []
         end
-        time = Time.now.to_i
         back = []
         back << "#{host} sysinfo[name] #{time} #{host}"
         back << "#{host} sysinfo[arch] #{time} #{arch}"

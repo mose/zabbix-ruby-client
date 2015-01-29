@@ -17,7 +17,6 @@ module ZabbixRubyClient
 
         info = get_info(dev, mapped)
         if info
-          time = Time.now.to_i
           back = []
           back << "#{host} disk.space[#{mapped},size] #{time} #{to_m(info[1])}"
           back << "#{host} disk.space[#{mapped},used] #{time} #{to_m(info[2])}"

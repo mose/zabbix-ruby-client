@@ -4,6 +4,7 @@ module ZabbixRubyClient
   module Plugins
     module Mysql
       extend self
+      extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args[0]
@@ -16,7 +17,6 @@ module ZabbixRubyClient
           return []
         end
 
-        time = Time.now.to_i
         back = []
         back << "#{host} mysql.status[Aborted_clients] #{time} #{status["Aborted_clients"]}"
         back << "#{host} mysql.status[Aborted_connects] #{time} #{status["Aborted_connects"]}"

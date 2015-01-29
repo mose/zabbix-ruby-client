@@ -12,7 +12,6 @@ module ZabbixRubyClient
         interface = args[1]
         info = get_info(interface)
         if info
-          time = Time.now.to_i
           back = []
           back << "#{host} net.rx_ok[#{interface}] #{time} #{info[1]}"
           back << "#{host} net.rx_packets[#{interface}] #{time} #{info[2]}"

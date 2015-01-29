@@ -4,6 +4,7 @@ module ZabbixRubyClient
   module Plugins
     module Apache
       extend self
+      extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args[0]
@@ -11,7 +12,6 @@ module ZabbixRubyClient
         ret['Score'] = get_scores(ret["Scoreboard"])
         ret.delete "Scoreboard"
 
-        time = Time.now.to_i
         back = []
         back << "#{host} apache[TotalAccesses] #{time} #{ret["Total Accesses"]}"
         back << "#{host} apache[TotalKBytes] #{time} #{ret["Total kBytes"]}"

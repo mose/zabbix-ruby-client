@@ -4,6 +4,7 @@ module ZabbixRubyClient
   module Plugins
     module Postgres
       extend self
+      extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args[0]
@@ -35,7 +36,6 @@ module ZabbixRubyClient
           return []
         end
 
-        time = Time.now.to_i
         back = []
         status.each do |e,v|
           back << "#{host} postgres.#{e}[#{dbname}] #{time} #{v}"

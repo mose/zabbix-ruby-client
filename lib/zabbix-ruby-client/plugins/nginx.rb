@@ -11,7 +11,6 @@ module ZabbixRubyClient
         host = args[0]
         info = get_status
 
-        time = Time.now.to_i
         back = []
         back << "#{host} nginx[total] #{time} #{info[:total]}"
         back << "#{host} nginx[reading] #{time} #{info[:reading]}"

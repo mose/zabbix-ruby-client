@@ -10,6 +10,10 @@ module ZabbixRubyClient
     def perform(command)
     end
 
+    def time
+      @_now ||= Time.now.to_i
+    end
+
     def getline(file, pattern=false)
       if File.readable? file
         File.open(file,'r') do |f|

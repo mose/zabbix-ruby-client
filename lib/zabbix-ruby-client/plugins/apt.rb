@@ -4,12 +4,12 @@ module ZabbixRubyClient
   module Plugins
     module Apt
       extend self
+      extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
         host = args[0]
         info = get_info
         if info
-          time = Time.now.to_i
           back = []
           back << "#{host} apt[security] #{time} #{info[0]}"
           back << "#{host} apt[pending] #{time} #{info[1]}"
