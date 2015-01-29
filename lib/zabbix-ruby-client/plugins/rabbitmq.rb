@@ -10,14 +10,10 @@ module ZabbixRubyClient
       extend ZabbixRubyClient::PluginBase
 
       def collect(*args)
-        host = args[0]
-        rabbitmqadmin = args[1]
-        login = args[2]
-        pass = args[3]
+        host, rabbitmqadmin, login, pass = *args
         info = get_info(rabbitmqadmin, login, pass)
         back = []
         if info
-          time = Time.now.to_i
           back << "#{host} rabbitmq.version #{time} #{info['rabbitmq_version']}"
           back << "#{host} rabbitmq.erlang.version #{time} #{info['erlang_version']}"
           %w(ack deliver deliver_get publish redeliver).each do |i|
@@ -38,6 +34,10 @@ module ZabbixRubyClient
       end
 
     private
+
+      def time
+        @_now ||= Time.now.to_i
+      end
 
       def get_info(rabbitmqadmin, login, pass)
         command = "#{rabbitmqadmin} -u #{login} -p #{pass} -f raw_json show overview"
