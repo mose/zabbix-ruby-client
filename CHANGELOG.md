@@ -2,6 +2,7 @@ Zabbbix Ruby Client Changelog
 -----------------------------
 
 ### v0.1.3 - wip
+- update dependencies
 
 ### v0.1.2 - 2015-01-26
 - compat with zabbix_sender 2.4 (temporary fix, requires more investigation)
