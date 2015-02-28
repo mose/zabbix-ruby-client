@@ -2,6 +2,7 @@
 
 require 'spec_helper'
 require 'webmock/rspec'
+require "zabbix-ruby-client/plugin_base"
 require "zabbix-ruby-client/plugins"
 ZabbixRubyClient::Plugins.scan_dirs ["zabbix-ruby-client/plugins"]
 require "zabbix-ruby-client/plugins/apache"
