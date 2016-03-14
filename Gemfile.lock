@@ -55,7 +55,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.7)
   coveralls (~> 0.7)
-  rake (~> 10.4)
+  rake
   rspec (~> 3.0)
   webmock (~> 1.20)
   zabbix-ruby-client!
