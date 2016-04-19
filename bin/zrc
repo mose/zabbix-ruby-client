@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require "zabbix-ruby-client/version"
 require "zabbix-ruby-client/cli"
 
 ZabbixRubyClient::Cli.start

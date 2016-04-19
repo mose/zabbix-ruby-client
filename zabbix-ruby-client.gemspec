@@ -5,7 +5,7 @@ require 'zabbix-ruby-client/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "zabbix-ruby-client"
-  spec.version       = ZabbixRubyClient::VERSION
+  spec.version       = File.read(File.expand_path('../CHANGELOG.md', __FILE__))[/([0-9]+\.[0-9]+\.[0-9]+)/]
   spec.authors       = ["mose"]
   spec.email         = ["mose@mose.com"]
   spec.description   = %q{A zabbix alternative to zabbix-agent using zabbix-sender.}

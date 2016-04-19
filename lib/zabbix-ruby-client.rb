@@ -1,4 +1,3 @@
-require "zabbix-ruby-client/version"
 require "zabbix-ruby-client/logger"
 require "zabbix-ruby-client/plugins"
 require "zabbix-ruby-client/store"
