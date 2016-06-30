@@ -1,3 +1,4 @@
+require 'rbconfig'
 require "zabbix-ruby-client/logger"
 
 module ZabbixRubyClient
@@ -12,6 +13,24 @@ module ZabbixRubyClient
 
     def time
       @_now ||= Time.now.to_i
+    end
+
+    def os
+      @_os ||= (
+        host_os = RbConfig::CONFIG['host_os']
+        case host_os
+        when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
+          :windows
+        when /darwin|mac os/
+          :macosx
+        when /linux/
+          :linux
+        when /solaris|bsd/
+          :unix
+        else
+          raise Error::WebDriverError, "unknown os: #{host_os.inspect}"
+        end
+      )
     end
 
     def getline(file, pattern=false)
