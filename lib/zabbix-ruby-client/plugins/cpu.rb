@@ -45,8 +45,8 @@ module ZabbixRubyClient
           else
             false
           end
-        when :bsd
-          info = getline("iostat -C | tail -n 1")
+        when :unix
+          info = iostat
           if info
             back = info.split(/\s+/).map(&:to_i)
             ret["user"] = back[11]
@@ -65,6 +65,18 @@ module ZabbixRubyClient
             false
           end
         else
+          false
+        end
+      end
+
+      def iostat
+        output = `/usr/sbin/iostat -C | tail -n 1`
+        if $?.to_i == 0
+          Log.debug self
+          Log.debug output
+          output
+        else
+          Log.warn "Oh there is no command."
           false
         end
       end
