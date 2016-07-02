@@ -14,7 +14,8 @@ module ZabbixRubyClient
           arch, hostname, kernel, kernel_version, machine, os_debian,
           _, platform_debian, _, _, _, _, _, platform, os = uname.split(/\s+/)
         when :unix
-          arch, hostname, _, _, kernel, _, kernel_version, _,_,_,_,_,_, platform = uname.split(/\s+/)
+          arch, hostname, _, _, kernel, _, kernel_version, 
+          _, _, _, _, _, _, _, platform = uname.split(/\s+/)
         else
           return []
         end
