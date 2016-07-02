@@ -41,7 +41,7 @@ module ZabbixRubyClient
           back = output.split(/\s+/)
           procs = `top -n | grep processes`
           data = procs.split(/\s+/)
-          back << datap[0]
+          back << data[0]
           back
         else
           false
