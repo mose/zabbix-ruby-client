@@ -26,10 +26,22 @@ module ZabbixRubyClient
     private
 
       def get_info
-        info = getline("/proc/loadavg")
-        if info
-          back = info.split(/\s+/)
-          back[3] = back[3].split(/\//)[0]
+        case os
+        when :linux
+          info = getline("/proc/loadavg")
+          if info
+            back = info.split(/\s+/)
+            back[3] = back[3].split(/\//)[0]
+            back
+          else
+            false
+          end
+        when :unix
+          output = `uptime | awk '{print $(NF-2)" "$(NF-1)" "$(NF-0)}' | tr "," "`
+          back = output.split(/\s+/)
+          procs = `top -n | grep processes`
+          data = procs.split(/\s+/)
+          back << datap[0]
           back
         else
           false
