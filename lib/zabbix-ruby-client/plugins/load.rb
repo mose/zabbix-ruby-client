@@ -37,7 +37,7 @@ module ZabbixRubyClient
             false
           end
         when :unix
-          output = `uptime | awk '{print $(NF-2)" "$(NF-1)" "$(NF-0)}' | tr "," "`
+          output = `uptime | awk '{print $(NF-2)" "$(NF-1)" "$(NF-0)}' | tr "," " "`
           back = output.split(/\s+/)
           procs = `top -n | grep processes`
           data = procs.split(/\s+/)
