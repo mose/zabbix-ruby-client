@@ -88,10 +88,10 @@ There are a set of standart plugins included in the package, aimed at linux syst
 
 * **debian/ubuntu** system stats ([system_tpl](zabbix-templates/system_tpl.xml) includes the following)
   * **load** (uses /proc/loadavg) [load_tpl](zabbix-templates/load_tpl.xml)
-  * **cpu** (uses /proc/stat) [cpu_tpl](zabbix-templates/cpu_tpl.xml)
+  * **cpu** (uses /proc/stat or iostat -c) [cpu_tpl](zabbix-templates/cpu_tpl.xml)
   * **memory** (uses /proc/meminfo) [memory_tpl](zabbix-templates/memory_tpl.xml)
   * **disk** (uses /proc/diskstats) [disk_tpl](zabbix-templates/disk_tpl.xml)
-    * args [ "md-0", "/", "vgebs" ] = group identifier, mountpoint, groupname where identifier is what is found in /proc/diskstats, and groupname is something found in df command. The mount point will be used as label.
+    * args [ "md-0", "/", "vgebs" ] = group identifier, mountpoint, groupname where identifier is what is found in /proc/diskstats (or iostat for FreeBSD), and groupname is something found in df command. The mount point will be used as label.
   * **network** (uses /proc/net/dev) [network_tpl](zabbix-templates/network_tpl.xml)
     * args [ eth0 ] is just the interface identifier
   * **apt** (uses ubuntu /usr/lib/update-notifier/apt-check) this one will populate the 'tag' field in host info, and is supposed to run every few hours or at least not every minute [apt_tpl](master/zabbix-templates/apt_tpl.xml)

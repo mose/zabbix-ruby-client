@@ -55,9 +55,27 @@ module ZabbixRubyClient
         info = diskinfo(device)
         if info
           back = info.split(/\s+/)
-          io = getline("/proc/diskstats", " #{disk} ")
-          if io
-            back += io.split(/\s+/)
+          case os
+          when :linux
+            io = getline("/proc/diskstats", " #{disk} ")
+            if io
+              back += io.split(/\s+/)
+            end
+          when :unix
+            output = `iostat -x | grep "#{disk}"`
+            data = output.split(/\s+/)
+            back << data[3] # read_ok
+            back << 0 # read_merged
+            back << 0 # read_sector
+            back << 0 # read_time
+            back << data[4] # write_ok
+            back << 0 # write_merged
+            back << 0 # write_sector
+            back << 0 # write_time
+            back << 0 # io_time
+            back << 0 # io_merged
+          else
+            return false
           end
           back
         else
