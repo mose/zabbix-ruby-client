@@ -29,19 +29,41 @@ module ZabbixRubyClient
     private
 
       def get_info
-        info = meminfo
-        if info
-          back = splitinfo(info)
-          back["MemTotal"] = back["MemTotal"] * 1024
-          back["MemFree"] = (back['MemFree'] + back['Buffers'] + back['Cached']) * 1024
-          back["MemUsed"] = back["MemTotal"] - back["MemFree"]
-          back["MemPercent"] = (back["MemUsed"] / back["MemTotal"].to_f * 100).to_i
-          back['SwapTotal'] = back['SwapTotal'] * 1024
-          back['SwapFree'] = back['SwapFree'] * 1024
-          back['SwapUsed'] = back['SwapTotal'] - back['SwapFree']
+        case os
+        when :linux
+          info = meminfo
+          if info
+            back = splitinfo(info)
+            back["MemTotal"] = back["MemTotal"] * 1024
+            back["MemFree"] = (back['MemFree'] + back['Buffers'] + back['Cached']) * 1024
+            back["MemUsed"] = back["MemTotal"] - back["MemFree"]
+            back["MemPercent"] = (back["MemUsed"] / back["MemTotal"].to_f * 100).to_i
+            back['SwapTotal'] = back['SwapTotal'] * 1024
+            back['SwapFree'] = back['SwapFree'] * 1024
+            back['SwapUsed'] = back['SwapTotal'] - back['SwapFree']
+            back['SwapPercent'] = 0
+            unless back['SwapTotal'] == 0
+              back['SwapPercent'] = (back['SwapUsed'] / back['SwapTotal'].to_f * 100).to_i
+            end
+            back
+          else
+            false
+          end
+        when :unix
+          memtotal = `sysctl hw.realmem | cut -d' ' -f2`
+          memused = `sysctl hw.usermem | cut -d' ' -f2`
+          swap = `swapinfo | tail -n 1`
+          _, _, swapused, swaptotal = *swap.split(/\s+/)
+          back["MemTotal"] = memtotal
+          back["MemFree"] = memtotal - memused
+          back["MemUsed"] = memused
+          back["MemPercent"] = (memused.to_i / memtotal.to_i * 100).to_i
+          back['SwapTotal'] = swaptotal
+          back['SwapFree'] = swaptotal - swapused
+          back['SwapUsed'] = swapused
           back['SwapPercent'] = 0
           unless back['SwapTotal'] == 0
-            back['SwapPercent'] = (back['SwapUsed'] / back['SwapTotal'].to_f * 100).to_i
+            back['SwapPercent'] = (swapused.to_i / swaptotal.to_i * 100).to_i
           end
           back
         else
