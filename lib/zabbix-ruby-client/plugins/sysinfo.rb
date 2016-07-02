@@ -9,11 +9,13 @@ module ZabbixRubyClient
       def collect(*args)
         host = args.delete_at(0)
         uname = `uname -a`
-        if $?.to_i == 0
+        case os
+        when :linux
           arch, hostname, kernel, kernel_version, machine, os_debian,
-          _, platform_debian, _, _, _, _, _, platform, os = uname.split(/ /)
+          _, platform_debian, _, _, _, _, _, platform, os = uname.split(/\s+/)
+        when :unix
+          arch, hostname, _, _, kernel, _, kernel_version, _,_,_,_,_,_, platform = uname.split(/\s+/)
         else
-          Log.warn "Are you running on ubuntu ?"
           return []
         end
         back = []
