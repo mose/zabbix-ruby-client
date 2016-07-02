@@ -67,12 +67,11 @@ module ZabbixRubyClient
             back << 0 # --
             back << 0 # --
             back << 0 # --
-            back << 0 # --
-            back << data[2] # read_ok
+            back << data[3] # read_ok
             back << 0 # read_merged
             back << 0 # read_sector
             back << 0 # read_time
-            back << data[3] # write_ok
+            back << data[4] # write_ok
             back << 0 # write_merged
             back << 0 # write_sector
             back << 0 # write_time
