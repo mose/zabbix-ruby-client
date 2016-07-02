@@ -1,5 +1,6 @@
 require "zabbix-ruby-client/logger"
 require "zabbix-ruby-client/plugins"
+require "zabbix-ruby-client/plugin_base"
 require "zabbix-ruby-client/store"
 require "zabbix-ruby-client/data"
 require "zabbix-ruby-client/runner"

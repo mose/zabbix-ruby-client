@@ -23,7 +23,7 @@ module ZabbixRubyClient
     private
 
       def get_info
-        if os == :linuxs
+        if os == :linux
           info = aptinfo
           if info
             back = info.split(/;/).map(&:to_i)
