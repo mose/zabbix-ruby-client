@@ -12,7 +12,7 @@ Zabbix Ruby Client
 
 This tool is designed to make easy to install zabbix reporter on monitored servers using zabbix-sender rather than zabbix-agent. It targets on monitoring mainly linux servers and is built on a plugin system so that you can decide what is going to be reported.
 
-The development is still in progress but it produces results and works in production for Faria since fall 2013. Use at your own risk and read the code first. It works with ruby 1.9.3 to 2.1.2.
+The development is still in progress but it produces results and works in production for Faria since fall 2013. Use at your own risk and read the code first. It works with ruby 1.9.3 to 2.3.
 
 Check the [Changelog](CHANGELOG.md) for recent changes.
 
@@ -192,7 +192,11 @@ After launching manual tunnels and ensuring their survival with monit I tried `a
 I first created on both sides an autossh user with no console and no password:
 
 ```
+# on a linux system
 sudo useradd -m -r -s /bin/false -d /usr/local/zabtunnel zabtunnel
+
+# or fopr FreeBSD
+sudo pw adduser zabtunnel -g guest -d /usr/local/zabtunnel -s /nonexistent -c "Zabbix Tunnel user"
 ```
 
 On the zabbix server I created a key that I transfered to the clients in `/usr/local/zabtunnel/.ssh/authorized_keys`
