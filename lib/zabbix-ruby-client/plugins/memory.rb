@@ -52,19 +52,19 @@ module ZabbixRubyClient
         when :unix
           memtotal = `sysctl hw.realmem | cut -d' ' -f2`.chop
           memused = `sysctl hw.usermem | cut -d' ' -f2`.chop
-          swap = `swapinfo | tail -n 1`
+          swap = `swapinfo -k | tail -n 1`
           _, _, swapused, swaptotal = *swap.split(/\s+/)
           back = {}
           back["MemTotal"] = memtotal
           back["MemFree"] = memtotal.to_i - memused.to_i
           back["MemUsed"] = memused
           back["MemPercent"] = (memused.to_i / memtotal.to_f * 100).to_i
-          back['SwapTotal'] = swaptotal
-          back['SwapFree'] = swaptotal.to_i - swapused.to_i
-          back['SwapUsed'] = swapused
+          back['SwapTotal'] = swaptotal.to_i * 1024
+          back['SwapUsed'] = swapused.to_i * 1024
+          back['SwapFree'] = back['SwapTotal']  - back['SwapUsed'] 
           back['SwapPercent'] = 0
           unless back['SwapTotal'] == 0
-            back['SwapPercent'] = (swapused.to_i / swaptotal.to_f * 100).to_i
+            back['SwapPercent'] = (back['SwapUsed'] / back['SwapTotal'].to_f * 100).to_i
           end
           back
         else
