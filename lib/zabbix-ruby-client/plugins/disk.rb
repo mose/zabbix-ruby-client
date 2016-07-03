@@ -87,7 +87,7 @@ module ZabbixRubyClient
       end
 
       def diskinfo(disk)
-        output = `df | grep "#{disk}"`
+        output = `df -k | grep "#{disk}"`
         if $?.to_i == 0
           Log.debug self
           Log.debug output
