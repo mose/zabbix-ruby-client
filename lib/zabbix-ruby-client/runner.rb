@@ -24,6 +24,7 @@ module ZabbixRubyClient
       ZabbixRubyClient::Log.set_logger(File.join(@logsdir, 'zrc.log'), @config['loglevel'])
       ZabbixRubyClient::Log.debug @config.inspect
       @is_22 = /v2\.[24]\./.match zabbix_sender_version
+      @is_30 = /v3\.[024]\./.match zabbix_sender_version
       ZabbixRubyClient::Log.debug "zabbix sender version #{zabbix_sender_version}"
     end
 
@@ -45,7 +46,7 @@ module ZabbixRubyClient
       ZabbixRubyClient::Log.debug command
       begin
         res = `#{command}`
-        if @is_22
+        if @is_22 || @is_30
           case $?.to_i
           when 0
             ZabbixRubyClient::Log.debug "zabbix-sender: Data Sent (#{$?})"
