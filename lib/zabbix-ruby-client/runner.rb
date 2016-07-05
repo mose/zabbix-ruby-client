@@ -24,7 +24,7 @@ module ZabbixRubyClient
       ZabbixRubyClient::Log.set_logger(File.join(@logsdir, 'zrc.log'), @config['loglevel'])
       ZabbixRubyClient::Log.debug @config.inspect
       @is_22 = /v2\.[24]\./.match zabbix_sender_version
-      @is_30 = / 3\.[024]\./.match zabbix_sender_version
+      @is_30 = /3\.[024]\./.match zabbix_sender_version
       ZabbixRubyClient::Log.debug "zabbix sender version #{zabbix_sender_version}"
     end
 
