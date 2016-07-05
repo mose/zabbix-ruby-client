@@ -54,7 +54,7 @@ module ZabbixRubyClient
             false
           end
         when :unix
-          data = `/usr/bin/netstat -i -b -n -I #{interface} | tail -n 2 | head -n 1`
+          data = `/usr/bin/netstat -i -b -n -I #{interface} | head -n 2 | tail -n 1`
           if data
             info = data.split(/\s+/)
             back[:rx_ok] = info[6]
