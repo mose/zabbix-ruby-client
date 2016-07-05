@@ -59,12 +59,12 @@ module ZabbixRubyClient
             info = data.split(/\s+/)
             back[:rx_ok] = info[6]
             back[:rx_packets] = info[4]
-            back[:rx_err] = info[5]
-            back[:rx_drop] = info[6]
+            back[:rx_err] = info[5].gsub(/-/, "0")
+            back[:rx_drop] = info[6].gsub(/-/, "0")
             back[:tx_ok] = info[10]
             back[:tx_packets] = info[7]
-            back[:tx_err] = info[8]
-            back[:tx_drop] = info[9]
+            back[:tx_err] = info[8].gsub(/-/, "0")
+            back[:tx_drop] = info[9].gsub(/-/, "0")
             return back
           else
             false
