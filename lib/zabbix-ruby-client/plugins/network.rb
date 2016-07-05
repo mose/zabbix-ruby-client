@@ -61,10 +61,10 @@ module ZabbixRubyClient
             back[:rx_packets] = info[4]
             back[:rx_err] = info[5].gsub(/-/, "0")
             back[:rx_drop] = info[6].gsub(/-/, "0")
-            back[:tx_ok] = info[11]
+            back[:tx_ok] = info[10]
             back[:tx_packets] = info[8]
             back[:tx_err] = info[9].gsub(/-/, "0")
-            back[:tx_drop] = info[10].gsub(/-/, "0")
+            back[:tx_drop] = info[11].gsub(/-/, "0")
             return back
           else
             false
