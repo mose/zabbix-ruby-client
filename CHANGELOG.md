@@ -1,6 +1,8 @@
 Zabbbix Ruby Client Changelog
 -----------------------------
 
+### v0.1.4 - wip
+
 ### v0.1.3 - 2016-07-06
 - update dependencies
 - prepare an OS detection system for plugins (to support FreeBSD)
