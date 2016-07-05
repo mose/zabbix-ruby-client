@@ -19,25 +19,17 @@ describe ZabbixRubyClient::Plugins::Network do
   end
 
   it "prepare data to be usable" do
-    expected = [
-      "eth0:",
-      "8523363858",
-      "17554648",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      "589997",
-      "2479556217",
-      "15780062",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0"
-    ]
+    expected = {
+      :rx_drop => "0",
+      :rx_err => "0",
+      :rx_ok => "8523363858",
+      :rx_packets => "17554648",
+      :tx_drop => "0",
+      :tx_err => "0",
+      :tx_ok => "2479556217",
+      :tx_packets => "15780062"
+    }
+
     stubfile = File.expand_path('../../../../spec/files/system/net_dev', __FILE__)
     allow(ZabbixRubyClient::Plugins::Network).to receive(:getline).and_return(File.read(stubfile))
     data = ZabbixRubyClient::Plugins::Network.send(:get_info, 'eth0')

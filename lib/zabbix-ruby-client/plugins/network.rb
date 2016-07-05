@@ -13,14 +13,14 @@ module ZabbixRubyClient
         info = get_info(interface)
         if info
           back = []
-          back << "#{host} net.rx_ok[#{interface}] #{time} #{info[1]}"
-          back << "#{host} net.rx_packets[#{interface}] #{time} #{info[2]}"
-          back << "#{host} net.rx_err[#{interface}] #{time} #{info[3]}"
-          back << "#{host} net.rx_drop[#{interface}] #{time} #{info[4]}"
-          back << "#{host} net.tx_ok[#{interface}] #{time} #{info[9]}"
-          back << "#{host} net.tx_packets[#{interface}] #{time} #{info[10]}"
-          back << "#{host} net.tx_err[#{interface}] #{time} #{info[11]}"
-          back << "#{host} net.tx_drop[#{interface}] #{time} #{info[12]}"
+          back << "#{host} net.rx_ok[#{interface}] #{time} #{info[:rx_ok]}"
+          back << "#{host} net.rx_packets[#{interface}] #{time} #{info[:rx_packets]}"
+          back << "#{host} net.rx_err[#{interface}] #{time} #{info[:rx_err]}"
+          back << "#{host} net.rx_drop[#{interface}] #{time} #{info[:rx_drop]}"
+          back << "#{host} net.tx_ok[#{interface}] #{time} #{info[:tx_ok]}"
+          back << "#{host} net.tx_packets[#{interface}] #{time} #{info[:tx_packets]}"
+          back << "#{host} net.tx_err[#{interface}] #{time} #{info[:tx_err]}"
+          back << "#{host} net.tx_drop[#{interface}] #{time} #{info[:tx_drop]}"
           return back
         else
           return []
@@ -35,9 +35,40 @@ module ZabbixRubyClient
     private
 
       def get_info(interface)
-        info = getline("/proc/net/dev", "#{interface}:")
-        if info
-          info.split(/\s+/)
+        back = {}
+        case os
+        when :linux
+          data = getline("/proc/net/dev", "#{interface}:")
+          if data
+            info = data.split(/\s+/)
+            back[:rx_ok] = info[1]
+            back[:rx_packets] = info[2]
+            back[:rx_err] = info[3]
+            back[:rx_drop] = info[4]
+            back[:tx_ok] = info[9]
+            back[:tx_packets] = info[10]
+            back[:tx_err] = info[11]
+            back[:tx_drop] = info[12]
+            return back
+          else
+            false
+          end
+        when :unix
+          data = `/usr/bin/netstat -i -b -n -I #{interface} | tail -n 2 | head -n 1`
+          if data
+            info = data.split(/\s+/)
+            back[:rx_ok] = info[6]
+            back[:rx_packets] = info[4]
+            back[:rx_err] = info[5]
+            back[:rx_drop] = info[6]
+            back[:tx_ok] = info[10]
+            back[:tx_packets] = info[7]
+            back[:tx_err] = info[8]
+            back[:tx_drop] = info[9]
+            return back
+          else
+            false
+          end
         else
           false
         end

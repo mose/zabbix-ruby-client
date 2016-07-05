@@ -18,7 +18,7 @@ describe ZabbixRubyClient::Plugins::Disk do
   end
 
   it "launches a command to get disk space" do
-    expect(ZabbixRubyClient::Plugins::Disk).to receive(:`).with('df | grep "xx"')
+    expect(ZabbixRubyClient::Plugins::Disk).to receive(:`).with('df -k | grep "xx"')
     ZabbixRubyClient::Plugins::Disk.send(:diskinfo, 'xx')
   end
 
