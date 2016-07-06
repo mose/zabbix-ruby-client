@@ -88,7 +88,8 @@ There are a set of standart plugins included in the package, aimed at linux syst
 
 * **debian/ubuntu** system stats ([system_tpl](zabbix-templates/system_tpl.xml) includes the following)
   * **load** (uses /proc/loadavg) [load_tpl](zabbix-templates/load_tpl.xml)
-  * **cpu** (uses /proc/stat or iostat -c) [cpu_tpl](zabbix-templates/cpu_tpl.xml)
+  * **cpu** (uses /proc/stat for linux systems) [cpu_tpl](zabbix-templates/cpu_tpl.xml)
+  * **cpu-bsd** (uses iostat for BSD systems) [cpu_bsd_tpl](zabbix-templates/cpu_bsd_tpl.xml)
   * **memory** (uses /proc/meminfo) [memory_tpl](zabbix-templates/memory_tpl.xml)
   * **disk** (uses /proc/diskstats) [disk_tpl](zabbix-templates/disk_tpl.xml)
     * args [ "md-0", "/", "vgebs" ] = group identifier, mountpoint, groupname where identifier is what is found in /proc/diskstats (or iostat for FreeBSD), and groupname is something found in df command. The mount point will be used as label.

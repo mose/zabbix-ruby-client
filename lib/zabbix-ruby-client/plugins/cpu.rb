@@ -49,17 +49,13 @@ module ZabbixRubyClient
           info = iostat
           if info
             back = info.split(/\s+/).map(&:to_i)
+            puts back
             ret["user"] = back[12]
             ret["nice"] = back[13]
             ret["system"] = back[14]
             ret["idle"] = back[16]
             ret["iowait"] = back[15]
-            ret["irq"] = 0
-            ret["soft"] = 0
-            ret["steal"] = 0
-            ret["guest"] = 0
             ret["used"] = back[12..14].reduce(&:+)
-            ret["total"] = back[12..16].reduce(&:+)
             ret
           else
             false
